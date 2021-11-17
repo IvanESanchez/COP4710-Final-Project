@@ -1,5 +1,21 @@
 version: '3.8'
 services:
+  nginx:
+    image: bitnami/nginx:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./nginx-vhost/nginx.conf:/opt/bitnami/nginx/conf/server_blocks/myapp.conf
+      - ./app:/app
+
+  php-fpm:
+    image: bitnami/php-fpm:8.0
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./app:/app
+    secrets:
+      - mariadb-password
 
   db:
     image: mariadb:latest
