@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang = "en">
+<html>
+
+<head>
+  <meta charset = "UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content= "Andy Garcia and Bootstrap contributors">
+
+  <title>BookStore Menu</title>
+
+  <link rel = "stylesheet" href =
+	"https://cdn.jsdelivr.net/npm/cdbootstrap@1.0.0/css/bootstrap.min.css">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: boarder-box;
+      list-style: none;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body{
+      background: #EEEEEE;
+    }
+
+    .wrapper{
+      display: flex;
+      postition: relative;
+    }
+
+    .wrapper .side-bar{
+      postition: fixed;
+      width: 300px;
+      height: 100vh;
+      background: #9591a7;
+      padding: 50px 0;
+
+    }
+
+    .wrapper .side-bar h2{
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .wrapper .side-bar ul{
+      padding: 0;
+    }
+
+    .wrapper .side-bar ul li{
+      padding: 15px;
+      padding-left: 35px;
+    }
+
+    .wrapper .side-bar ul li a{
+      text-decoration: none;
+      color: #000000;
+      display: block;
+    }
+
+    .wrapper .side-bar ul li:hover{
+      background: #acaaba;
+    }
+
+    .wrapper .side-bar ul li:hover a{
+      color: #fff;
+    }
+
+    .wrapper .side-bar .log-out{
+      position: absolute;
+      left: 30px;
+
+    }
+
+    .wrapper .side-bar .log-out a{
+      text-decoration: none;
+      color: #000;
+      display: block;
+      padding: 35px;
+      padding-left: 40px;
+    }
+
+    .wrapper .side-bar .log-out:hover{
+      background: #acaaba;
+    }
+
+    .wrapper .Center-section{
+      width: 100%;
+      margin-left: 200px;
+    }
+
+  </style>
+
+
+</head>
+<body>
+
+  <div class="wrapper">
+    <div class="side-bar">
+      <h2>Menu Options</h2>
+      <ul>
+        <li><a href="#"><img src="book.svg" alt="book-order" width="15"> Book request form</a></li>
+        <li><a href="#"><img src="bookshelf.svg" alt="book-list" width="15"> Edit book forms</a></li>
+        <li><a href="#"><img src="list.svg" alt="book-request" width="15"> View list of requests</a></li>
+        <li><a href="#"><img src="envelope.svg" alt="invitaion-email" width="15"> Send invitaion</a></li>
+      </ul>
+
+      <div class="log-out">
+        <a href="index.html">Log out</a>
+      </div>
+
+    </div>
+
+    <div class="Center-section">
+      <div class="header">Center Texter header place holder</div>
+    </div>
+
+  </div>
+
+
+
+
+</body>
+
+
+
+
+</html>
