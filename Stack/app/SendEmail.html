@@ -70,28 +70,34 @@
       color: #fff;
     }
 
-    .wrapper .Center-section{
+    .wrapper .invite-form{
       width: 100%;
       margin-left: 200px;
+
     }
 
-    .wrapper .Center-section .header{
+    .wrapper .invite-form .header{
       margin-left: 15%;
       padding-top: 35px;
       font-size: 30px;
     }
 
-    .wrapper .Center-section .main-text{
+    .wrapper .invite-form .form-floating{
       margin-left: 15%;
-      padding-top: 20px;
-      font-size: 20px;
+      padding-top: 10px;
+      max-width: 350px;
     }
 
-    .wrapper .Center-section .pegasus-img{
-      margin-left: 25%;
-      padding-top: 10%;
+    .wrapper .invite-form .main-text{
+      margin-left: 15%;
+      padding-top: 25px;
     }
 
+    .wrapper .invite-form .btn-primary{
+      margin-left: 15%;
+      padding-top: 10px;
+      max-width: 350px;
+    }
 
 
   </style>
@@ -101,7 +107,9 @@
 <body>
 
   <div class="wrapper">
+
     <div class="side-bar">
+
       <h2>Menu Options</h2>
       <ul>
         <li><a href="MainMenu.html"><img src="house-fill.svg" alt="Home" width="15"> Home</a></li>
@@ -112,25 +120,32 @@
         <li><a href="index.html">Log out</a>
       </ul>
 
-
     </div>
 
-    <div class="Center-section">
-      <div class="header h3 mt-3 mb-4">Welcome to the UCF BookStore</div>
+    <main class = "invite-form">
 
-      <div class="main-text"> The following actions should be performed professor.
-        <br/>1.) Submit a new book request form
-        <br/>2.) View Book list request forms
-        <br/>3.) Edit previously created forms
-        <br/>All actions can be executed by pressing the buttons on the left.
-      </div>
+      <div class="header h3 mt-3 mb-4">Send invitaion Email</div>
+
+      <div class="main-text">Recipeants email address</div>
+
+      <form method="get">
+
+          <div class="form-floating">
+    			  <input type="email" class="form-control" id="floatingInput"
+    				placeholder="name@example.com">
+    			  <label for="floatingInput">Email Address</label>
+    			</div>
+
+          <button class = "mt-3 mb-1 w-50 btn-lg btn-primary"
+    			type = "submit">Send</button>
+
+
+      </form>
+    </main>
 
       <!--If the user is a worker and not a professor use this text.-->
 
-      <!-- The pegasus will be edited in photoshop to match the background-->
-      <div class="pegasus-img mt-3">
-        <img src="pegasus.png" alt ="ucf-logo" width="200">
-      <div>
+
 
    </div>
 
