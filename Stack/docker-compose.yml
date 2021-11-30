@@ -23,6 +23,7 @@ services:
       - mariadb-password
       - email-public-key
       - email-private-key
+      - super-admin-password
 
   db:
     image: mariadb:latest
@@ -54,3 +55,5 @@ secrets:
     file: secrets/email-public-key.txt
   email-private-key:
     file: secrets/email-private-key.txt
+  super-admin-password:
+    file: secrets/super-admin-password.txt

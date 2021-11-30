@@ -17,7 +17,7 @@
       </tr>
       <?php
         // Obtain database connection
-        require('./db.php');
+        require 'functions/db.php';
         
         // Perform query and store in $result
         $result = $mysqli->query("SHOW DATABASES;");
