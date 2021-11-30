@@ -29,28 +29,26 @@
     INDEX (isbn)
   );");
 
-  // Create BOOK_LIST table
-  $mysqli->query("CREATE TABLE IF NOT EXISTS BOOK_LIST (
-    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    blid INT UNSIGNED NOT NULL,
-    bid INT UNSIGNED NOT NULL,
-    INDEX (blid),
-    FOREIGN KEY (bid)
-      REFERENCES BOOK(bid)
-  );");
-
   // Create BOOK_REQS table
   $mysqli->query("CREATE TABLE IF NOT EXISTS BOOK_REQS (
     brid INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    blid INT UNSIGNED NOT NULL,
     skey INT UNSIGNED NOT NULL,
     uid INT UNSIGNED NOT NULL,
-    FOREIGN KEY (blid)
-      REFERENCES BOOK_LIST(blid),
     FOREIGN KEY (skey)
       REFERENCES SEMESTER(skey),
     FOREIGN KEY (uid)
       REFERENCES USER(uid)
+  );");
+
+  // Create BOOK_LIST table
+  $mysqli->query("CREATE TABLE IF NOT EXISTS BOOK_LIST (
+    blid INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    brid INT UNSIGNED NOT NULL,
+    bid INT UNSIGNED NOT NULL,
+    FOREIGN KEY (brid)
+      REFERENCES BOOK_REQS(brid),
+    FOREIGN KEY (bid)
+      REFERENCES BOOK(bid)
   );");
 
   // Obtain super admin password from secret and escape it to ensure it doesn't compromise the database
