@@ -85,7 +85,7 @@
           <a href = "NewUser.html">Create Account.</a>
         </div>
 
-        <dic class = "forgot-password">
+        <div class = "forgot-password">
           <a href = "ForgotPassword.html">Forgot Password?</a>
         </div>
 
