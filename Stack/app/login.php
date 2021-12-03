@@ -5,6 +5,7 @@
 
     // Need to check database
 
+
     // Assuming that comes back okay...
     require "functions/no_cookies.php";
     $_SESSION['username'] = $username;
