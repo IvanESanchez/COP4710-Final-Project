@@ -65,4 +65,7 @@
     '" . $super_admin_password . "',
     TRUE
   );");
+
+  // Close MariaDB connection
+  $mysqli->close();
 ?>
