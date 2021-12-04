@@ -5,6 +5,7 @@
 
     // Need to check database
 
+
     // Assuming that comes back okay...
     require "functions/no_cookies.php";
     $_SESSION['username'] = $username;
@@ -16,82 +17,65 @@
 
 <!DOCTYPE html>
 <html lang = "en">
-  <head>
+<head>
 
-    <meta charset = "UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content= "Andy Garcia and Bootstrap contributors">
+	<meta charset = "UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content= "Andy Garcia and Bootstrap contributors">
 
-    <title>Login</title>
+	<title>Book Store</title>
 
-    <link rel = "stylesheet" href = "https://cdn.jsdelivr.net/npm/cdbootstrap@1.0.0/css/bootstrap.min.css">
+	<link rel = "stylesheet" href =
+	"https://cdn.jsdelivr.net/npm/cdbootstrap@1.0.0/css/bootstrap.min.css">
 
-    <!-- Style sheet to make the ux simple -->
-    <style>
-      body{ align-items: center;
-      padding-top: 100px;
-      background-color: #89859D;}
+	<!-- Style sheet to make the ux simple -->
+	<link rel = "stylesheet" href = "css/login.css">
 
-      .form-signin{
-      width: 100%;
-      margin: auto;
-      max-width: 550px;
-      padding: 15px;
-      background: #EEEEEE;
-      border radius: 100px;}
+</head>
+<body class = "text-center">
 
-      .form-signin .form-floating{
-        margin: auto;
-        max-width: 330px;
-      }
+	<main class = "form-signin">
+		<!-- This is the sign in form that contain user information -->
+		<form action = "MainMenu.html" method="post">
 
-      .form-signin .button{padding: 100px;}
-    </style>
-  </head>
-  <body class = "text-center">
+			<h1 class = "mb-2">Book Store At</h1>
 
-    <main class = "form-signin">
-      <!-- This is the sign in form that contain user information -->
-      <form action = "login.php" method="post">
+			<div class = "logo">
+				<img class = "mb-3" src = "UCF.jpg" alt="" width = "300" height "57">
+			</div>
 
-        <h1 class = "mb-2">Book Store At</h1>
+			<h1 class = "h3 mb-3 fw-normal">User Login</h1>
 
-        <div class = "logo">
-          <img class = "mb-3" src = "UCF.jpg" alt="" width = "300" height "57">
-        </div>
+			<div class="form-floating mb-3">
+		  	<input type="text" class="form-control" id="floatingInput"
+				placeholder="Username">
+		  	<label for="floatingInput">Name</label>
+			</div>
 
-        <h1 class = "h3 mb-3 fw-normal">User Login</h1>
+			<div class="form-floating mb-3">
+		  	<input type="password" class="form-control" id="floatingPassword"
+				 placeholder="Password">
+		  	<label for="floatingPassword">Password</label>
+			</div>
 
-        <div class="form-floating">
-          <input name="username" type="text" class="form-control" id="username"
-          placeholder="Username">
-          <label for="username">Username</label>
-        </div>
+			<div>
+					<button class = "mt-2 mb-2 w-50 btn-lg btn-primary"
+					type = "submit">Sign in
+				  </button>
+			</div>
 
-        <div class="form-floating">
-          <input name="password" type="password" class="form-control" id="password"
-          placeholder="Password">
-          <label for="password">Password</label>
-        </div>
+			<div class = "new-user">
+				<a href = "NewUser.html">Create Account.</a>
+			</div>
 
-        <div>
-            <button class = "mt-2 mb-1 w-50 btn-lg btn-primary"
-            type = "submit">Sign in
-            </button>
-        </div>
+			<dic class = "forgot-password">
+				<a href = "ForgotPassword.html">Forgot Password?</a>
+			</div>
 
-        <div class = "new-user">
-          <a href = "NewUser.html">Create Account.</a>
-        </div>
+		</form>
 
-        <dic class = "forgot-password">
-          <a href = "ForgotPassword.html">Forgot Password?</a>
-        </div>
+	</main>
 
-      </form>
-
-    </main>
-
-  </body>
+</body>
 
 </html>

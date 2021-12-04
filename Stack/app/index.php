@@ -8,10 +8,10 @@
       if ($_SESSION['admin']) {
         header('Location: admin.php');
       } else {
-        header('Location: mainmenu.html');
+        header('Location: mainmenu.php');
       }
     } else {
-      header('Location: mainmenu.html');
+      header('Location: mainmenu.php');
     }
   }
 ?>

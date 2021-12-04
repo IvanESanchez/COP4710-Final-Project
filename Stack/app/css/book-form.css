@@ -1,0 +1,15 @@
+body {
+  background: #EEEEEE;
+}
+
+option {
+  text-align: center;
+}
+
+.form-floating {
+  max-width: 550px;
+}
+
+.btn {
+  width: 550px;
+}

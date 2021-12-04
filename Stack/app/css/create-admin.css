@@ -1,0 +1,19 @@
+body {
+  align-items: center;
+  padding-top: 50px;
+  background-color: #89859D;
+}
+
+.form-newuser {
+  width: 100%;
+  margin: auto;
+  max-width: 550px;
+  padding: 15px;
+  background: #EEEEEE;
+  border-radius: 100px;
+}
+
+.form-newuser .form-floating {
+  margin: auto;
+  max-width: 330px;
+}
