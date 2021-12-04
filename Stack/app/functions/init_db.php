@@ -15,7 +15,8 @@
   $mysqli->query("CREATE TABLE IF NOT EXISTS SEMESTER (
     skey INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     year INT UNSIGNED NOT NULL,
-    season ENUM('Spring', 'Summer', 'Fall') NOT NULL
+    season ENUM('Spring', 'Summer', 'Fall') NOT NULL,
+    UNIQUE KEY (year, season)
   );");
 
   // Create BOOK table
@@ -37,7 +38,8 @@
     FOREIGN KEY (skey)
       REFERENCES SEMESTER(skey),
     FOREIGN KEY (uid)
-      REFERENCES USER(uid)
+      REFERENCES USER(uid),
+    UNIQUE KEY (uid, skey)
   );");
 
   // Create BOOK_LIST table
