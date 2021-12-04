@@ -1,4 +1,4 @@
-.side-bar{
+.side-bar {
   /* position: fixed; */
   width: 300px;
   height: 100vh;
@@ -7,31 +7,31 @@
 
 }
 
-.side-bar h2{
+.side-bar h2 {
   text-transform: uppercase;
   text-align: center;
   margin-bottom: 25px;
 }
 
-.side-bar ul{
+.side-bar ul {
   padding: 0;
 }
 
-.side-bar ul li{
+.side-bar ul li {
   padding: 15px;
   padding-left: 35px;
 }
 
-.side-bar ul li a{
+.side-bar ul li a {
   text-decoration: none;
   color: #000000;
   display: block;
 }
 
-.side-bar ul li:hover{
+.side-bar ul li:hover {
   background: #acaaba;
 }
 
-.side-bar ul li:hover a{
+.side-bar ul li:hover a {
   color: #fff;
 }
