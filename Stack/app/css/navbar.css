@@ -1,6 +1,6 @@
 .side-bar{
-  /* position: fixed; */
-  width: 300px;
+  position: fixed;
+  width: 250px;
   height: 100vh;
   background: #9591a7;
   padding: 50px 0;
@@ -19,7 +19,7 @@
 
 .side-bar ul li{
   padding: 15px;
-  padding-left: 35px;
+  padding-left: 50px;
 }
 
 .side-bar ul li a{
