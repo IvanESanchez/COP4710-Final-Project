@@ -1,0 +1,23 @@
+body {
+  align-items: center;
+  padding-top: 100px;
+  background-color: #89859D;
+}
+
+.form-signin {
+  width: 100%;
+  margin: auto;
+  max-width: 550px;
+  padding: 15px;
+  background: #EEEEEE;
+  border-radius: 100px;
+}
+
+.form-signin .form-floating {
+  margin: auto;
+  max-width: 330px;
+}
+
+.form-signin .button {
+  padding: 100px;
+}

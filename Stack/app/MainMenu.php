@@ -41,20 +41,20 @@
     }
 
     .wrapper .Center-section .header{
-      margin-left: 15%;
-      padding-top: 35px;
+      margin-left: 30%;
+      padding-top: 80px;
       font-size: 30px;
     }
 
     .wrapper .Center-section .main-text{
-      margin-left: 15%;
+      margin-left: 30%;
       padding-top: 20px;
       font-size: 20px;
     }
 
     .wrapper .Center-section .pegasus-img{
-      margin-left: 25%;
-      padding-top: 10%;
+      margin-left: 35%;
+      padding-top: 5%;
     }
 
 
@@ -76,10 +76,10 @@
 
 			<!-- Center text that shows the person logining in what they must do -->
       <div class="main-text"> The following actions should be performed by a professor.
-        <br/>1.) Submit a new book request form
-        <br/>2.) View book list request forms
-        <br/>3.) Edit previously created forms
-        <br/>All actions can be executed by pressing the buttons on the left.
+        <br/><button type="button" a href="BookForm.html" class="btn btn-link">Submit a new book request form</button>
+        <br/><button type="button" a href="ViewBool.html" class="btn btn-link">View book list request forms</button>
+        <br/><button type="button" a href="EditBook.html" class="btn btn-link">Edit previously created forms</button>
+        <br/>All actions can be executed by pressing the buttons on the left as well.
       </div>
 
       <!--If the user is a worker and not a professor use this text.-->

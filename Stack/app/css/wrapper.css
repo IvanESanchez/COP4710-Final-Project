@@ -1,0 +1,26 @@
+.wrapper {
+  display: flex;
+  position: relative;
+}
+
+.wrapper .Center-section {
+  width: 100%;
+  margin-left: 200px;
+}
+
+.wrapper .Center-section .header {
+  margin-left: 38%;
+  padding-top: 35px;
+  font-size: 30px;
+}
+
+.wrapper .Center-section .main-text {
+  margin-left: 30%;
+  padding-top: 20px;
+  font-size: 20px;
+}
+
+.wrapper .Center-section .pegasus-img {
+  margin-left: 25%;
+  padding-top: 10%;
+}
