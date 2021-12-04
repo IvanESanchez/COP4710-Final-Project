@@ -76,10 +76,10 @@
 
 			<!-- Center text that shows the person logining in what they must do -->
       <div class="main-text"> The following actions should be performed by a professor.
-        <br/><button type="button" class="btn btn-link">Submit a new book request form</button>
-        <br/><button type="button" class="btn btn-link">View book list request forms</button>
-        <br/><button type="button" class="btn btn-link">Edit previously created forms</button>
-        <br/><button type="button" class="btn btn-link">All actions can be executed by pressing the buttons on the left as well.</button>
+        <br/><button type="button" a href="BookForm.html" class="btn btn-link">Submit a new book request form</button>
+        <br/><button type="button" a href="ViewBool.html" class="btn btn-link">View book list request forms</button>
+        <br/><button type="button" a href="EditBook.html" class="btn btn-link">Edit previously created forms</button>
+        <br/>All actions can be executed by pressing the buttons on the left as well.
       </div>
 
       <!--If the user is a worker and not a professor use this text.-->
