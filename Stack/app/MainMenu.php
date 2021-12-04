@@ -78,7 +78,7 @@
       <div class="main-text"> The following actions should be performed by a professor.
         <br/><a href="BookForm.html" ><button type="button"  class="btn btn-secondary">Submit a new book request form</button></a>
         <a href="#" ><button type="button"  class="btn btn-secondary">View book list request forms</button></a>
-        <br/><a href="#" ><button type="button"  class="btn btn-secondary">Edit previously created forms</button></a>
+        <a href="#" ><button type="button"  class="btn btn-secondary">Edit previously created forms</button></a>
         <br/>All actions can be executed by pressing the buttons on the left as well.
       </div>
 
