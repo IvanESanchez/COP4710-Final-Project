@@ -4,7 +4,7 @@
   // Create USER table
   $mysqli->query("CREATE TABLE IF NOT EXISTS USER (
     uid INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(64),
+    name VARCHAR(64) NOT NULL,
     email VARCHAR(128) NOT NULL UNIQUE,
     password VARCHAR(64) NOT NULL,
     admin BOOLEAN NOT NULL DEFAULT FALSE,
