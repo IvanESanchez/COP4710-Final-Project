@@ -79,7 +79,7 @@
         <br/>1.) Submit a new book request form
         <br/>2.) View book list request forms
         <br/>3.) Edit previously created forms
-        <br/>All actions can be executed by pressing the buttons on the left.
+        <br/>All actions can be executed by pressing the buttons on the left as well.
       </div>
 
       <!--If the user is a worker and not a professor use this text.-->
