@@ -9,9 +9,9 @@
 
   <title>BookStore Menu</title>
 
-  <link rel = "stylesheet" href =
-	"https://cdn.jsdelivr.net/npm/cdbootstrap@1.0.0/css/bootstrap.min.css">
   <link rel = "stylesheet" href = "css/navbar.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
 
   <style>
 	/* Style sheet organized the data in a ux friendly manner */
@@ -76,9 +76,9 @@
 
 			<!-- Center text that shows the person logining in what they must do -->
       <div class="main-text"> The following actions should be performed by a professor.
-        <br/><button type="button" a href="BookForm.html" class="btn btn-link">Submit a new book request form</button>
-        <br/><button type="button" a href="ViewBool.html" class="btn btn-link">View book list request forms</button>
-        <br/><button type="button" a href="EditBook.html" class="btn btn-link">Edit previously created forms</button>
+        <br/><a href="BookForm.html" ><button type="button"  class="btn btn-secondary">Submit a new book request form</button></a>
+        <a href="#" ><button type="button"  class="btn btn-secondary">View book list request forms</button></a>
+        <br/><a href="#" ><button type="button"  class="btn btn-secondary">Edit previously created forms</button></a>
         <br/>All actions can be executed by pressing the buttons on the left as well.
       </div>
 
