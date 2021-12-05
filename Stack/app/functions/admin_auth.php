@@ -1,7 +1,4 @@
 <?php
-  // Instantiate session
-  require "functions/no_cookies.php";
-
   // Check if session involving username exists
   if (!isset($_SESSION['username'])) {
     // Redirect to login if not
@@ -9,11 +6,8 @@
   } else {
     // Check if session has data on if user is admin
     if (isset($_SESSION['admin'])) {
-      // Admin menu if yes
-      if ($_SESSION['admin']) {
-        header('Location: adminmenu.php');
-      } else {
-        // Main menu if not
+      // Send user to normal main menu if user isn't admin
+      if (!$_SESSION['admin']) {
         header('Location: mainmenu.php');
       }
     } else {

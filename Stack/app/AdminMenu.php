@@ -19,11 +19,9 @@
 <body>
 
   <div class="wrapper">
-
-
-	<?php
-		include('templates/adminbar.php');
-	?>
+		<?php
+			include $_SERVER["DOCUMENT_ROOT"] . '/templates/adminbar.php';
+		?>
 
     <div class="Center-section">
       <div class="header h3 mt-3 mb-4">UCF BookStore Administrator</div>
@@ -31,16 +29,15 @@
       <div class="main-text">
 				<div class =" h2 Panel">Admin Panel.</div>
 				<a href="SendEmail.php">
-					<button class="mt-3 btn btn-secondary btn-lg">
+					<button class="mt-3 btn btn-primary btn-lg">
 						<img src="envelope.svg" alt="invitaion-email" width="15"> Email Options
-					</img></button></a><br/>
+					</button></a><br/>
 
-					<a href="Broadcast.php">
-
-					<button class="mt-3 btn btn-secondary btn-lg">
+				<a href="Broadcast.php">
+					<button class="mt-3 btn btn-primary btn-lg">
 						<img src="envelope.svg" alt="invitaion-email" width="15"> Brodcast Email
-					</img></button>
-					</a>
+					</button>
+				</a>
 
       </div>
 

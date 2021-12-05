@@ -1,3 +1,6 @@
+<?php
+  require $_SERVER["DOCUMENT_ROOT"] . '/functions/admin_auth.php';
+?>
 <!-- The following code is used for the side bar menu options -->
 <div class="wrapper">
   <div class="side-bar">
