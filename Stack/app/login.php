@@ -61,8 +61,8 @@
 
 			if (!empty($_POST['loginName']) and !empty($_POST['loginPass'])) {
 
-		    	$name = trim($_POST['loginName']);
-		    	$password = trim($_POST['loginPass']);
+		    	$name = filter_var(trim($_POST['loginName']), FILTER_SANITIZE_STRING);
+		    	$password = filter_var(trim($_POST['loginPass']), FILTER_SANITIZE_STRING);
 
 			    // Need to check database
 				require 'functions/db.php';
