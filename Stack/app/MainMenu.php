@@ -14,6 +14,7 @@
   <link rel = "stylesheet" href = "css/navbar.css">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
 	<link rel = "stylesheet" href = "css/Mainmenu.css">
@@ -27,6 +28,10 @@
   <link rel = "stylesheet" href = "css/base.css">
   <link rel = "stylesheet" href = "css/main-menu.css">
 >>>>>>> 4080705c165a5bc02f785acfa21329bc75b554e0
+=======
+  <link rel = "stylesheet" href = "css/base.css">
+  <link rel = "stylesheet" href = "css/main-menu.css">
+>>>>>>> 1dcfbcea4bbb82766baeba29d7679c8aa4db8a53
 </head>
 <body>
 

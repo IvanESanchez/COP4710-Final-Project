@@ -1,6 +1,3 @@
-<!DOCTYPE HTML>
-<html lang = "en">
-<html>
 	<!-- The following code is used for the side bar menu options -->
   <div class="wrapper">
     <div class="side-bar">
@@ -14,7 +11,10 @@
 				<li><a href="ManageAccount.php"><img src ="person-circle.svg" alt="account" width="15"> Manage Account</a></li>
 =======
 				<li><a href="ManageAccount.html"><img src ="person-circle.svg" alt="account" width="15"> Manage Account</a></li>
+<<<<<<< HEAD
 >>>>>>> 4080705c165a5bc02f785acfa21329bc75b554e0
+=======
+>>>>>>> 1dcfbcea4bbb82766baeba29d7679c8aa4db8a53
         <li><a href="index.php">Log out</a></li>
       </ul>
     </div>
