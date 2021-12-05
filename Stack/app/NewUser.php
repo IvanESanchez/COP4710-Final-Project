@@ -20,7 +20,7 @@
 
 		<form action = "<?php echo $_SERVER['PHP_SELF'];?>" method ="post">
 
-			<h1 class = "mt-2 mb-4">Create a BookStore account</h1>
+			<h1 class = "mt-2 mb-4">Create an account</h1>
 
 			<div class = "logo">
 				<img class = "mb-3" src = "UCF.jpg" alt="" width = "300" height "57">
@@ -55,8 +55,8 @@
 
 		<?php
 			if ($_SERVER["REQUEST_METHOD"] == "POST") {
-				if (!empty($_POST['newName']) 
-				and !empty($_POST['newEmail']) 
+				if (!empty($_POST['newName'])
+				and !empty($_POST['newEmail'])
 				and !empty($_POST['newPass'])) {
 					$name = filter_var(trim($_POST['newName']), FILTER_SANITIZE_STRING);
 					$email = filter_var(trim($_POST['newEmail']), FILTER_SANITIZE_EMAIL);

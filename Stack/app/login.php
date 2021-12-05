@@ -65,7 +65,7 @@
 			</div>
 
 			<div class = "new-user">
-				<a href = "NewUser.html">Create Account.</a>
+				<a href = "NewUser.php">Create Account.</a>
 			</div>
 
 			<dic class = "forgot-password">
