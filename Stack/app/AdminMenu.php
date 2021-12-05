@@ -14,17 +14,7 @@
   <link rel = "stylesheet" href = "css/navbar.css">
   <link rel = "stylesheet" href = "css/wrapper.css">
   <!-- <link rel = "stylesheet" href = "css/admin.css"> -->
-	<style>
-		.btn
-		{
-			color: black;
-		}
-
-		.wrapper .Center-section .main-text
-		{
-			margin-left: 40%;
-		}
-	</style>
+	<link rel = "stylesheet" href = "css/admin-menu.css">
 </head>
 <body>
 
