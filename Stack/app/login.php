@@ -18,9 +18,6 @@
 		if ($result->num_rows > 0) {
 			$row = $result->fetch_assoc();
 
-			echo '<p>' . $password . '</p>';
-			echo '<p>' . $row["password"] . '</p>';
-
 			if ($password == $row["password"]) {
 				// Successful login
 				require "functions/no_cookies.php";

@@ -1,8 +1,38 @@
+<?php
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+		if (!empty($_POST['newName'])
+		and !empty($_POST['newEmail'])
+		and !empty($_POST['newPass'])) {
+			require 'functions/db.php';
+
+			$name = $mysqli->real_escape_string(trim($_POST['newName']));
+			$email = $mysqli->real_escape_string(trim($_POST['newEmail']));
+			$pass = $mysqli->real_escape_string(trim($_POST['newPass']));
+
+			// Perform INSERT
+			$mysqli->query("INSERT INTO USER (
+				name,
+				email,
+				password,
+				admin
+			) VALUES (
+				'" . $name . "',
+				'" . $email . "',
+				'" . $pass . "',
+				FALSE
+			);");
+
+			$mysqli->close();
+
+			header('Location: login.php');
+		} else {
+			// Handle failure
+		}
+	}
+?>
+
 <!DOCTYPE html>
 <html lang = "en">
-
-<html>
-
 <head>
 	<meta charset = "UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,40 +81,7 @@
 			</div>
 
 		</form>
-
-		<?php
-			if ($_SERVER["REQUEST_METHOD"] == "POST") {
-				if (!empty($_POST['newName'])
-				and !empty($_POST['newEmail'])
-				and !empty($_POST['newPass'])) {
-					$name = filter_var(trim($_POST['newName']), FILTER_SANITIZE_STRING);
-					$email = filter_var(trim($_POST['newEmail']), FILTER_SANITIZE_EMAIL);
-					$pass = filter_var(trim($_POST['newPass']), FILTER_SANITIZE_STRING);
-
-					require 'functions/db.php';
-
-					// Perform INSERT
-					$mysqli->query("INSERT INTO user (
-						name,
-						email,
-						password,
-						admin
-					) VALUES (
-						'$name',
-						'$email',
-						'$pass',
-						FALSE
-					);");
-
-					$mysqli->close();
-
-					header('Location: login.php');
-					exit;
-				}
-			}
-		?>
-
-	<main>
+</main>
 
 </body>
 
