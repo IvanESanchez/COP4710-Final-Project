@@ -1,5 +1,8 @@
 <?php
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+		// Require feedback functions
+		require $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+
 		if (!empty($_POST['newName'])
 		and !empty($_POST['newEmail'])
 		and !empty($_POST['newPass'])) {
@@ -21,9 +24,6 @@
 				'" . $pass . "',
 				FALSE
 			);";
-
-			// Require feedback functions
-			require $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
 
 			try {
 				// Perform INSERT
