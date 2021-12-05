@@ -20,19 +20,9 @@
 
   <div class="wrapper">
 
-    <div class="side-bar">
-
-      <h2>Menu<ul>Options</h2>
-      <ul>
-        <li><a href="AdminMenu.html"><img src="house-fill.svg" alt="Home" width="15"> Home</a></li>
-        <li><a href="BookForm.html"><img src="book.svg" alt="book-order" width="15"> Book request form</a></li>
-        <li><a href="#"><img src="list.svg" alt="book-request" width="15"> View list of requests</a></li>
-        <li><a href="#"><img src="bookshelf.svg" alt="book-list" width="15"> Edit book forms</a></li>
-				<li><a href="#"><img src ="person-circle.svg" alt="account" width="15"> Manage Account</a></li>
-				<li><a href="index.html">Log out</a>
-      </ul>
-
-    </div>
+		<?php
+			include('templates/adminbar.php');
+		?>
 
     <main class = "invite-form">
 
@@ -66,14 +56,6 @@
     			type = "submit">Send</button>
       </form>
 
-			<form action ="Brodcast.html" method="get">
-
-				<div class="header h3 mt-3 mb-4">Brodcast</div>
-
-					<button class = "mt-3 mb-1 w-50 btn-lg btn-primary"
-					type = "submit">Send Broadcast</button>
-
-			</form>
     </main>
 
       <!--If the user is a worker and not a professor use this text.-->

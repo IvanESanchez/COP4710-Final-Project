@@ -14,11 +14,16 @@
   <link rel = "stylesheet" href = "css/base.css">
   <link rel = "stylesheet" href = "css/navbar.css">
   <link rel = "stylesheet" href = "css/wrapper.css">
-  <link rel = "stylesheet" href = "css/admin.css">
+  <!-- <link rel = "stylesheet" href = "css/admin.css"> -->
 	<style>
 		.btn
 		{
 			color: black;
+		}
+
+		.wrapper .Center-section .main-text
+		{
+			margin-left: 40%;
 		}
 	</style>
 </head>
@@ -34,21 +39,23 @@
     <div class="Center-section">
       <div class="header h3 mt-3 mb-4">UCF BookStore Administrator</div>
 
-      <div class="main-text"> Admin Panel.<br/>
-				<a href="SendEmail.html">
-					<button class="btn btn-primary btn-lg">
+      <div class="main-text">
+				<div class =" h2 Panel">Admin Panel.</div>
+				<a href="SendEmail.php">
+					<button class="mt-3 btn btn-secondary btn-lg">
 						<img src="envelope.svg" alt="invitaion-email" width="15"> Email Options
+					</img></button></a><br/><br/>
+
+					<a href="Brodcast.php">
+
+					<button class="mt-3 btn btn-secondary btn-lg">
+						<img src="envelope.svg" alt="invitaion-email" width="15"> Brodcast Email
 					</img></button>
-				</a>
-				<br/>All actions can be executed by pressing the buttons on the left.
+					</a>
+
       </div>
 
-      <!--If the user is a worker and not a professor use this text.-->
 
-      <!-- The pegasus will be edited in photoshop to match the background-->
-      <div class="pegasus-img mt-3">
-        <img src="pegasus.png" alt ="ucf-logo" width="200">
-      </div>
 		</div>
    </div>
 
