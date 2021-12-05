@@ -54,7 +54,7 @@
   );");
 
   // Obtain super admin password from secret and escape it to ensure it doesn't compromise the database
-  $super_admin_password = $mysqli->real_escape_string(file_get_contents('/run/secrets/super-admin-password'));
+  $super_admin_password = $mysqli->real_escape_string(trim(file_get_contents('/run/secrets/super-admin-password')));
 
   $mysqli->query("INSERT INTO USER (
       name,

@@ -1,7 +1,7 @@
 <?php
   require "functions/no_cookies.php";
 
-  if (!isset($_SESSION['name'])) {
+  if (!isset($_SESSION['username'])) {
     header('Location: login.php');
   } else {
     if (isset($_SESSION['admin'])) {
