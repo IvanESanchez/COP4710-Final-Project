@@ -58,9 +58,9 @@
 				if (!empty($_POST['newName']) 
 				and !empty($_POST['newEmail']) 
 				and !empty($_POST['newPass'])) {
-					$name = trim($_POST['newName']);
-					$email = trim($_POST['newEmail']);
-					$pass = trim($_POST['newPass']);
+					$name = filter_var(trim($_POST['newName']), FILTER_SANITIZE_STRING);
+					$email = filter_var(trim($_POST['newEmail']), FILTER_SANITIZE_EMAIL);
+					$pass = filter_var(trim($_POST['newPass']), FILTER_SANITIZE_STRING);
 
 					require 'functions/db.php';
 

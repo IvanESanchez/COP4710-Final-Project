@@ -6,7 +6,7 @@
   } else {
     if (isset($_SESSION['admin'])) {
       if ($_SESSION['admin']) {
-        header('Location: adminmenu.html');
+        header('Location: adminmenu.php');
       } else {
         header('Location: mainmenu.php');
       }

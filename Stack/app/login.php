@@ -74,6 +74,46 @@
 
 		</form>
 
+<<<<<<< HEAD
+=======
+		<?php
+
+			if (!empty($_POST['loginName']) and !empty($_POST['loginPass'])) {
+
+		    	$name = filter_var(trim($_POST['loginName']), FILTER_SANITIZE_STRING);
+		    	$password = filter_var(trim($_POST['loginPass']), FILTER_SANITIZE_STRING);
+
+			    // Need to check database
+				require 'functions/db.php';
+
+				// Perform Query and store in $result
+				$result = $mysqli->query('SELECT * FROM user U;');
+
+				// Loop through results
+				$valid_user = False;
+
+				while ($row = $result->fetch_row()) {
+					if ($row[1] == $name and $row[3] == $password) {
+						$valid_user = True;
+						$admin = $row[4];
+						break;
+					}
+				}
+
+				if ($valid_user == True) {
+			    	// Assuming that comes back okay...
+			    	require "functions/no_cookies.php";
+			    	$_SESSION['name'] = $name;
+			    	$_SESSION['admin'] = $admin;
+			    	session_write_close();
+			    	header('Location: index.php');
+					exit;
+				}
+			}
+
+		?>
+
+>>>>>>> 7e6ee20fd049969970a4aad80184843d4e2bd87a
 	</main>
 
 </body>
