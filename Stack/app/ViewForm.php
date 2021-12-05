@@ -42,8 +42,12 @@
 
  #container{
 	 margin-top: 3%;
-	 width:100%;
    overflow:auto;
+ }
+
+ .table-striped{
+	 margin-left: 18%;
+	 width:50%;
  }
 
 
@@ -89,6 +93,7 @@
 				<table class="mt-3 table table-striped">
 					<thread>
 						<tr>
+							<th style="width:25%">
 							<th>Year</th>
 							<th>Semester</th>
 						</tr>
