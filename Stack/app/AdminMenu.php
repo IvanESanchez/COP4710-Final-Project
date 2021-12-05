@@ -29,12 +29,12 @@
       <div class="main-text">
 				<div class =" h2 Panel">Admin Panel.</div>
 				<a href="SendEmail.php">
-					<button class="mt-3 btn btn-primary btn-lg">
+					<button class="mt-3 btn btn-secondary btn-lg">
 						<img src="envelope.svg" alt="invitaion-email" width="15"> Email Options
 					</button></a><br/>
 
 				<a href="Broadcast.php">
-					<button class="mt-3 btn btn-primary btn-lg">
+					<button class="mt-3 btn btn-secondary btn-lg">
 						<img src="envelope.svg" alt="invitaion-email" width="15"> Brodcast Email
 					</button>
 				</a>
