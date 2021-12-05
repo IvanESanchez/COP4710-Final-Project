@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="author" content= "Andy Garcia and Bootstrap contributors">
 
-  <title>BookStore Menu</title>
+  <title>BookStore Home</title>
 
   <link rel = "stylesheet" href = "css/navbar.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
