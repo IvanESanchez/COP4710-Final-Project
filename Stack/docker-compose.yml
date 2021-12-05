@@ -10,6 +10,9 @@ services:
 
   php-fpm:
     image: bitnami/php-fpm:8.0
+    deploy:
+      restart_policy:
+        condition: on-failure
     ports:
       - "9000:9000"
     volumes:
