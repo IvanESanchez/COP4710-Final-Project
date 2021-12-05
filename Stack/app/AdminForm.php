@@ -19,8 +19,12 @@
 <body>
 
 
+
+
   <div class="wrapper">
-    
+		<?php
+			include('templates/adminbar.php');
+		?>
 
     <div class="Center-section">
       <div class="header h3 mt-3 mb-4">Book request form</div>
