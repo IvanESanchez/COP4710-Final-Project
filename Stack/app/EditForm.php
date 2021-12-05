@@ -85,20 +85,9 @@
 					type = "submit">Submit</button>
 			</form>
 
-			<div class="container">
-				<table class="mt-3 table table-striped">
-					<thread>
-						<tr>
-							<th>Year</th>
-							<th>Semester</th>
-						</tr>
-					</thread>
-				</table>
-			</div>
+		</div>
 
-    </div>
-
- </div>
+	</div>
 
 
 </body>
