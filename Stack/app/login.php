@@ -12,33 +12,37 @@
     $password = $mysqli->real_escape_string(trim($_POST['password']));
 
 		// Perform Query and store in $result
-		$result = $mysqli->query("SELECT U.email, U.password, U.admin
-														  FROM USER U
-															WHERE U.email = '" . $username . "';");
+		try {
+			$result = $mysqli->query("SELECT U.email, U.password, U.admin
+																FROM USER U
+																WHERE U.email = '" . $username . "';");
+			// Any matches?
+			if ($result->num_rows > 0) {
+				$row = $result->fetch_assoc();
 
-		// Any matches?
-		if ($result->num_rows > 0) {
-			$row = $result->fetch_assoc();
+				if ($password == $row["password"]) {
+					// Successful login, save data to session
+					require $_SERVER["DOCUMENT_ROOT"] . '/functions/no_cookies.php';
+					$_SESSION['username'] = $username;
+					$_SESSION['password'] = $password;
+					$_SESSION['admin'] = $row["admin"];
+					session_write_close();
 
-			if ($password == $row["password"]) {
-				// Successful login, save data to session
-				require $_SERVER["DOCUMENT_ROOT"] . '/functions/no_cookies.php';
-				$_SESSION['username'] = $username;
-				$_SESSION['password'] = $password;
-				$_SESSION['admin'] = $row["admin"];
-				session_write_close();
-
-				// Redirect to index.php to route to menu
-				header('Location: index.php');
+					// Redirect to index.php to route to menu
+					header('Location: index.php');
+				} else {
+					// Incorrect password
+					show_error("Password given for <code>" . $username . "</code> is incorrect.");
+				}
 			} else {
-				// Incorrect password
-				show_error("Password given for <code>" . $username . "</code> is incorrect.");
+				// Handle user not found
+				show_error("User <code>" . $username . "</code> not found.");
 			}
-		} else {
-			// Handle user not found
-			show_error("User <code>" . $username . "</code> not found.");
+		} catch (mysqli_sql_exception $e) {
+			show_error($mysqli->error);
+		} finally {
+			$mysqli->close();
 		}
-		$mysqli->close();
   }
 ?>
 

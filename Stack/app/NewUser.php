@@ -29,12 +29,12 @@
 				// Perform INSERT
 				$mysqli->query($query);
 				show_success("User " . $email . "created successfully.");
-				$mysqli->close();
 
 				// Redirect to login
 				header('Location: login.php');
 			} catch (mysqli_sql_exception $e) {
 				show_error("Unable to create " . $email . ".<br>" . $mysqli->error);
+			} finally {
 				$mysqli->close();
 			}
 		} else {
