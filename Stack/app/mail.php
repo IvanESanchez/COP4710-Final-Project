@@ -1,5 +1,5 @@
 <?php 
-  require 'mailjet/vendor/autoload.php';
+  require $_SERVER["DOCUMENT_ROOT"] . '/mailjet/vendor/autoload.php';
 
   use \Mailjet\Resources;
 

@@ -1,11 +1,11 @@
 <?php
 	// Require functions to give feedback
-	require 'functions/show_feedback.php';
+	require $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
 
 	// Check if input has been given; process if it has
   if (!empty($_POST['username']) and !empty($_POST['password'])) {
     // Need to check database
-		require 'functions/db.php';
+		require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
 
 		// Sanitize input
 		$username = $mysqli->real_escape_string(trim($_POST['username']));
@@ -22,7 +22,7 @@
 
 			if ($password == $row["password"]) {
 				// Successful login, save data to session
-				require "functions/no_cookies.php";
+				require $_SERVER["DOCUMENT_ROOT"] . '/functions/no_cookies.php';
 				$_SESSION['username'] = $username;
 				$_SESSION['password'] = $password;
 				$_SESSION['admin'] = $row["admin"];
@@ -89,7 +89,7 @@
 			</div>
 
 			<div class = "new-user">
-				<a href = "NewUser.html">Create Account</a>
+				<a href = "NewUser.php">Create Account</a>
 			</div>
 
 			<dic class = "forgot-password">

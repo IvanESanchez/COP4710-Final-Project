@@ -1,5 +1,5 @@
 <?php
-  require './db.php';
+  require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
 
   // Create USER table
   $mysqli->query("CREATE TABLE IF NOT EXISTS USER (

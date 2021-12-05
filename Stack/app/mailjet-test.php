@@ -1,5 +1,5 @@
 <?php
-  require 'mail.php';
+  require $_SERVER["DOCUMENT_ROOT"] . '/mail.php';
 
   $receiver = 'weposi1177@nefacility.com';
   $email_subject = 'COP 4710 Team 13 Final Project';

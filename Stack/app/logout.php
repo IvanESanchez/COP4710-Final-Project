@@ -1,5 +1,5 @@
 <?php
-  require 'functions/no_cookies.php';
+  require $_SERVER["DOCUMENT_ROOT"] . '/functions/no_cookies.php';
 
   // Unset all of the session variables.
   $_SESSION = array();

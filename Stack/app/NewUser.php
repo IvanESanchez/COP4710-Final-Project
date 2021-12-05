@@ -25,18 +25,22 @@
 			// Require feedback functions
 			require 'functions/show_feedback.php';
 
-			// Perform INSERT
-			if ($mysqli->query($query)) {
+			try {
+				// Perform INSERT
+				$mysqli->query($query);
 				show_success("User " . $email . "created successfully.");
 				$mysqli->close();
-				//header('Location: login.php');
-			} else {
-				show_error("Unable to create " . $email . ".");
+
+				// Redirect to login
+				header('Location: login.php');
+			} catch (mysqli_sql_exception $e) {
+				show_error("Unable to create " . $email . ".<br>" . $mysqli->error);
 				$mysqli->close();
 			}
-			
 		} else {
 			// Handle failure
+			require 'functions/show_message.php';
+			show_error("Please fill out all fields and resubmit.");
 		}
 	}
 ?>
