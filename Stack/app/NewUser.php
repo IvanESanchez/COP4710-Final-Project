@@ -3,7 +3,7 @@
 		if (!empty($_POST['newName'])
 		and !empty($_POST['newEmail'])
 		and !empty($_POST['newPass'])) {
-			require 'functions/db.php';
+			require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
 
 			$name = $mysqli->real_escape_string(trim($_POST['newName']));
 			$email = $mysqli->real_escape_string(trim($_POST['newEmail']));
@@ -23,7 +23,7 @@
 			);";
 
 			// Require feedback functions
-			require 'functions/show_feedback.php';
+			require $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
 
 			try {
 				// Perform INSERT
@@ -39,7 +39,6 @@
 			}
 		} else {
 			// Handle failure
-			require 'functions/show_message.php';
 			show_error("Please fill out all fields and resubmit.");
 		}
 	}

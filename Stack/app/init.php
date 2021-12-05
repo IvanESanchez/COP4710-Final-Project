@@ -1,3 +1,3 @@
 <?php
-  require 'functions/init_db.php';
+  require $_SERVER["DOCUMENT_ROOT"] . '/functions/init_db.php';
 ?>
