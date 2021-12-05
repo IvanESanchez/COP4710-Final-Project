@@ -23,18 +23,9 @@
 
 	.h3{
 		padding-top: 2%;
+		margin-left: 30%;
 	}
 
-	form {
-	  margin-left: 30%;
-	}
-
-	select{
-		width: 450px;
-		height: 50px;
-		text-align: center;
-		font-size: 35px;
-	}
 
 	.btn-primary{
 		width: 450px;
@@ -46,6 +37,20 @@
    overflow:auto;
  }
 
+ .table-striped{
+ 	margin-left: 13%;
+ 	width:50%;
+ }
+
+ table, th{
+  border:1px solid black;
+  border-collapse: collapse;
+ }
+
+  .container .thead .th{
+ 	 position: sticky;
+ 	 top: 0;
+  }
 
 </style>
 
@@ -58,31 +63,27 @@
     	include ('templates/navbar.php');
 		?>
 
-
     <div class="Center-section">
 
-      <form action ="EditBook.php" method="post">
-				<div class="h3 mt-3 mb-4">Search Book Form to Edit</div>
+			<div class="h3 mt-3 mb-4">Search Book Form to Edit</div>
 
-				<div class="container">
-					<table class="mt-3 table table-striped">
-						<thread>
-							<tr align="center">
-								<th>Book Title</th>
-								<th>Author Name(s)</th>
-								<th>Edition</th>
-								<th>Publish</th>
-								<th>ISBN</th>
-							</tr>
-						</thread>
-						<tableBody>
-							<tr>
-							</tr>
-						</tableBody>
-					</table>
-				</div>
-
-			</form>
+			<div class="container">
+				<table class="mt-3 table table-striped">
+					<thread>
+						<tr align="center">
+							<th>Book Title</th>
+							<th>Author Name(s)</th>
+							<th>Edition</th>
+							<th>Publish</th>
+							<th>ISBN</th>
+						</tr>
+					</thread>
+					<tableBody>
+						<tr>
+						</tr>
+					</tableBody>
+				</table>
+			</div>
 
 		</div>
 
