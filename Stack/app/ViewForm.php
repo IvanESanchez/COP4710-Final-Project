@@ -40,26 +40,6 @@
 		width: 450px;
 	}
 
- #container{
-	 margin-top: 3%;
-   overflow-y: auto;
- }
-
- .table-striped{
-	 margin-left: 18%;
-	 width:50%;
- }
-
- table, th{
-  border:1px solid black;
-  border-collapse: collapse;
-}
-
-	.container .thead .th{
-		position: sticky;
-		top: 0;
-	}
-
 
 </style>
 
@@ -75,7 +55,7 @@
 
     <div class="Center-section">
 
-      <form action ="ViewForm.php" method="post">
+      <form action ="Semestersearch.php" method="post">
 				<div class="h3 mt-3 mb-4">View Book Forms</div>
 
 				<div> Insert data to search for a form: </div>
@@ -98,22 +78,6 @@
 					<button class = "mt-1 mb-1 btn-lg btn-primary"
 					type = "submit">Submit</button>
 			</form>
-
-			<div class="container">
-				<table class="mt-3 table table-striped">
-					<thread>
-						<tr align="center">
-							<th>Year</th>
-							<th>Semester</th>
-							<th>Options</th>
-						</tr>
-					</thread>
-					<tableBody>
-						<tr>
-						</tr>
-					</tableBody>
-				</table>
-			</div>
 
     </div>
 
