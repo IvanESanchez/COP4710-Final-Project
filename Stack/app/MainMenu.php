@@ -9,59 +9,19 @@
 
   <title>BookStore Home</title>
 
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   <link rel = "stylesheet" href = "css/navbar.css">
+<<<<<<< HEAD
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
-
-  <style>
-	/* Style sheet organized the data in a ux friendly manner */
-
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-
-    *{
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      list-style: none;
-      font-family: 'Roboto', sans-serif;
-    }
-
-    body{
-      background: #EEEEEE;
-    }
-
-    .wrapper{
-      display: flex;
-      position: relative;
-    }
-
-    .wrapper .Center-section{
-      width: 100%;
-      margin-left: 200px;
-    }
-
-    .wrapper .Center-section .header{
-      margin-left: 30%;
-      padding-top: 80px;
-      font-size: 30px;
-    }
-
-    .wrapper .Center-section .main-text{
-      margin-left: 30%;
-      padding-top: 20px;
-      font-size: 20px;
-    }
-
-    .wrapper .Center-section .pegasus-img{
-      margin-left: 35%;
-      padding-top: 5%;
-    }
+	<link rel = "stylesheet" href = "css/Mainmenu.css">
 
 
-
-  </style>
-
-
+=======
+  <link rel = "stylesheet" href = "css/base.css">
+  <link rel = "stylesheet" href = "css/main-menu.css">
+>>>>>>> ed6b7c0d11409b9658f0f2cfa78aebd4795a50fa
 </head>
 <body>
 
@@ -69,7 +29,7 @@
   <div class="wrapper">
     <?php
     	include ('templates/navbar.php');
-	?>
+		?>
 
     <div class="Center-section">
       <div class="header h3 mt-3 mb-4">Welcome to the UCF BookStore</div>
@@ -92,11 +52,7 @@
    </div>
 
 
-
-
 </body>
-
-
 
 
 </html>

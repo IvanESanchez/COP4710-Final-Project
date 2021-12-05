@@ -9,8 +9,7 @@
 
   <title>Book Form</title>
 
-  <link rel = "stylesheet" href =
-	"https://cdn.jsdelivr.net/npm/cdbootstrap@1.0.0/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel = "stylesheet" href = "css/base.css">
 	<link rel = "stylesheet" href = "css/navbar.css">
 	<link rel = "stylesheet" href = "css/wrapper.css">
@@ -20,19 +19,9 @@
 
 
   <div class="wrapper">
-    <div class="side-bar">
-      <h2>Menu<ul>Options</h2>
-      <ul>
-        <li><a href="MainMenu.php"><img src="house-fill.svg" alt="Home" width="15"> Home</a></li>
-        <li><a href="BookForm.html"><img src="book.svg" alt="book-order" width="15"> Book request form</a></li>
-        <li><a href="#"><img src="list.svg" alt="book-request" width="15"> View book forms</a></li>
-        <li><a href="#"><img src="bookshelf.svg" alt="book-list" width="15"> Edit book forms</a></li>
-				<li><a href="ManageAccount.html"><img src ="person-circle.svg" alt="account" width="15"> Manage Account</a></li>
-        <li><a href="index.html">Log out</a>
-      </ul>
-
-
-    </div>
+		<?php
+    	include ('templates/navbar.php');
+		?>
 
     <div class="Center-section">
       <div class="header h3 mt-3 mb-4">Book request form</div>

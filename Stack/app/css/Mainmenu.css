@@ -1,0 +1,42 @@
+/* Style sheet organized the data in a ux friendly manner */
+
+	@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+	*{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		list-style: none;
+		font-family: 'Roboto', sans-serif;
+	}
+
+	body{
+		background: #EEEEEE;
+	}
+
+	.wrapper{
+		display: flex;
+		position: relative;
+	}
+
+	.wrapper .Center-section{
+		width: 100%;
+		margin-left: 200px;
+	}
+
+	.wrapper .Center-section .header{
+		margin-left: 30%;
+		padding-top: 80px;
+		font-size: 30px;
+	}
+
+	.wrapper .Center-section .main-text{
+		margin-left: 30%;
+		padding-top: 20px;
+		font-size: 20px;
+	}
+
+	.wrapper .Center-section .pegasus-img{
+		margin-left: 35%;
+		padding-top: 5%;
+	}
