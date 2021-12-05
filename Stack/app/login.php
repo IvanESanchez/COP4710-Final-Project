@@ -93,7 +93,7 @@
 			</div>
 
 			<dic class = "forgot-password">
-				<a href = "ForgotPassword.html">Forgot Password?</a>
+				<a href = "ForgotPassword.php">Forgot Password?</a>
 			</div>
 
 		</form>

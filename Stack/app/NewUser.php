@@ -90,7 +90,7 @@
 			type = "submit">Create account</button>
 
 			<div class = "Active-account">
-				<p>Have an account? <a href="index.html"> Log in</a></p>
+				<p>Have an account? <a href="index.php"> Log in</a></p>
 			</div>
 
 		</form>
