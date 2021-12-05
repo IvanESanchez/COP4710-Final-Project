@@ -37,6 +37,10 @@
    overflow:auto;
  }
 
+ form {
+	 margin-left: 30%;
+ }
+
  .table-striped{
  	margin-left: 13%;
  	width:50%;
@@ -52,6 +56,13 @@
  	 top: 0;
   }
 
+	select{
+		width: 450px;
+		height: 50px;
+		text-align: center;
+		font-size: 35px;
+	}
+
 </style>
 
 </head>
@@ -65,25 +76,31 @@
 
     <div class="Center-section">
 
-			<div class="h3 mt-3 mb-4">Search Book Form to Edit</div>
+			<div class="h3 mt-3 mb-4">Search Book Form by Semester</div>
+			<form action ="Semestersearch.php" method="post">
 
-			<div class="container">
-				<table class="mt-3 table table-striped">
-					<thread>
-						<tr align="center">
-							<th>Book Title</th>
-							<th>Author Name(s)</th>
-							<th>Edition</th>
-							<th>Publish</th>
-							<th>ISBN</th>
-						</tr>
-					</thread>
-					<tableBody>
-						<tr>
-						</tr>
-					</tableBody>
-				</table>
-			</div>
+				<div> Insert data to search for a form: </div>
+
+				<div class="mt-3 mb-1 form-dropdown">
+					<select data-live-search="true">
+						<option>Select a semester</option>
+						<option>Fall</option>
+						<option>Spring</option>
+						<option>Summer</option>
+					</select>
+				</div>
+
+				<div class = "mb-1 form-floating">
+					<input type="number" class="form-control" id="floatingInput"
+					placeholder="Semester year">
+					<label for="floatingInput">Semester year</label>
+				</div>
+
+					<button class = "mt-1 mb-1 btn-lg btn-primary"
+					type = "submit">Submit</button>
+			</form>
+
+
 
 		</div>
 
