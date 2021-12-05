@@ -41,12 +41,32 @@
 
 	// Send reminder to professor
 	function send_reminder($email) {
-		// If email exists, send a reminder
-		if (email_exists($email)) {
-			// Check if we received a date
-			if (isset($_POST['reminder_date']))
-		} else {
+		// Check if we received a date
+		if (isset($_POST['reminder_date'])) {
+			$reminder_date = date('Y-m-d', strtotime($_POST['reminder_date']));
 
+			// If email exists, send a reminder
+			if (email_exists($email)) {
+				// Compose email
+				$email_subject = "Reminder to submit your book request for the Book Store at UCF by " . $reminder_date;
+				$email_text_body = "Submit your book list before " . $reminder_date . "\nhttp://localhost:8080/login.php?username=" . $email;
+				$email_html_body = '<p>Submit your book list before ' . $reminder_date . '<br><a href="http://localhost:8080/login.php?username=' . $email . '">Click here to login to your book request portal</a>';
+
+				// Send email and handle error/result
+				send_the_email($email, $email_subject, $email_text_body, $email_html_body);
+			} else {
+				// User does not exist, so send them a link to create a new account
+				// Compose email
+				$email_subject = "Reminder to submit your book request for the Book Store at UCF by " . $reminder_date;
+				$email_text_body = "Create a new account so you can create and send your book request before " . $reminder_date . ":\nhttp://localhost:8080/newuser.php?username=" . $email;
+				$email_html_body = '<p>Submit your book list before ' . $reminder_date . '<br><a href="http://localhost:8080/newuser.php?username=' . $email . '">Create a new account</a> so you can create and send your book request.';
+	
+				// Send email and handle error/result
+				send_the_email($email, $email_subject, $email_text_body, $email_html_body);
+			}
+		} else {
+			// Handle not receiving a date
+			show_error("No date supplied.");
 		}
 	}
 
@@ -93,7 +113,7 @@
 
           <div class="form-floating">
     			  <input name="invite_email" type="email" class="form-control" id="invite_email"
-    				placeholder="name@example.com">
+    				placeholder="name@example.com" required>
     			  <label for="invite_email">Email Address</label>
     			</div>
 
@@ -105,13 +125,13 @@
 
 				<div class="main-text">
 					<label for="reminder_date" class="form-label">Book request form due date</label><br>
-					<input type="date" name="reminder_date" id="reminder_date">
+					<input type="date" name="reminder_date" id="reminder_date" required>
 				</div>
 
 	      <div class="main-text">Recipient's email address</div>
 				<div class="form-floating">
 					<input name="reminder_email" type="email" class="form-control" id="reminder_email"
-					placeholder="name@example.com">
+					placeholder="name@example.com" required>
 					<label for="reminder_email">Email Address</label>
 				</div>
 
