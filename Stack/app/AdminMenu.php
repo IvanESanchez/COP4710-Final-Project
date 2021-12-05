@@ -25,7 +25,8 @@
 <body>
 
   <div class="wrapper">
-    
+
+
 	<?php
 		include('templates/adminbar.php');
 	?>
@@ -47,12 +48,9 @@
       <!-- The pegasus will be edited in photoshop to match the background-->
       <div class="pegasus-img mt-3">
         <img src="pegasus.png" alt ="ucf-logo" width="200">
-      <div>
-
+      </div>
+		</div>
    </div>
-
-
-
 
 </body>
 

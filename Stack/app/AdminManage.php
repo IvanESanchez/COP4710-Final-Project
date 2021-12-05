@@ -15,8 +15,17 @@
  "https://cdn.jsdelivr.net/npm/cdbootstrap@1.0.0/css/bootstrap.min.css">
 	<link rel = "stylesheet" href = "css/navbar.css">
 	<link rel = "stylesheet" href = "css/base.css">
-	<!-- <link rel = "stylesheet" href = "css/wrapper.css"> -->
+	<link rel = "stylesheet" href = "css/wrapper.css">
 	<link rel = "stylesheet" href = "css/manage-account.css">
+
+<style>
+	.Center-section .header {
+		margin-left: 38%;
+		padding-top: 35px;
+		font-size: 30px;
+}
+</style>
+
 </head>
 <body>
 
