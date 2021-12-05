@@ -33,7 +33,7 @@
 				<a href="SendEmail.php">
 					<button class="mt-3 btn btn-secondary btn-lg">
 						<img src="envelope.svg" alt="invitaion-email" width="15"> Email Options
-					</img></button></a><br/><br/>
+					</img></button></a><br/>
 
 					<a href="Broadcast.php">
 

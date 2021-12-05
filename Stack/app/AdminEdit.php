@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="author" content= "Andy Garcia and Bootstrap contributors">
 
-  <title>View Book Form</title>
+  <title>Edit Book Forms</title>
 
   <link rel = "stylesheet" href = "css/navbar.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -42,23 +42,9 @@
 
  #container{
 	 margin-top: 3%;
-   overflow-y: auto;
+	 width:100%;
+   overflow:auto;
  }
-
- .table-striped{
-	 margin-left: 18%;
-	 width:50%;
- }
-
- table, th{
-  border:1px solid black;
-  border-collapse: collapse;
-}
-
-	.container .thead .th{
-		position: sticky;
-		top: 0;
-	}
 
 
 </style>
@@ -69,16 +55,16 @@
 	<!-- The following code is used for the side bar menu options -->
   <div class="wrapper">
     <?php
-    	include ('templates/navbar.php');
+    	include ('templates/adminbar.php');
 		?>
 
 
     <div class="Center-section">
 
       <form action ="ViewForm.php" method="post">
-				<div class="h3 mt-3 mb-4">View Book Forms</div>
+				<div class="h3 mt-3 mb-4">Sear Book Form to Edit</div>
 
-				<div> Insert data to search for a form: </div>
+				<div> Insert data: </div>
 
 				<div class="mt-3 mb-1 form-dropdown">
 					<select data-live-search="true">
@@ -99,25 +85,9 @@
 					type = "submit">Submit</button>
 			</form>
 
-			<div class="container">
-				<table class="mt-3 table table-striped">
-					<thread>
-						<tr align="center">
-							<th>Year</th>
-							<th>Semester</th>
-							<th>Options</th>
-						</tr>
-					</thread>
-					<tableBody>
-						<tr>
-						</tr>
-					</tableBody>
-				</table>
-			</div>
+		</div>
 
-    </div>
-
- </div>
+	</div>
 
 
 </body>

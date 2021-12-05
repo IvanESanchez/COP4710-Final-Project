@@ -42,23 +42,13 @@
 
  #container{
 	 margin-top: 3%;
-   overflow-y: auto;
+   overflow:auto;
  }
 
  .table-striped{
 	 margin-left: 18%;
 	 width:50%;
  }
-
- table, th{
-  border:1px solid black;
-  border-collapse: collapse;
-}
-
-	.container .thead .th{
-		position: sticky;
-		top: 0;
-	}
 
 
 </style>
@@ -69,7 +59,7 @@
 	<!-- The following code is used for the side bar menu options -->
   <div class="wrapper">
     <?php
-    	include ('templates/navbar.php');
+    	include ('templates/adminbar.php');
 		?>
 
 
@@ -108,10 +98,6 @@
 							<th>Options</th>
 						</tr>
 					</thread>
-					<tableBody>
-						<tr>
-						</tr>
-					</tableBody>
 				</table>
 			</div>
 
