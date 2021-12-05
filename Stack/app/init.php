@@ -1,1 +1,3 @@
-require 'functions/init_db.php';
+<?php
+  require 'functions/init_db.php';
+?>
