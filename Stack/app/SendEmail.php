@@ -10,9 +10,9 @@
 	function send_the_email($email, $email_subject, $email_text_body, $email_html_body) {
 		// Send email and handle error/result
 		if (send_email($email, $email_subject, $email_text_body, $email_html_body)) {
-			show_success("Successfully sent invitation to <code>" . $email . "</code>");
+			show_success("Successfully sent email to <code>" . $email . "</code>");
 		} else {
-			show_error("Failed to send invitation to <code>" . $email . "</code>. Please verify address is entered correctly and then retry.");
+			show_error("Failed to send email to <code>" . $email . "</code>. Please verify address is entered correctly and then retry.");
 		}
 	}
 
@@ -125,7 +125,7 @@
 
 				<div class="main-text">
 					<label for="reminder_date" class="form-label">Book request form due date</label><br>
-					<input type="date" name="reminder_date" id="reminder_date" required>
+					<input type="date" name="reminder_date" id="reminder_date" placeholder="2022-01-07" required>
 				</div>
 
 	      <div class="main-text">Recipient's email address</div>
