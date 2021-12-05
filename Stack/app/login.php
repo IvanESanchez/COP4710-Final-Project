@@ -21,21 +21,22 @@
 			$row = $result->fetch_assoc();
 
 			if ($password == $row["password"]) {
-				// Successful login
+				// Successful login, save data to session
 				require "functions/no_cookies.php";
 				$_SESSION['username'] = $username;
 				$_SESSION['password'] = $password;
 				$_SESSION['admin'] = $row["admin"];
-				print_r($_SESSION['admin']);
 				session_write_close();
+
+				// Redirect to index.php to route to menu
 				header('Location: index.php');
 			} else {
 				// Incorrect password
-				show_error("Password given for " . $username . " is incorrect.");
+				show_error("Password given for <code>" . $username . "</code> is incorrect.");
 			}
 		} else {
 			// Handle user not found
-			show_error("User " . $username . " not found.");
+			show_error("User <code>" . $username . "</code> not found.");
 		}
 		$mysqli->close();
   }
