@@ -9,8 +9,8 @@
 			$email = $mysqli->real_escape_string(trim($_POST['newEmail']));
 			$pass = $mysqli->real_escape_string(trim($_POST['newPass']));
 
-			// Perform INSERT
-			$mysqli->query("INSERT INTO USER (
+			// Prepare the query
+			$query = "INSERT INTO USER (
 				name,
 				email,
 				password,
@@ -20,11 +20,21 @@
 				'" . $email . "',
 				'" . $pass . "',
 				FALSE
-			);");
+			);";
 
-			$mysqli->close();
+			// Require feedback functions
+			require 'functions/show_feedback.php';
 
-			header('Location: login.php');
+			// Perform INSERT
+			if ($mysqli->query($query)) {
+				show_success("User " . $email . "created successfully.");
+				$mysqli->close();
+				//header('Location: login.php');
+			} else {
+				show_error("Unable to create " . $email . ".");
+				$mysqli->close();
+			}
+			
 		} else {
 			// Handle failure
 		}
