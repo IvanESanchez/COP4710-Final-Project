@@ -1,6 +1,3 @@
-<!DOCTYPE HTML>
-<html lang = "en">
-<html>
 	<!-- The following code is used for the side bar menu options -->
   <div class="wrapper">
     <div class="side-bar">

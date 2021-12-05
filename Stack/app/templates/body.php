@@ -3,4 +3,3 @@
       echo $page_body;
     ?>
   </body>
-</html>
