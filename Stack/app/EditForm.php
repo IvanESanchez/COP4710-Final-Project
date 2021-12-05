@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="author" content= "Andy Garcia and Bootstrap contributors">
 
-  <title>BookStore Home</title>
+  <title>Edit Book Forms</title>
 
   <link rel = "stylesheet" href = "css/navbar.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -62,9 +62,9 @@
     <div class="Center-section">
 
       <form action ="ViewForm.php" method="post">
-				<div class="h3 mt-3 mb-4">View Book Forms</div>
+				<div class="h3 mt-3 mb-4">Sear Book Form to Edit</div>
 
-				<div> Insert data to search for a form: </div>
+				<div> Insert data: </div>
 
 				<div class="mt-3 mb-1 form-dropdown">
 					<select data-live-search="true">
