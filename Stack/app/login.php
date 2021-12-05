@@ -1,4 +1,8 @@
 <?php
+	// Require functions to give feedback
+	require 'functions/show_feedback.php';
+
+	// Check if input has been given; process if it has
   if (!empty($_POST['username']) and !empty($_POST['password'])) {
     // Need to check database
 		require 'functions/db.php';
@@ -11,8 +15,6 @@
 		$result = $mysqli->query("SELECT U.email, U.password, U.admin
 														  FROM USER U
 															WHERE U.email = '" . $username . "';");
-
-		echo '<p>' . $result->num_rows . '</p>';
 
 		// Any matches?
 		if ($result->num_rows > 0) {
@@ -29,9 +31,11 @@
 				header('Location: index.php');
 			} else {
 				// Incorrect password
+				show_error("Password given for " . $username . " is incorrect.");
 			}
 		} else {
 			// Handle user not found
+			show_error("User " . $username . " not found.");
 		}
 		$mysqli->close();
   }
