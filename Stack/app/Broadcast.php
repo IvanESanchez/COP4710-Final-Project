@@ -25,7 +25,7 @@
 
     <main class = "invite-form">
 
-      <form action ="Brodcast.php" method="post">
+      <form action ="Broadcast.php" method="post">
 				<div class="header h3 mt-3 mb-4">Send Reminder Brodcast</div>
 
 	      <div class="main-text">Enter Deadline Date</div>

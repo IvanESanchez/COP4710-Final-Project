@@ -35,7 +35,7 @@
 						<img src="envelope.svg" alt="invitaion-email" width="15"> Email Options
 					</img></button></a><br/><br/>
 
-					<a href="Brodcast.php">
+					<a href="Broadcast.php">
 
 					<button class="mt-3 btn btn-secondary btn-lg">
 						<img src="envelope.svg" alt="invitaion-email" width="15"> Brodcast Email
