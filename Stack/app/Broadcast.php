@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <!DOCTYPE html>
 <html lang = "en">
 <html>
@@ -31,13 +35,12 @@
 	      <div class="main-text">Enter Deadline Date</div>
 
           <div class="form-floating">
-    			  <input type="date" class="form-control" id="floatingInput"
+    			  <input name="date" type="date" class="form-control" id="date"
     				placeholder="Date">
-    			  <label for="floatingInput">Date</label>
+    			  <label for="date">Date</label>
     			</div>
 
-          <button class = "mt-3 mb-1 w-50 btn-lg btn-primary"
-    			type = "submit">Send</button>
+          <input type="submit" class = "mt-3 mb-1 w-50 btn-lg btn-primary" value="Send">
 
 
     </main>
