@@ -47,7 +47,6 @@
 			top: 0;
 		}
 
-
 	</style>
 
 
@@ -64,7 +63,6 @@
     <div class="Center-section">
 
 			<div class="h3 mt-3 mb-4">Search by Semester:</div>
-
 
 			<div class="container">
 				<table class="mt-3 table table-striped">

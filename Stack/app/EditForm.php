@@ -61,28 +61,27 @@
 
     <div class="Center-section">
 
-      <form action ="ViewForm.php" method="post">
-				<div class="h3 mt-3 mb-4">Sear Book Form to Edit</div>
+      <form action ="EditBook.php" method="post">
+				<div class="h3 mt-3 mb-4">Search Book Form to Edit</div>
 
-				<div> Insert data: </div>
-
-				<div class="mt-3 mb-1 form-dropdown">
-					<select data-live-search="true">
-						<option>Select a semester</option>
-						<option>Fall</option>
-						<option>Spring</option>
-						<option>Summer</option>
-					</select>
+				<div class="container">
+					<table class="mt-3 table table-striped">
+						<thread>
+							<tr align="center">
+								<th>Book Title</th>
+								<th>Author Name(s)</th>
+								<th>Edition</th>
+								<th>Publish</th>
+								<th>ISBN</th>
+							</tr>
+						</thread>
+						<tableBody>
+							<tr>
+							</tr>
+						</tableBody>
+					</table>
 				</div>
 
-				<div class = "mb-1 form-floating">
-					<input type="number" class="form-control" id="floatingInput"
-					placeholder="Semester year">
-					<label for="floatingInput">Semester year</label>
-				</div>
-
-					<button class = "mt-1 mb-1 btn-lg btn-primary"
-					type = "submit">Submit</button>
 			</form>
 
 		</div>
