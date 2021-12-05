@@ -1,4 +1,7 @@
 <?php
+  // Load/create session
+  require $_SERVER["DOCUMENT_ROOT"] . '/functions/no_cookies.php';
+  
   // Check if session involving username exists
   if (!isset($_SESSION['username'])) {
     // Redirect to login if not

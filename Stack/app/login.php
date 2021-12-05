@@ -1,9 +1,14 @@
 <?php
 	// Require functions to give feedback
 	require $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
-
-	// Check if input has been given; process if it has
-  if (!empty($_POST['username']) and !empty($_POST['password'])) {
+	// Load/create session
+	require $_SERVER["DOCUMENT_ROOT"] . '/functions/no_cookies.php';
+	
+	// If user is already logged-in, log them out
+	if (isset($_SESSION['username'])) {
+		header('Location: logout.php');
+	} else if (!empty($_POST['username']) and !empty($_POST['password'])) {
+		// Check if input has been given; process if it has
     // Need to check database
 		require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
 
@@ -22,7 +27,6 @@
 
 				if ($password == $row["password"]) {
 					// Successful login, save data to session
-					require $_SERVER["DOCUMENT_ROOT"] . '/functions/no_cookies.php';
 					$_SESSION['username'] = $username;
 					$_SESSION['password'] = $password;
 					$_SESSION['admin'] = $row["admin"];
