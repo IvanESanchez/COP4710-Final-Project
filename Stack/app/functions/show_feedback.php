@@ -1,9 +1,9 @@
 <?php
   function show_error ($message) {
-    include '../templates/error.php';
+    include $_SERVER["DOCUMENT_ROOT"] . '/templates/error.php';
   }
 
   function show_success ($message) {
-    include '../templates/success.php';
+    include $_SERVER["DOCUMENT_ROOT"] . '/templates/success.php';
   }
 ?>
