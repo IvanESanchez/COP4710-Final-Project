@@ -20,8 +20,20 @@
 			width: 500px;
 		}
 
-		.h3{
-			
+		.wrapper .Center-section .h3{
+			margin-left: 39%;
+		}
+
+		form{
+			width:525px;
+		}
+
+		.form-floating{
+			margin-left: 5%;
+		}
+
+		.wrapper .Center-section .main-text{
+			margin-left: 30%;
 		}
 
 
@@ -41,6 +53,16 @@
 
       <div class="main-text">
 				<form action="CreateReminder.php" method="get">
+
+					<div class="main-text">Enter Deadline Date</div>
+
+						<div class="form-floating">
+						 <input name="date" type="date" class="form-control" id="date"
+						 placeholder="Date" required>
+						 <label for="date">Date</label>
+					 </div>
+
+
 					<div class="mt-2 btn">
 							<button class = "mb-1 btn-lg btn-primary"
 							type = "submit"> Submit Reminder
