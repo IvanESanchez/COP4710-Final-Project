@@ -68,8 +68,6 @@
 				require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/book_management.php';
 				$bid = pull_bid($isbn);
 
-				print_r($bid);
-
 				$mysqli->query("INSERT INTO BOOK_LIST (brid, bid) VALUES (" . $brid . "," . $bid . ");");
 
 				show_success("Book Request for " . $title . "created successfully.");
