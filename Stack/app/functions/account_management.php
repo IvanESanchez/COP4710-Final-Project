@@ -137,4 +137,56 @@
       $mysqli->close();
     }
   }
+
+  /**
+   * Create a new user. Takes:
+   * $email - Email address of the new user
+   * $name - Name of the new user
+   * $password - New user's password
+   * $admin - "TRUE" if user should be an admin, "FALSE" if user should not be
+   * Returns the new user's uid (null if operation failed)
+   */
+  function create_new_user($email, $password, $name, $admin) {
+    require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
+    require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+
+    // Sanitize input
+    $email = $mysqli->real_escape_string(trim($email));
+    $name = $mysqli->real_escape_string(trim($name));
+    $password = $mysqli->real_escape_string(trim($password));
+
+    // Set admin to 0 or 1
+    if ($admin) {
+      $admin = 1;
+    } else {
+      $admin = 0;
+    }
+
+    // Prepare return value
+    $uid = null;
+
+    // Prepare the query
+    $query = "INSERT INTO USER (
+      name,
+      email,
+      password,
+      admin
+    ) VALUES (
+      '" . $name . "',
+      '" . $email . "',
+      '" . $pass . "',
+      " . $admin . "
+    );";
+
+    try {
+      // Perform INSERT
+      $mysqli->query($query);
+      $uid = $mysqli->insert_id;
+    } catch (mysqli_sql_exception $e) {
+      show_error("Unable to create " . $email . ".<br>" . $mysqli->error);
+    } finally {
+      $mysqli->close();
+      return $uid;
+    }
+  }
 ?>

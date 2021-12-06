@@ -6,36 +6,18 @@
 		if (!empty($_POST['newName'])
 		and !empty($_POST['newEmail'])
 		and !empty($_POST['newPass'])) {
-			require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
+			// Perform the query
+			require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/account_management.php';
+			$uid = create_new_user($_POST['newEmail'], $_POST['newPass'], $_POST['newName'], false);
 
-			$name = $mysqli->real_escape_string(trim($_POST['newName']));
-			$email = $mysqli->real_escape_string(trim($_POST['newEmail']));
-			$pass = $mysqli->real_escape_string(trim($_POST['newPass']));
-
-			// Prepare the query
-			$query = "INSERT INTO USER (
-				name,
-				email,
-				password,
-				admin
-			) VALUES (
-				'" . $name . "',
-				'" . $email . "',
-				'" . $pass . "',
-				FALSE
-			);";
-
-			try {
-				// Perform INSERT
-				$mysqli->query($query);
-				show_success("User " . $email . "created successfully.");
+			// Show result
+			if ($uid == null) {
+				show_error("Failed to create <code>" . $_POST['newEmail'] . "</code> account");
+			} else {
+				show_success("Successfully created account #<code>" . $uid . "</code> for <code>" . $_POST['newEmail'] . "</code>");
 
 				// Redirect to login
 				header('Location: login.php');
-			} catch (mysqli_sql_exception $e) {
-				show_error("Unable to create " . $email . ".<br>" . $mysqli->error);
-			} finally {
-				$mysqli->close();
 			}
 		} else {
 			// Handle failure
