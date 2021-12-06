@@ -59,7 +59,7 @@
 
 			<div class="container">
 				<table class="mt-3 table table-striped">
-					<thead>
+					<thead class="table-dark">
 						<tr align="center">
 							<th style="width: 30%">Email</th>
 							<th>Name</th>
@@ -67,38 +67,36 @@
 							<th>Options</th>
 						</tr>
 					</thead>
-					<tableBody>
+					<tbody>
 						<?php
 							/**
 							 * Need to retrieve list of users and provide options for managing each user
 							 */
-							require $_SERVER["DOCUMENT_ROOT"] . '/functions/get_utils.php';
-							require $_SERVER["DOCUMENT_ROOT"] . '/functions/query_param_utils.php';
+							require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/get_utils.php';
+							require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/query_param_utils.php';
 
 							// Get all users
 							$users = get_all_users();
-
-							print_r($users);
 
 							// Prepare admin variable
 							$admin = "No";
 
 							// Output user data to table
-							for($i = 0; $i < count($users); $i++) {
+							foreach($users as $user) {
 								// Make admin value a string
-								if ($users[$i]["admin"]) {
+								if ($user["admin"]) {
 									$admin = "Yes";
 								} else {
 									$admin = "No";
 								}
 
 								// Get URLs for buttons
-								$delete_url = uid_param_url("localhost:8080/DeleteUser.php", $users[$i]["uid"]);
+								$delete_url = uid_param_url("localhost:8080/DeleteUser.php", $user["uid"]);
 
 								echo "<tr><td>" .
-								$users[$i]["email"] .
+								$user["email"] .
 								"</td><td>" .
-								$users[$i]["name"] .
+								$user["name"] .
 								"</td><td>" .
 								$admin .
 								"</td><td>" .
@@ -108,7 +106,7 @@
 								</a></div></td>';								
 							}
 						?>
-					</tableBody>
+					</tbody>
 				</table>
 			</div>
 
