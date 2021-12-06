@@ -73,11 +73,31 @@
 							 * Need to retrieve list of users and provide options for managing each user
 							 */
 							require $_SERVER["DOCUMENT_ROOT"] . '/functions/get_utils.php';
+							require $_SERVER["DOCUMENT_ROOT"] . '/functions/query_param_utils.php';
 
 							// Get all users
 							$users = get_all_users();
 
-							print_r($users);
+							// Prepare admin variable
+							$admin = "No";
+
+							// Output user data to table
+							foreach($user in $users) {
+								if ($user["admin"]) {
+									$admin = "Yes";
+								} else {
+									$admin = "No";
+								}
+								echo "<tr><td>" .
+								$user["email"] .
+								"</td><td>" .
+								$user["name"] .
+								"</td><td>" .
+								$admin .
+								"</td><td>" .
+								'<a href="localhost:8080'
+								
+							}
 						?>
 					</tableBody>
 				</table>
