@@ -78,15 +78,10 @@
     <link rel = "stylesheet" href = "css/base.css">
     <link rel = "stylesheet" href = "css/navbar.css">
     <link rel = "stylesheet" href = "css/manage-account.css">
-    <style>
-      .Center-section .header {
-        margin-left: 38%;
-        padding-top: 35px;
-        font-size: 30px;
-      }
-    </style>
+    <link rel = "stylesheet" href = "css/wrapper.css">
   </head>
   <body>
+    <div class="wrapper">
     <?php
       include $_SERVER["DOCUMENT_ROOT"] . '/templates/adminbar.php';
     ?>
@@ -143,6 +138,7 @@
           <input type="submit" class = "mt-1 mb-3 w-50 btn-lg btn-primary" value="Change Name">
         </form>
       </div>
+    </div>
     </div>
   </body>
 </html>
