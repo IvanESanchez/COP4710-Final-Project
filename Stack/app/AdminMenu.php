@@ -41,7 +41,7 @@
 
 				<a href="ManageUsers.php">
 					<button class="mt-3 btn btn-secondary btn-lg">
-						Delete Users
+						Manage Users
 					</button>
 				</a><br/>
 
