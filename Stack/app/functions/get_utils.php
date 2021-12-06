@@ -173,10 +173,7 @@
     $query = "SELECT uid, email, name, admin FROM USER;";
 
     // Prepare return array
-    $ret_arr['uid'] = [];
-    $ret_arr['email'] = [];
-    $ret_arr['name'] = [];
-    $ret_arr['admin'] = [];
+    $ret_arr = [];
 
     try {
       // Retrieve results
@@ -186,10 +183,7 @@
       if ($result->num_rows > 0) {
         // Fetch returned data into return array
         while ($row = $result->fetch_assoc()) {
-          array_push($ret_arr['uid'], $row['uid']);
-          array_push($ret_arr['email'], $row['email']);
-          array_push($ret_arr['name'], $row['name']);
-          array_push($ret_arr['admin'], $row['admin']);
+          $ret_arr[] = array("uid"=>$row['uid'], "email"=>$row['email'], "name"=>$row['name'], "admin"=>$row['admin']);
         }
       }
 
