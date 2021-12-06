@@ -49,13 +49,13 @@
 					<button class="mt-3 btn btn-secondary btn-lg">
 						Create an Admin
 					</button>
-				</a>
+				</a><br/>
 
 				<a href="AdminFinal.php">
 					<button class="mt-3 btn btn-secondary btn-lg">
 						View List of Requests
 					</button>
-				</a><br/>
+				</a>
 
       </div>
 
