@@ -1,3 +1,51 @@
+<?php
+  // Check if date submitted
+  if (isset($_POST['date'])) {
+    // Save the date
+    $date = $_POST['date'];
+
+    // Get util lib
+    require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/get_utils.php';
+
+    /**
+     * Helper function to send an email to a particular professor with a particular reminder date
+     */
+    function send_prof_email($professor, $date) {
+      // Get function to help create url
+      require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/query_param_utils.php';
+
+      // Combine professor email with login.php to get URL
+      $url = username_param_url("http://localhost:8080/login.php", $professor);
+
+      // Compose email
+      $email_subject = "Reminder to submit your book request for the Book Store at UCF by " . $date;
+      $email_text_body = "Submit your book list before " . $date . "\n" . $url;
+      $email_html_body = '<p>Submit your book list before ' . $date . '<br><a href="' . $url . '">Click here to login to your book request portal</a>';
+
+      // Required to show feedback
+      require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+
+      // Required for email
+      require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/mail.php';
+
+      // Send the email
+      if (send_email($professor, $email_subject, $email_text_body, $email_html_body)) {
+        show_success("Successfully sent email to <code>" . $professor . "</code>");
+      } else {
+        show_error("Failed to send email to <code>" . $professor . "</code>. Please verify the professor's stored email address exists and then retry.");
+      }
+    }
+
+    // Get array of professor emails
+    $professors = get_professors_emails();
+
+    // Loop through professor emails
+    foreach($professors as $professor) {
+      send_prof_email($professor, $date);
+    }
+  }
+?>
+
 <!DOCTYPE html>
 <html lang = "en">
 <html>
@@ -20,7 +68,7 @@
   <div class="wrapper">
 
 		<?php
-			include('templates/adminbar.php');
+			include $_SERVER["DOCUMENT_ROOT"] . '/templates/adminbar.php';
 		?>
 
     <main class = "invite-form">
@@ -31,13 +79,12 @@
 	      <div class="main-text">Enter Deadline Date</div>
 
           <div class="form-floating">
-    			  <input type="date" class="form-control" id="floatingInput"
-    				placeholder="Date">
-    			  <label for="floatingInput">Date</label>
+    			  <input name="date" type="date" class="form-control" id="date"
+    				placeholder="Date" required>
+    			  <label for="date">Date</label>
     			</div>
 
-          <button class = "mt-3 mb-1 w-50 btn-lg btn-primary"
-    			type = "submit">Send</button>
+          <input type="submit" class = "mt-3 mb-1 w-50 btn-lg btn-primary" value="Send">
 
 
     </main>

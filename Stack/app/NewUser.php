@@ -55,6 +55,8 @@
 
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link rel = "stylesheet" href = "css/new-user.css">
+
+	<script src="js/new_user.js"></script>
 </head>
 <body class = "text-center">
 
@@ -69,28 +71,27 @@
 			</div>
 
 			<div class = "mb-2 form-floating">
-				<input type="text" class="form-control" name="newName" id="floatingInput"
+				<input type="text" class="form-control" name="newName" id="newname"
 				placeholder="Name">
-		  	<label for="floatingInput">Name</label>
+		  	<label for="newname">Name</label>
 			</div>
 
 			<div class="mb-2 form-floating">
-			  <input type="email" class="form-control" name="newEmail" id="floatingInput"
+			  <input type="email" class="form-control" name="newEmail" id="newemail"
 				placeholder="name@example.com">
-			  <label for="floatingInput">Email Address</label>
+			  <label for="newemail">Email Address</label>
 			</div>
 
 			<div class = "mb-2 form-floating">
-				<input type = "password" class="form-control" name="newPass" id="floatingInput"
+				<input type = "password" class="form-control" name="newPass" id="newpass"
 				placeholder="Password">
-				<label for="floatingInput">Password</label>
+				<label for="newpass">Password</label>
 			</div>
 
-			<button class = "mt-2 mb-3 w-50 btn-lg btn-primary"
-			type = "submit">Create account</button>
+			<input type="submit" class = "mt-2 mb-3 w-50 btn-lg btn-primary" value="Create account">
 
 			<div class = "Active-account">
-				<p>Have an account? <a href="index.php"> Log in</a></p>
+				<p>Have an account? <a href="login.php"> Log in</a></p>
 			</div>
 
 		</form>

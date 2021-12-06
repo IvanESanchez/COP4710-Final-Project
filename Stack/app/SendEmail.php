@@ -3,6 +3,7 @@
 	require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/email_exists.php';
 	require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/mail.php';
 	require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+	require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/query_param_utils.php';
 
 	/**
 	 * Wrapper for send_email which performs standardized handling of email success/failure for this page
@@ -20,19 +21,25 @@
 	function send_invitation($email) {
 		// If email exists, send user a link to the login page with their username prefilled
 		if (email_exists($email)) {
+			// Set url target
+			$url = username_param_url("http://localhost:8080/login.php", $email);
+
 			// Compose email
 			$email_subject = "Invitation to submit your book request for the Book Store at UCF";
-			$email_text_body = "http://localhost:8080/login.php?username=" . $email;
-			$email_html_body = '<a href="http://localhost:8080/login.php?username=' . $email . '">Click here to login to your book request portal</a>';
+			$email_text_body = $url;
+			$email_html_body = '<a href="' . $url . '">Click here to login to your book request portal</a>';
 
 			// Send email and handle error/result
 			send_the_email($email, $email_subject, $email_text_body, $email_html_body);
 		} else {
 			// User does not exist, so send them a link to create a new account
+			// Set url target
+			$url = username_param_url("http://localhost:8080/newuser.php", $email);
+
 			// Compose email
 			$email_subject = "Invitation to submit your book request for the Book Store at UCF";
-			$email_text_body = "Create a new account so you can create and send your book request:\nhttp://localhost:8080/newuser.php?username=" . $email;
-			$email_html_body = '<a href="http://localhost:8080/newuser.php?username=' . $email . '">Create a new account</a> so you can create and send your book request.';
+			$email_text_body = "Create a new account so you can create and send your book request:\n" . $url;
+			$email_html_body = '<a href="' . $url . '">Create a new account</a> so you can create and send your book request.';
 
 			// Send email and handle error/result
 			send_the_email($email, $email_subject, $email_text_body, $email_html_body);
@@ -47,19 +54,25 @@
 
 			// If email exists, send a reminder
 			if (email_exists($email)) {
+				// Set url target
+				$url = username_param_url("http://localhost:8080/login.php", $email);
+				
 				// Compose email
 				$email_subject = "Reminder to submit your book request for the Book Store at UCF by " . $reminder_date;
-				$email_text_body = "Submit your book list before " . $reminder_date . "\nhttp://localhost:8080/login.php?username=" . $email;
-				$email_html_body = '<p>Submit your book list before ' . $reminder_date . '<br><a href="http://localhost:8080/login.php?username=' . $email . '">Click here to login to your book request portal</a>';
+				$email_text_body = "Submit your book list before " . $reminder_date . "\n" . $url;
+				$email_html_body = '<p>Submit your book list before ' . $reminder_date . '<br><a href="' . $url . '">Click here to login to your book request portal</a>';
 
 				// Send email and handle error/result
 				send_the_email($email, $email_subject, $email_text_body, $email_html_body);
 			} else {
 				// User does not exist, so send them a link to create a new account
+				// Set url target
+				$url = username_param_url("http://localhost:8080/newuser.php", $email);
+
 				// Compose email
 				$email_subject = "Reminder to submit your book request for the Book Store at UCF by " . $reminder_date;
-				$email_text_body = "Create a new account so you can create and send your book request before " . $reminder_date . ":\nhttp://localhost:8080/newuser.php?username=" . $email;
-				$email_html_body = '<p>Submit your book list before ' . $reminder_date . '<br><a href="http://localhost:8080/newuser.php?username=' . $email . '">Create a new account</a> so you can create and send your book request.';
+				$email_text_body = "Create a new account so you can create and send your book request before " . $reminder_date . ":\n" . $url;
+				$email_html_body = '<p>Submit your book list before ' . $reminder_date . '<br><a href="' . $url . '">Create a new account</a> so you can create and send your book request.';
 	
 				// Send email and handle error/result
 				send_the_email($email, $email_subject, $email_text_body, $email_html_body);
@@ -101,7 +114,7 @@
 
   <div class="wrapper">
 		<?php
-			include('templates/adminbar.php');
+			include $_SERVER["DOCUMENT_ROOT"] . '/templates/adminbar.php';
 		?>
 
     <main class = "invite-form">

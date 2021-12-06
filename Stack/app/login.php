@@ -61,9 +61,9 @@
 	<title>Book Store</title>
 
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
 	<!-- Style sheet to make the ux simple -->
 	<link rel = "stylesheet" href = "css/login.css">
+	<script src="js/login.js"></script>
 
 </head>
 <body class = "text-center">
@@ -81,13 +81,13 @@
 			<h1 class = "h3 mb-3 fw-normal">User Login</h1>
 
 			<div class="form-floating mb-3">
-		  	<input name="username" type="text" class="form-control" id="floatingInput"
+		  	<input name="username" type="text" class="form-control" id="username"
 				placeholder="Username">
 		  	<label for="floatingInput">Email</label>
 			</div>
 
 			<div class="form-floating mb-3">
-		  	<input name="password" type="password" class="form-control" id="floatingPassword"
+		  	<input name="password" type="password" class="form-control" id="password"
 				 placeholder="Password">
 		  	<label for="floatingPassword">Password</label>
 			</div>
