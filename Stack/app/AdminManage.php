@@ -10,8 +10,25 @@
 	// Save current uid
 	$uid = $_SESSION["uid"];
 
+	// Load requirements
+	require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/get_utils.php';
+	require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+
 	function new_name() {
-		
+		// Save data from POST
+		$old_name = $_POST['old-name'];
+		$new_name = $_POST['new-name'];
+
+		// Query database for current name of user
+		$real_name = get_name($uid);
+
+		// Check if old name matches what we had stored
+		if ($old_name != $real_name) {
+			// Weird UX setup here, but we'll roll with it that if the entered old name doesn't match what's in the database, we throw an error
+			show_error($old_name . " does not match " . $real_name);
+		} else {
+			
+		}
 	}
 
 	function new_password() {
@@ -24,15 +41,11 @@
 
 	// Figure out which form was submitted
 	if (isset($_POST['new-name'])) {
-		// Save data from POST
-		$old_name = $_POST['old-name'];
-		$new_name = $_POST['new-name'];
-
-		
+		new_name();
 	} else if (isset($_POST['new-password'])) {
-
+		new_password();
 	} else if (isset($_POST['new-email'])) {
-
+		new_email();
 	}
 ?>
 
