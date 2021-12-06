@@ -3,7 +3,7 @@
 	require $_SERVER["DOCUMENT_ROOT"] . '/functions/no_cookies.php';
 
 	if (!isset($_SESSION['uid'])) {
-		header('Location: login.php');
+		header('Location: index.php');
 	}
 	
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -22,12 +22,13 @@
 			require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
 
 			$season = $mysqli->real_escape_string(trim($_POST['season']));
-			$year = $mysqli->real_escape_string(trim($_POST['year']));
+			$year = intval($_POST['year']);
 			$title = $mysqli->real_escape_string(trim($_POST['title']));
 			$author = $mysqli->real_escape_string(trim($_POST['author']));
-			$edition = $mysqli->real_escape_string(trim($_POST['edition']));
+			$edition = intval($_POST['edition']);
 			$publisher = $mysqli->real_escape_string(trim($_POST['publisher']));
-			$isbn = $mysqli->real_escape_string(trim($_POST['isbn']));
+			$isbn = intval($_POST['isbn']);
+			
 
 			$bookInsert = '
 			INSERT INTO BOOK (
@@ -38,10 +39,10 @@
 				publisher
 			) VALUES (
 				' . $isbn . ',
-				' . $title . ',
-				' . $author . ',
+				"' . $title . '",
+				"' . $author . '",
 				' . $edition . ',
-				' . $publisher . '
+				"' . $publisher . '"
 			);';
 
 			try {
@@ -63,18 +64,13 @@
 
 				require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/book_request_management.php';
 				$brid = pull_brid($skey, $uid);
-				
+
 				require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/book_management.php';
 				$bid = pull_bid($isbn);
 
-				$mysqli->query("
-				INSERT INTO BOOK_LIST (
-					brid,
-					bid
-				) VALUES (
-					" . $brid . ",
-					" . $bid . "
-				);");
+				print_r($bid);
+
+				$mysqli->query("INSERT INTO BOOK_LIST (brid, bid) VALUES (" . $brid . "," . $bid . ");");
 
 				show_success("Book Request for " . $title . "created successfully.");
 

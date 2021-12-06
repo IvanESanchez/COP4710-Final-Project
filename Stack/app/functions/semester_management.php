@@ -14,7 +14,7 @@
 	 */
 
 	function pull_skey($season, $year) {
-		require $_SERVER["DOCUMENT_ROOT"] . 'db.php';
+		require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
 
 		// Construct query
 		$query = "
