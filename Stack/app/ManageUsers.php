@@ -54,12 +54,12 @@
 		?>
 
     <div class="Center-section">
-      <div class="header h2 mt-3 mb-4">Delete Users Form</div>
+      <div class="header h2 mt-3 mb-4">Manage Users</div>
 			<div class ="h3 Panel">List of all Users</div>
 
 			<div class="container">
 				<table class="mt-3 table table-striped">
-					<thead>
+					<thead class="table-dark">
 						<tr align="center">
 							<th style="width: 30%">Email</th>
 							<th>Name</th>
@@ -67,48 +67,46 @@
 							<th>Options</th>
 						</tr>
 					</thead>
-					<tableBody>
+					<tbody>
 						<?php
 							/**
 							 * Need to retrieve list of users and provide options for managing each user
 							 */
-							require $_SERVER["DOCUMENT_ROOT"] . '/functions/get_utils.php';
-							require $_SERVER["DOCUMENT_ROOT"] . '/functions/query_param_utils.php';
+							require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/get_utils.php';
+							require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/query_param_utils.php';
 
 							// Get all users
 							$users = get_all_users();
-
-							print_r($users);
 
 							// Prepare admin variable
 							$admin = "No";
 
 							// Output user data to table
-							for($i = 0; $i < count($users); $i++) {
+							foreach($users as $user) {
 								// Make admin value a string
-								if ($users[$i]["admin"]) {
+								if ($user["admin"]) {
 									$admin = "Yes";
 								} else {
 									$admin = "No";
 								}
 
 								// Get URLs for buttons
-								$delete_url = uid_param_url("localhost:8080/DeleteUser.php", $users[$i]["uid"]);
+								$delete_url = uid_param_url("localhost:8080/DeleteUser.php", $user["uid"]);
 
+								// Output table content
 								echo "<tr><td>" .
-								$users[$i]["email"] .
+								$user["email"] .
 								"</td><td>" .
-								$users[$i]["name"] .
-								"</td><td>" .
+								$user["name"] .
+								'</td><td class="text-center">' .
 								$admin .
-								"</td><td>" .
-								'<div class="d-grid gap-2">
-								<a href="' . $delete_url . '">
-								<button type="button" class="btn btn-danger">Delete</button>
-								</a></div></td>';								
+								'</td><td class="text-center">' .
+								'<a href="' . $delete_url . '">
+								<button type="button" class="btn btn-danger mx-auto">Delete</button>
+								</a></td>';
 							}
 						?>
-					</tableBody>
+					</tbody>
 				</table>
 			</div>
 
