@@ -96,9 +96,9 @@
 				// Need to update SESSION as well
 				$_SESSION['username'] = $new_email;
 				session_write_close();
-				show_success("Changed name from <code>" . $real_email . "</code> to <code>" . $new_email . "</code>");
+				show_success("Changed email from <code>" . $real_email . "</code> to <code>" . $new_email . "</code>");
 			} else {
-				show_error("Failed to change name to <code>" . $new_email . "</code>");
+				show_error("Failed to change email to <code>" . $new_email . "</code>");
 			}
 		}
 	}
