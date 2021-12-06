@@ -34,7 +34,7 @@
 
 	 .table-striped{
 		 margin-left: 18%;
-		 width:50%;
+		 width:60%;
 	 }
 
 	 table, th{
