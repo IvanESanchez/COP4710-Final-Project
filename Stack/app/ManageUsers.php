@@ -4,9 +4,9 @@
 
 		// Check if operation succeeded or not and output result
 		if ($_GET['result'] == 'success') {
-			show_success("Successful " . $_GET['operation'] . " of " . $_GET['uid']);
+			show_success("Successful " . $_GET['operation'] . " of user ID " . $_GET['uid']);
 		} else {
-			show_error("Failed to " . $_GET['operation'] . " " . $_GET['uid']);
+			show_error("Failed to " . $_GET['operation'] . " user ID " . $_GET['uid']);
 		}
 	}
 ?>
