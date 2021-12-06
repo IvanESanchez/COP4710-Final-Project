@@ -31,10 +31,6 @@
 
 			<h1 class = "mb-4">Create an Admin account</h1>
 
-			<div class = "logo">
-				<img class = "mb-3" src = "UCF.jpg" alt="" width = "300" height "57">
-			</div>
-
 			<div class = "mb-2 form-floating">
 				<input type="text" class="form-control" id="floatingInput"
 				placeholder="Name">
