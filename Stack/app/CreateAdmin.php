@@ -14,6 +14,26 @@
 	<link rel = "stylesheet" href = "css/base.css">
   <link rel = "stylesheet" href = "css/navbar.css">
 	<link rel = "stylesheet" href = "css/wrapper.css">
+
+	<style>
+	form{
+	  width: 100%;
+	  margin: auto;
+	  max-width: 550px;
+	  padding: 15px;
+	  background: #EEEEEE;
+	  border-radius: 100px;
+	}
+
+	.form-floating {
+	  max-width: 330px;
+
+	}
+
+	.btn {
+	  padding: 100px;
+	}
+	</style>
 </head>
 <body>
 
@@ -25,7 +45,7 @@
 		<div class="Center-section">
 			<form action = "#" method ="get">
 
-				<h1 class = "mb-4">Create an Admin account</h1>
+				<h1 class = " mt-3 mb-4">Create an Admin account</h1>
 
 				<div class = "mb-2 form-floating">
 					<input type="text" class="form-control" id="floatingInput"
