@@ -2,8 +2,16 @@
 	// Load session
 	require $_SERVER["DOCUMENT_ROOT"] . '/functions/no_cookies.php';
 
-	function new_name() {
+	// Check if uid available from session; if not, have user login again
+	if (!isset($_SESSION["uid"])) {
+		header('Location: login.php');
+	}
 
+	// Save current uid
+	$uid = $_SESSION["uid"];
+
+	function new_name() {
+		
 	}
 
 	function new_password() {
@@ -11,12 +19,16 @@
 	}
 
 	function new_email() {
-		
+
 	}
 
 	// Figure out which form was submitted
 	if (isset($_POST['new-name'])) {
+		// Save data from POST
+		$old_name = $_POST['old-name'];
+		$new_name = $_POST['new-name'];
 
+		
 	} else if (isset($_POST['new-password'])) {
 
 	} else if (isset($_POST['new-email'])) {

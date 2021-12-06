@@ -33,6 +33,9 @@
 					$_SESSION['admin'] = $row["admin"];
 					session_write_close();
 
+					// Close iterator
+					$result->close();
+
 					// Redirect to index.php to route to menu
 					header('Location: index.php');
 				} else {

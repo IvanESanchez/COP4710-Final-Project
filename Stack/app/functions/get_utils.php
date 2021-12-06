@@ -40,4 +40,20 @@
 
     return $ret_arr;
   }
+
+  /**
+   * Takes a uid and returns the name associated with it
+   * Returns null if $uid does not exist or name field not populated
+   */
+  function get_name($uid) {
+    require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
+
+    // Sanitize uid
+    $uid = $mysqli->real_escape_string(trim($uid));
+
+    // Construct query
+    $query = "SELECT name FROM USER WHERE uid=" . $uid . ";";
+
+    
+  }
 ?>
