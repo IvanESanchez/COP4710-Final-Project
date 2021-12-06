@@ -70,7 +70,9 @@
 						<tr align="center">
 							<th>Year</th>
 							<th>Semester</th>
-							<th>Options</th>
+							<th>View</th>
+							<th>Edit</th>
+							<th>Delete</th>
 						</tr>
 					</thread>
 					<tableBody>
