@@ -3,13 +3,7 @@
 	require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/email_exists.php';
 	require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/mail.php';
 	require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
-
-	/**
-	 * Takes a target URL and an email. Returns a string which combines both and properly encodes the email
-	 */
-	function param_url($target, $email) {
-		return $target . "?username=" . urlencode($email);
-	}
+	require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/query_param_utils.php';
 
 	/**
 	 * Wrapper for send_email which performs standardized handling of email success/failure for this page
@@ -28,7 +22,7 @@
 		// If email exists, send user a link to the login page with their username prefilled
 		if (email_exists($email)) {
 			// Set url target
-			$url = param_url("http://localhost:8080/login.php", $email);
+			$url = username_param_url("http://localhost:8080/login.php", $email);
 
 			// Compose email
 			$email_subject = "Invitation to submit your book request for the Book Store at UCF";
@@ -40,7 +34,7 @@
 		} else {
 			// User does not exist, so send them a link to create a new account
 			// Set url target
-			$url = param_url("http://localhost:8080/newuser.php", $email);
+			$url = username_param_url("http://localhost:8080/newuser.php", $email);
 
 			// Compose email
 			$email_subject = "Invitation to submit your book request for the Book Store at UCF";
@@ -61,7 +55,7 @@
 			// If email exists, send a reminder
 			if (email_exists($email)) {
 				// Set url target
-				$url = param_url("http://localhost:8080/login.php", $email);
+				$url = username_param_url("http://localhost:8080/login.php", $email);
 				
 				// Compose email
 				$email_subject = "Reminder to submit your book request for the Book Store at UCF by " . $reminder_date;
@@ -73,7 +67,7 @@
 			} else {
 				// User does not exist, so send them a link to create a new account
 				// Set url target
-				$url = param_url("http://localhost:8080/newuser.php", $email);
+				$url = username_param_url("http://localhost:8080/newuser.php", $email);
 
 				// Compose email
 				$email_subject = "Reminder to submit your book request for the Book Store at UCF by " . $reminder_date;
