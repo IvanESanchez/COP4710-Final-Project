@@ -11,6 +11,10 @@
     require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
     require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
 
+    // Sanitize input
+    $uid = intval($uid);
+    $new_name = $mysqli->real_escape_string(trim($new_name));
+
     // Construct query
     $query = "UPDATE USER SET name = '" . $new_name . "' WHERE uid=" . $uid . ";";
 

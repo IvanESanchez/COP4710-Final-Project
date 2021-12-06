@@ -49,7 +49,7 @@
     require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
 
     // Sanitize uid
-    $uid = $mysqli->real_escape_string(trim($uid));
+    $uid = intval($uid);
 
     // Construct query
     $query = "SELECT name FROM USER WHERE uid=" . $uid . ";";

@@ -15,7 +15,11 @@
 	require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/account_management.php';
 	require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
 
-	function new_name() {
+	/**
+	 * Try to change user's name
+	 * Have to pass $uid because of variable scoping issues
+	 */
+	function new_name($uid) {
 		// Save data from POST
 		$old_name = $_POST['old-name'];
 		$new_name = $_POST['new-name'];
@@ -28,8 +32,12 @@
 			// Weird UX setup here, but we'll roll with it that if the entered old name doesn't match what's in the database, we throw an error
 			show_error($old_name . " does not match " . $real_name);
 		} else {
-			// Change to new name
-			change_name($uid, $new_name);
+			// Change to new name and catch failure
+			if (change_name($uid, $new_name)) {
+				show_success("Changed name from " . $real_name . " to " . $new_name);
+			} else {
+				show_error("Failed to change name to " . $new_name);
+			}
 		}
 	}
 
@@ -43,7 +51,7 @@
 
 	// Figure out which form was submitted
 	if (isset($_POST['new-name'])) {
-		new_name();
+		new_name($uid);
 	} else if (isset($_POST['new-password'])) {
 		new_password();
 	} else if (isset($_POST['new-email'])) {
