@@ -107,7 +107,13 @@
 
   <div class="wrapper">
 		<?php
-    	include ('templates/navbar.php');
+			require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/admin_guard.php';
+
+			if (am_i_admin()) {
+				include $_SERVER["DOCUMENT_ROOT"] . '/templates/adminbar.php';
+			} else {
+				include $_SERVER["DOCUMENT_ROOT"] . '/templates/navbar.php';
+			}
 		?>
 
     <div class="Center-section">
