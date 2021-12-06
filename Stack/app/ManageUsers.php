@@ -1,3 +1,16 @@
+<?php
+	if(isset($_GET['operation']) and isset($_GET['uid'])) {
+		require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+
+		// Check if operation succeeded or not and output result
+		if ($_GET['result'] == 'success') {
+			show_success("Successful " . $_GET['operation'] . " of " . $_GET['uid']);
+		} else {
+			show_error("Failed to " . $_GET['operation'] . " " . $_GET['uid']);
+		}
+	}
+?>
+
 <!DOCTYPE html>
 <html lang = "en">
 <html>
@@ -91,7 +104,7 @@
 								}
 
 								// Get URLs for buttons
-								$delete_url = uid_param_url("localhost:8080/DeleteUser.php", $user["uid"]);
+								$delete_url = uid_param_url("http://localhost:8080/DeleteUser.php", $user["uid"]);
 
 								// Output table content
 								echo "<tr><td>" .
