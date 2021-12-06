@@ -29,7 +29,7 @@
 <body>
 
 	<?php
-		include('templates/adminbar.php');
+		include $_SERVER["DOCUMENT_ROOT"] . '/templates/adminbar.php';
 	?>
 
     <div class="Center-section">
