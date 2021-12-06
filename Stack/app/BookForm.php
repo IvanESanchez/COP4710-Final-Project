@@ -27,7 +27,7 @@
 			$author = $mysqli->real_escape_string(trim($_POST['author']));
 			$edition = intval($_POST['edition']);
 			$publisher = $mysqli->real_escape_string(trim($_POST['publisher']));
-			$isbn = intval($_POST['isbn']);
+			$isbn = $mysqli->real_escape_string(trim($_POST['isbn']));
 			
 
 			$bookInsert = '
@@ -38,7 +38,7 @@
 				edition,
 				publisher
 			) VALUES (
-				' . $isbn . ',
+				"' . $isbn . '",
 				"' . $title . '",
 				"' . $author . '",
 				' . $edition . ',

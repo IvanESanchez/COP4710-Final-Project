@@ -16,7 +16,7 @@
 		$query = "
 		SELECT B.bid
 		FROM BOOK B
-		WHERE B.isbn = " . $isbn . ";";
+		WHERE B.isbn = '" . $isbn . "';";
 
 		try {
 			$result = $mysqli->query($query);
