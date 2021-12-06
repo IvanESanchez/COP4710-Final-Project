@@ -114,7 +114,7 @@
 
   <div class="wrapper">
 		<?php
-			include('templates/adminbar.php');
+			include $_SERVER["DOCUMENT_ROOT"] . '/templates/adminbar.php';
 		?>
 
     <main class = "invite-form">
