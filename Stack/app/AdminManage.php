@@ -41,11 +41,36 @@
 		}
 	}
 
-	function new_password() {
+	function new_password($uid) {
+		// Save data from POST
+		$old_password = $_POST['old-password'];
+		$new_password = $_POST['new-password'];
+		$c_password = $_POST['confirm-password'];
 
+		// Query database for current password of user
+		$real_password = get_password($uid);
+
+		// Check if old password matches what we had stored
+		if ($old_password != $real_password) {
+			// Let user know
+			show_error('Old password provided does not match. Please use <a href="http://localhost:8080/ForgotPassword.php">Forgot Password</a> if you need a temporary password to reset your password with.');
+		} else {
+			// Check if new passwords match
+			if ($new_password != $c_password) {
+				// Error
+				show_error("New passwords do not match. Please re-type or paste them carefully.");
+			} else {
+				// Change to new password and catch failure
+				if (change_password($uid, $new_password)) {
+					show_success("Password changed.");
+				} else {
+					show_error("Password change attempt failed. Please retry.");
+				}
+			}
+		}
 	}
 
-	function new_email() {
+	function new_email($uid) {
 
 	}
 
@@ -53,9 +78,9 @@
 	if (isset($_POST['new-name'])) {
 		new_name($uid);
 	} else if (isset($_POST['new-password'])) {
-		new_password();
+		new_password($uid);
 	} else if (isset($_POST['new-email'])) {
-		new_email();
+		new_email($uid);
 	}
 ?>
 
