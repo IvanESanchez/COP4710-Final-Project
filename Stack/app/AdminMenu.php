@@ -57,6 +57,12 @@
 					</button>
 				</a>
 
+				<br/><a href="ManageReminders.php">
+					<button class="mt-3 btn btn-secondary btn-lg">
+						Manage Reminders
+					</button>
+				</a>
+
       </div>
 
 
