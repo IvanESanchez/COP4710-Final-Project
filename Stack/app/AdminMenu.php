@@ -47,7 +47,7 @@
 
 				<a href="AdminFinal.php">
 					<button class="mt-3 btn btn-secondary btn-lg">
-						View Final list of Forms
+						View List of Requests
 					</button>
 				</a>
 
