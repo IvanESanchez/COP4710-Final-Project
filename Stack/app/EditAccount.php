@@ -85,6 +85,9 @@
 				text-align: center;
 				vertical-align: middle;
 			}
+			.form-control{
+				max-width: 450px;
+			}
 		</style>
   </head>
   <body>
