@@ -29,7 +29,7 @@
       require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/mail.php';
 
       // Send the email
-      if (send_mail($professor, $email_subject, $email_text_body, $email_html_body)) {
+      if (send_email($professor, $email_subject, $email_text_body, $email_html_body)) {
         show_success("Successfully sent email to <code>" . $professor . "</code>");
       } else {
         show_error("Failed to send email to <code>" . $professor . "</code>. Please verify the professor's stored email address exists and then retry.");
