@@ -200,4 +200,49 @@
 
     return $ret_arr;
   }
+
+  /**
+   * Get all, non-password information for a given $uid
+   * Returns an associative array
+   */
+  function get_user_no_pw($uid) {
+    require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
+
+    // Sanitize uid
+    $uid = intval($uid);
+
+    // Prepare query
+    $query = "SELECT email, name, admin FROM USER WHERE uid=" . $uid . ";";
+
+    // Prepare return array
+    $ret_arr = [];
+
+    try {
+      // Retrieve results
+      $result = $mysqli->query($query);
+
+      // Handle if no results returned
+      if ($result->num_rows > 0) {
+        // Fetch the row
+        $row = $result->fetch_assoc();
+
+        // Get content from row
+        $ret_arr['email'] = $row['email'];
+        $ret_arr['name'] = $row['name'];
+        $ret_arr['admin'] = $row['admin'];
+      }
+
+      // Close iterator
+      $result->close();
+    } catch (mysqli_sql_exception $e) {
+      // Output error message
+      require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+      show_error($mysqli->error);
+    } finally {
+      // Close connection
+      $mysqli->close();
+    }
+
+    return $ret_arr;
+  }
 ?>

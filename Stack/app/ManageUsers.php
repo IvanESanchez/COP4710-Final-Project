@@ -105,6 +105,7 @@
 
 								// Get URLs for buttons
 								$delete_url = uid_param_url("http://localhost:8080/DeleteUser.php", $user["uid"]);
+								$edit_url = uid_param_url("http://localhost:8080/EditAccount.php", $user["uid"]);
 
 								// Output table content
 								echo "<tr><td>" .
@@ -116,6 +117,8 @@
 								'</td><td class="text-center">' .
 								'<a href="' . $delete_url . '">
 								<button type="button" class="btn btn-danger mx-auto">Delete</button>
+								</a><a href="' . $edit_url . '">
+								<button type="button" class="btn btn-warning mx-auto">Edit</button>
 								</a></td>';
 							}
 						?>
