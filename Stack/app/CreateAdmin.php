@@ -12,10 +12,21 @@
 
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link rel = "stylesheet" href = "css/create-admin.css">
+	<link rel = "stylesheet" href = "css/base.css">
+  <link rel = "stylesheet" href = "css/navbar.css">
+	<link rel = "stylesheet" href = "css/wrapper.css">
 </head>
 <body class = "text-center">
 
+	<div class="wrapper">
+
+	<?php
+		include $_SERVER["DOCUMENT_ROOT"] . '/templates/adminbar.php';
+	?>
+
+
 	<main class = "form-newuser">
+
 
 		<form action = "index.html" method ="get">
 
@@ -57,7 +68,7 @@
 		</form>
 
 	<main>
-
+	</div>
 </body>
 
 </html>
