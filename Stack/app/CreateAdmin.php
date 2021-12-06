@@ -1,7 +1,34 @@
+<?php
+	// Check if form was submitted
+	if (isset($_POST['email']) and isset($_POST['name']) and isset($_POST['password'])) {
+		// Set variables
+		$email = $_POST['email'];
+		$name = $_POST['name'];
+		$password = $_POST['password'];
+
+		// Set admin based on checkbox
+		if (isset($_POST['admin'])) {
+			$admin = true;
+		} else {
+			$admin = false;
+		}
+
+		// Create the account
+		require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/account_management.php';
+		$uid = create_new_user($email, $password, $name, $admin);
+
+		// Show result
+		require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+		if ($uid == null) {
+			show_error("Failed to create <code>" . $email . "</code> account");
+		} else {
+			show_success("Successfully created account #<code>" . $uid . "</code> for <code>" . $email . "</code>");
+		}
+	}
+?>
+
 <!DOCTYPE html>
 <html lang = "en">
-
-<html>
 
 <head>
 	<meta charset = "UTF-8">
@@ -43,34 +70,31 @@
 		include $_SERVER["DOCUMENT_ROOT"] . '/templates/adminbar.php';
 	?>
 		<div class="Center-section">
-			<form action = "#" method ="get">
+			<form action = "CreateAdmin.php" method ="post">
 
 				<h1 class = " mt-3 mb-4">Create an Admin account</h1>
 
 				<div class = "mb-2 form-floating">
-					<input type="text" class="form-control" id="floatingInput"
-					placeholder="Name">
-			  	<label for="floatingInput">Name</label>
+					<input name="name" type="text" class="form-control" id="name"	placeholder="Name" required>
+			  	<label for="name">Name</label>
 				</div>
 
 				<div class="mb-2 form-floating">
-				  <input type="email" class="form-control" id="floatingInput"
-					placeholder="name@example.com">
-				  <label for="floatingInput">Email Address</label>
+				  <input name="email" type="email" class="form-control" id="email" placeholder="name@example.com" required>
+				  <label for="email">Email Address</label>
 				</div>
 
 				<div class = "mb-2 form-floating">
-					<input type = "password" class="form-control" id="floatingInput"
-					placeholder="Password">
-					<label for="floatingInput">Password</label>
+					<input name="password" type = "password" class="form-control" id="password"	placeholder="Password" required>
+					<label for="password">Password</label>
 				</div>
 
-				<div class = "mb-2 form-floating">
-					<input type = "checkbox"> Check to confirm admin status<br/>
+				<div class = "form-check">
+					<input name="admin" id="admin" class="form-check-input" type = "checkbox">
+					<label class="form-check-label" for="admin">Check to confirm admin status</label>
 				</div>
 
-				<button class = "mt-3 mb-1 w-50 btn-lg btn-primary"
-				type = "submit">Create account</button>
+				<input type="submit" class = "mt-3 mb-1 w-50 btn-lg btn-primary" value="Create account">
 
 		</form>
 	 </div>
