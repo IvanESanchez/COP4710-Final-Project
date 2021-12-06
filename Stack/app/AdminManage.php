@@ -12,6 +12,7 @@
 
 	// Load requirements
 	require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/get_utils.php';
+	require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/account_management.php';
 	require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
 
 	function new_name() {
@@ -27,7 +28,8 @@
 			// Weird UX setup here, but we'll roll with it that if the entered old name doesn't match what's in the database, we throw an error
 			show_error($old_name . " does not match " . $real_name);
 		} else {
-			
+			// Change to new name
+			change_name($uid, $new_name);
 		}
 	}
 

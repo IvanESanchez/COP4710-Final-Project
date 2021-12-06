@@ -4,9 +4,9 @@
    */
 
   /**
-  * Queries database to retrieve emails of all users who are not admins
-  * Returns an array of emails 
-  */
+   * Queries database to retrieve emails of all users who are not admins
+   * Returns an array of emails 
+   */
   function get_professors_emails() {
     require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
 

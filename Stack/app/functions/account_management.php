@@ -8,6 +8,9 @@
    * UPDATEs account's name to value of $new_name
    */
   function change_name($uid, $new_name) {
-    
+    require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
+
+    // Construct query
+    $query = "UPDATE USER SET name = '" . $new_name . "'"
   }
 ?>

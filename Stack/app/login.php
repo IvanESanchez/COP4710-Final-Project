@@ -29,7 +29,6 @@
 					// Successful login, save data to session
 					$_SESSION['uid'] = $row["uid"];
 					$_SESSION['username'] = $username;
-					$_SESSION['password'] = $password;
 					$_SESSION['admin'] = $row["admin"];
 					session_write_close();
 
