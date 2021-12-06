@@ -1,3 +1,29 @@
+<?php
+	// Load session
+	require $_SERVER["DOCUMENT_ROOT"] . '/functions/no_cookies.php';
+
+	function new_name() {
+
+	}
+
+	function new_password() {
+
+	}
+
+	function new_email() {
+		
+	}
+
+	// Figure out which form was submitted
+	if (isset($_POST['new-name'])) {
+
+	} else if (isset($_POST['new-password'])) {
+
+	} else if (isset($_POST['new-email'])) {
+
+	}
+?>
+
 <!DOCTYPE html>
 <html lang = "en">
 
@@ -40,15 +66,15 @@
 			<form action ="AdminManage.php" method="post">
 				<div class="mb-2 h3"> Update Name (optional)</div>
 				<div class = "mb-2 form-floating">
-					<input name="old-username" type="text" class="form-control" id="old-username"
+					<input name="old-name" type="text" class="form-control" id="old-name"
 					placeholder="Old Username" required>
-			  	<label for="old-username">Old Name</label>
+			  	<label for="old-name">Old Name</label>
 				</div>
 
 				<div class = "mb-2 form-floating">
-					<input name="new-username" type="text" class="form-control" id="new-username"
+					<input name="new-name" type="text" class="form-control" id="new-name"
 					placeholder="New username" required>
-			  	<label for="new-username">New Name</label>
+			  	<label for="new-name">New Name</label>
 				</div>
 				<input type="submit" class = "mt-3 mb-3 w-50 btn-lg btn-primary" value="Submit New Name">
 			</form>

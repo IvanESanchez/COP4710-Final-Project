@@ -18,7 +18,7 @@
 
 		// Perform Query and store in $result
 		try {
-			$result = $mysqli->query("SELECT U.email, U.password, U.admin
+			$result = $mysqli->query("SELECT U.uid, U.email, U.password, U.admin
 																FROM USER U
 																WHERE U.email = '" . $username . "';");
 			// Any matches?
@@ -27,6 +27,7 @@
 
 				if ($password == $row["password"]) {
 					// Successful login, save data to session
+					$_SESSION['uid'] = $row["uid"];
 					$_SESSION['username'] = $username;
 					$_SESSION['password'] = $password;
 					$_SESSION['admin'] = $row["admin"];
