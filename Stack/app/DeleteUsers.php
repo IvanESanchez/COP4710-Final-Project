@@ -98,13 +98,12 @@
 								$user["email"] .
 								"</td><td>" .
 								$user["name"] .
-								"</td><td>" .
+								'</td><td class="text-center">' .
 								$admin .
-								"</td><td>" .
-								'<div class="d-grid gap-2">
-								<a href="' . $delete_url . '">
-								<button type="button" class="btn btn-danger">Delete</button>
-								</a></div></td>';								
+								'</td><td class="text-center">' .
+								'<a href="' . $delete_url . '">
+								<button type="button" class="btn btn-danger mx-auto">Delete</button>
+								</a></td>';								
 							}
 						?>
 					</tbody>
