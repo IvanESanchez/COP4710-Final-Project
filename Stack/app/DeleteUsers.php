@@ -59,17 +59,26 @@
 
 			<div class="container">
 				<table class="mt-3 table table-striped">
-					<thread>
+					<thead>
 						<tr align="center">
 							<th style="width: 30%">Email</th>
 							<th>Name</th>
 							<th style="width: 25%">Admin Status</th>
 							<th>Options</th>
 						</tr>
-					</thread>
+					</thead>
 					<tableBody>
-						<tr>
-						</tr>
+						<?php
+							/**
+							 * Need to retrieve list of users and provide options for managing each user
+							 */
+							require $_SERVER["DOCUMENT_ROOT"] . '/functions/get_utils.php';
+
+							// Get all users
+							$users = get_all_users();
+
+							print_r($users);
+						?>
 					</tableBody>
 				</table>
 			</div>
