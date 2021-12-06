@@ -39,7 +39,7 @@
 					</button>
 				</a><br/>
 
-				<a href="DeleteUsers.php">
+				<a href="ManageUsers.php">
 					<button class="mt-3 btn btn-secondary btn-lg">
 						Delete Users
 					</button>

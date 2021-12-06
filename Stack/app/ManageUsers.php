@@ -54,7 +54,7 @@
 		?>
 
     <div class="Center-section">
-      <div class="header h2 mt-3 mb-4">Delete Users Form</div>
+      <div class="header h2 mt-3 mb-4">Manage Users</div>
 			<div class ="h3 Panel">List of all Users</div>
 
 			<div class="container">
@@ -103,7 +103,7 @@
 								'</td><td class="text-center">' .
 								'<a href="' . $delete_url . '">
 								<button type="button" class="btn btn-danger mx-auto">Delete</button>
-								</a></td>';								
+								</a></td>';
 							}
 						?>
 					</tbody>
