@@ -78,25 +78,34 @@
 							// Get all users
 							$users = get_all_users();
 
+							print_r($users);
+
 							// Prepare admin variable
 							$admin = "No";
 
 							// Output user data to table
-							foreach($user in $users) {
-								if ($user["admin"]) {
+							for($i = 0; $i < count($users); $i++) {
+								// Make admin value a string
+								if ($users[$i]["admin"]) {
 									$admin = "Yes";
 								} else {
 									$admin = "No";
 								}
+
+								// Get URLs for buttons
+								$delete_url = uid_param_url("localhost:8080/DeleteUser.php", $users[$i]["uid"]);
+
 								echo "<tr><td>" .
-								$user["email"] .
+								$users[$i]["email"] .
 								"</td><td>" .
-								$user["name"] .
+								$users[$i]["name"] .
 								"</td><td>" .
 								$admin .
 								"</td><td>" .
-								'<a href="localhost:8080'
-								
+								'<div class="d-grid gap-2">
+								<a href="' . $delete_url . '">
+								<button type="button" class="btn btn-danger">Delete</button>
+								</a></div></td>';								
 							}
 						?>
 					</tableBody>
