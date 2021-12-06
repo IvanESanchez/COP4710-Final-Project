@@ -56,6 +56,9 @@
 	 	 position: sticky;
 	 	 top: 0;
 	  }
+		.header{
+			margin-left: 2%;
+		}
 	</style>
 
 </head>
