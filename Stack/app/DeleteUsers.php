@@ -93,6 +93,7 @@
 								// Get URLs for buttons
 								$delete_url = uid_param_url("localhost:8080/DeleteUser.php", $user["uid"]);
 
+								// Output table content
 								echo "<tr><td>" .
 								$user["email"] .
 								"</td><td>" .
