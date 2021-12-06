@@ -38,6 +38,6 @@
       $mysqli->close();
     }
 
-    return ret_arr;
+    return $ret_arr;
   }
 ?>

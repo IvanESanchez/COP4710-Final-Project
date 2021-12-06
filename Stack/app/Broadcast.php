@@ -80,7 +80,7 @@
 
           <div class="form-floating">
     			  <input name="date" type="date" class="form-control" id="date"
-    				placeholder="Date">
+    				placeholder="Date" required>
     			  <label for="date">Date</label>
     			</div>
 
