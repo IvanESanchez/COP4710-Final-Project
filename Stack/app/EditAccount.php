@@ -79,6 +79,13 @@
     <link rel = "stylesheet" href = "css/navbar.css">
     <link rel = "stylesheet" href = "css/manage-account.css">
     <link rel = "stylesheet" href = "css/wrapper.css">
+		<style>
+
+			td{
+				text-align: center;
+				vertical-align: middle;
+			}
+		</style>
   </head>
   <body>
     <div class="wrapper">
@@ -90,8 +97,8 @@
       <div class="container">
         <table class="mt-3 table">
           <thead class="table-dark">
-            <tr>
-              <th>Email</th>
+            <tr align="center">
+              <th style="width: 40%">Email</th>
               <th>Name</th>
               <th>Admin Status</th>
             </tr>

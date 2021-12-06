@@ -30,7 +30,7 @@
 	#container{
  	 margin-top: 3%;
  	 width:100%;
-    overflow:auto;
+   overflow:auto;
   }
 
 	.table-striped{
