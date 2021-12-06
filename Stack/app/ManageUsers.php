@@ -115,10 +115,10 @@
 								'</td><td class="text-center">' .
 								$admin .
 								'</td><td class="text-center">' .
-								'<a href="' . $delete_url . '">
-								<button type="button" class="btn btn-danger mx-auto">Delete</button>
-								</a><a href="' . $edit_url . '">
+								'<a href="' . $edit_url . '">
 								<button type="button" class="btn btn-warning mx-auto">Edit</button>
+								</a><a href="' . $delete_url . '">
+								<button type="button" class="btn btn-danger mx-auto">Delete</button>
 								</a></td>';
 							}
 						?>
