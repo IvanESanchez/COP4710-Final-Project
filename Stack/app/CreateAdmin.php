@@ -27,8 +27,7 @@
 
 	<main class = "form-newuser">
 
-
-		<form action = "index.html" method ="get">
+		<form action = "#" method ="get">
 
 			<h1 class = "mb-4">Create an Admin account</h1>
 
@@ -61,9 +60,6 @@
 			<button class = "mt-3 mb-1 w-50 btn-lg btn-primary"
 			type = "submit">Create account</button>
 
-			<div class = "Active-account">
-				<p>Have an account? <a href="index.html"> Log in</a></p>
-			</div>
 
 		</form>
 
