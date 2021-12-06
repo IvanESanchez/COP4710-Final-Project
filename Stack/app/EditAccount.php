@@ -15,49 +15,49 @@
       $user_data = get_user_no_pw($_GET['uid']);
     } else if (isset($_POST['email'])) {
       // Process change email
-      if (isset($_POST['uid'])) {
+      if (isset($_POST['uid1'])) {
         // Change to new email and catch failure
-        if (change_email($_POST['uid'], $_POST['email'])) {
+        if (change_email($_POST['uid1'], $_POST['email'])) {
           // Need to update SESSION as well
           $_SESSION['username'] = $_POST['email'];
           session_write_close();
           show_success("Changed email to <code>" . $_POST['email'] . "</code>");
           // Reload page to show update
-          header('Location: EditAccount.php?uid=' . $_POST['uid']);
+          header('Location: EditAccount.php?uid=' . $_POST['uid1']);
         } else {
           show_error("Failed to change email to <code>" . $_POST['email'] . "</code>");
         }
       } else {
         show_error("No uid passed.");
       }
-    }
-  } else if (isset($_POST['password'])) {
-    // Process change password
-    if (isset($_POST['uid'])) {
-      // Change to new password and catch failure
-      if (change_password($_POST['uid'], $_POST['password'])) {
-        show_success("Successfully changed password.");
-        // Reload page to show update
-        header('Location: EditAccount.php?uid=' . $_POST['uid']);
+    } else if (isset($_POST['password'])) {
+      // Process change password
+      if (isset($_POST['uid2'])) {
+        // Change to new password and catch failure
+        if (change_password($_POST['uid2'], $_POST['password'])) {
+          show_success("Successfully changed password.");
+          // Reload page to show update
+          header('Location: EditAccount.php?uid=' . $_POST['uid2']);
+        } else {
+          show_error("Failed to change the password.");
+        }
       } else {
-        show_error("Failed to change the password.");
+        show_error("No uid passed.");
       }
-    } else {
-      show_error("No uid passed.");
-    }
-  } else if (isset($_POST['name'])) {
-    // Process change name
-    if (isset($_POST['uid'])) {
-      // Change to new name and catch failure
-      if (change_name($_POST['uid'], $_POST['name'])) {
-        show_success("Changed name to <code>" . $_POST['name'] . "</code>");
-        // Reload page to show update
-        header('Location: EditAccount.php?uid=' . $_POST['uid']);
+    } else if (isset($_POST['name'])) {
+      // Process change name
+      if (isset($_POST['uid3'])) {
+        // Change to new name and catch failure
+        if (change_name($_POST['uid3'], $_POST['name'])) {
+          show_success("Changed name to <code>" . $_POST['name'] . "</code>");
+          // Reload page to show update
+          header('Location: EditAccount.php?uid=' . $_POST['uid3']);
+        } else {
+          show_error("Failed to change name to <code>" . $_POST['name'] . "</code>");
+        }
       } else {
-        show_error("Failed to change name to <code>" . $_POST['name'] . "</code>");
+        show_error("No uid passed.");
       }
-    } else {
-      show_error("No uid passed.");
     }
   } else {
     // If not admin, redirect elsewhere
@@ -122,7 +122,7 @@
           <div class = "mb-2 form-floating">
             <input name="email" type="text" class="form-control" id="email" placeholder="Change Email to" required>
             <label for="email">Change Email</label>
-            <input type="hidden" name="uid" value="<?php echo $_GET['uid']; ?>">
+            <input type="hidden" name="uid1" value="<?php echo $_GET['uid']; ?>">
           </div>
           <input type="submit" class = "mt-1 mb-3 w-50 btn-lg btn-primary" value="Change Email">
         </form>
@@ -130,7 +130,7 @@
           <div class = "mb-2 form-floating">
             <input name="password" type="password" class="form-control" id="password" placeholder="Change Password to" required>
             <label for="password">Change Password</label>
-            <input type="hidden" name="uid" value="<?php echo $_GET['uid']; ?>">
+            <input type="hidden" name="uid2" value="<?php echo $_GET['uid']; ?>">
           </div>
           <input type="submit" class = "mt-1 mb-3 w-50 btn-lg btn-primary" value="Change Password">
         </form>
@@ -138,7 +138,7 @@
           <div class = "mb-2 form-floating">
             <input name="name" type="text" class="form-control" id="name" placeholder="Change Name to" required>
             <label for="name">Change Name</label>
-            <input type="hidden" name="uid" value="<?php echo $_GET['uid']; ?>">
+            <input type="hidden" name="uid3" value="<?php echo $_GET['uid']; ?>">
           </div>
           <input type="submit" class = "mt-1 mb-3 w-50 btn-lg btn-primary" value="Change Name">
         </form>
