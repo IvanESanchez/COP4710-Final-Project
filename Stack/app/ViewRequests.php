@@ -56,7 +56,7 @@
 	<!-- The following code is used for the side bar menu options -->
   <div class="wrapper">
     <?php
-    	include ('templates/navbar.php');
+    	include ('templates/adminbar.php');
 		?>
 
 
