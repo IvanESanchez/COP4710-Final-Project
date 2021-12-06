@@ -37,6 +37,12 @@
 					<button class="mt-3 btn btn-secondary btn-lg">
 						<img src="envelope.svg" alt="invitaion-email" width="15"> Brodcast Email
 					</button>
+				</a><br/>
+
+				<a href="DeleteUsers.html">
+					<button class="mt-3 btn btn-secondary btn-lg">
+						Delete Users
+					</button>
 				</a>
 
       </div>
