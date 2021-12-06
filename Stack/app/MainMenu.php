@@ -29,7 +29,7 @@
 			<!-- Center text that shows the person logining in what they must do -->
       <div class="main-text"> The following actions should be performed by a professor.
         <br/><a href="BookForm.php" ><button type="button"  class="btn btn-secondary">Submit a new book request form</button></a>
-        <a href="ViewForm.php" ><button type="button"  class="btn btn-secondary">View book list request forms</button></a>
+        <a href="ViewForm.php" ><button type="button"  class="btn btn-secondary">View/Edit book list request forms</button></a>
         <br/>All actions can be executed by pressing the buttons on the left as well.
       </div>
 
