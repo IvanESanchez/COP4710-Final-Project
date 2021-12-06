@@ -1,3 +1,13 @@
+<?php
+
+	require $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+	require $_SERVER["DOCUMENT_ROOT"] . '/functions/no_cookies.php';
+	require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
+
+	
+
+?>
+
 <!DOCTYPE html>
 <html lang = "en">
 <html>
@@ -34,7 +44,7 @@
 
 	 .table-striped{
 		 margin-left: 18%;
-		 width:60%;
+		 width:50%;
 	 }
 
 	 table, th{

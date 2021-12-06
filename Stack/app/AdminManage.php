@@ -15,7 +15,11 @@
 	require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/account_management.php';
 	require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
 
-	function new_name() {
+	/**
+	 * Try to change user's name
+	 * Have to pass $uid because of variable scoping issues
+	 */
+	function new_name($uid) {
 		// Save data from POST
 		$old_name = $_POST['old-name'];
 		$new_name = $_POST['new-name'];
@@ -26,28 +30,86 @@
 		// Check if old name matches what we had stored
 		if ($old_name != $real_name) {
 			// Weird UX setup here, but we'll roll with it that if the entered old name doesn't match what's in the database, we throw an error
-			show_error($old_name . " does not match " . $real_name);
+			show_error("<code>" . $old_name . "</code> does not match <code>" . $real_name . "</code>");
 		} else {
-			// Change to new name
-			change_name($uid, $new_name);
+			// Change to new name and catch failure
+			if (change_name($uid, $new_name)) {
+				show_success("Changed name from <code>" . $real_name . "</code> to <code>" . $new_name . "</code>");
+			} else {
+				show_error("Failed to change name to <code>" . $new_name . "</code>");
+			}
 		}
 	}
 
-	function new_password() {
+	/**
+	 * Try to change user's password
+	 * Have to pass $uid because of variable scoping issues
+	 */
+	function new_password($uid) {
+		// Save data from POST
+		$old_password = $_POST['old-password'];
+		$new_password = $_POST['new-password'];
+		$c_password = $_POST['confirm-password'];
 
+		// Query database for current password of user
+		$real_password = get_password($uid);
+
+		// Check if old password matches what we had stored
+		if ($old_password != $real_password) {
+			// Let user know
+			show_error('Old password provided does not match. Please use <a href="http://localhost:8080/ForgotPassword.php">Forgot Password</a> if you need a temporary password to reset your password with.');
+		} else {
+			// Check if new passwords match
+			if ($new_password != $c_password) {
+				// Error
+				show_error("New passwords do not match. Please re-type or paste them carefully.");
+			} else {
+				// Change to new password and catch failure
+				if (change_password($uid, $new_password)) {
+					show_success("Password changed.");
+				} else {
+					show_error("Password change attempt failed. Please retry.");
+				}
+			}
+		}
 	}
 
-	function new_email() {
+	/**
+	 * Try to change user's email
+	 * Have to pass $uid because of variable scoping issues
+	 */
+	function new_email($uid) {
+		// Save data from POST
+		$old_email = $_POST['old-email'];
+		$new_email = $_POST['new-email'];
 
+		// Query database for current email of user
+		$real_email = get_email($uid);
+
+		// Check if old email matches what we had stored
+		if ($old_email != $real_email) {
+			// Weird UX setup here, but we'll roll with it that if the entered old email doesn't match what's in the database, we throw an error
+			show_error("<code>" . $old_email . "</code> does not match <code>" . $real_email . "</code>");
+		} else {
+			// Change to new email and catch failure
+			if (change_email($uid, $new_email)) {
+				// Need to update SESSION as well
+				$_SESSION['username'] = $new_email;
+				session_write_close();
+				show_success("Changed email from <code>" . $real_email . "</code> to <code>" . $new_email . "</code>");
+			} else {
+				show_error("Failed to change email to <code>" . $new_email . "</code>");
+			}
+		}
 	}
 
 	// Figure out which form was submitted
 	if (isset($_POST['new-name'])) {
-		new_name();
+		new_name($uid);
 	} else if (isset($_POST['new-password'])) {
-		new_password();
+		new_password($uid);
 	} else if (isset($_POST['new-email'])) {
-		new_email();
+		new_email($uid);
 	}
 ?>
 
