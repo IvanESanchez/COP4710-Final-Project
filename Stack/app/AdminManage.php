@@ -40,19 +40,17 @@
 			<form action ="ManageAccount.html" method="post">
 				<div class="mb-2 h3"> Update Name (optional)</div>
 				<div class = "mb-2 form-floating">
-					<input type="text" class="form-control" id="floatingInput"
+					<input name="old-username" type="text" class="form-control" id="old-username"
 					placeholder="Old Username">
-			  	<label for="floatingInput">Old Name</label>
+			  	<label for="old-username">Old Name</label>
 				</div>
 
 				<div class = "mb-2 form-floating">
-					<input type="text" class="form-control" id="floatingInput"
+					<input name="new-username" type="text" class="form-control" id="new-username"
 					placeholder="New username">
-			  	<label for="floatingInput">New Name</label>
-
+			  	<label for="new-username">New Name</label>
 				</div>
-				<button class = "mt-3 mb-3 w-50 btn-lg btn-primary"
-				type = "submit">Submit New Name</button>
+				<input type="submit" class = "mt-3 mb-3 w-50 btn-lg btn-primary" value="Submit New Name">
 			</form>
 
 			<form action="ManageAccount.html" method="post">
