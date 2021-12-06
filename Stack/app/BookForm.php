@@ -28,7 +28,7 @@
 
       <div class="main-text"> Insert Data:
 
-				<form action="BookForm.html" method="get">
+				<form action="BookForm.php" method="get">
 
 					<div class="mt-3 mb-1 form-dropdown">
 						<select data-live-search="true">

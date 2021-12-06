@@ -43,6 +43,12 @@
 					<button class="mt-3 btn btn-secondary btn-lg">
 						Delete Users
 					</button>
+				</a><br/>
+
+				<a href="AdminFinal.php">
+					<button class="mt-3 btn btn-secondary btn-lg">
+						View Final list of Forms
+					</button>
 				</a>
 
       </div>
