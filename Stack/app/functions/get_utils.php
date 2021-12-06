@@ -186,10 +186,10 @@
       if ($result->num_rows > 0) {
         // Fetch returned data into return array
         while ($row = $result->fetch_assoc()) {
-          $ret_arr['uid'] = $row['uid'];
-          $ret_arr['email'] = $row['email'];
-          $ret_arr['name'] = $row['name'];
-          $ret_arr['admin'] = $row['admin'];
+          array_push($ret_arr['uid'], $row['uid']);
+          array_push($ret_arr['email'], $row['email']);
+          array_push($ret_arr['name'], $row['name']);
+          array_push($ret_arr['admin'], $row['admin']);
         }
       }
 
