@@ -30,17 +30,21 @@
 		// Check if old name matches what we had stored
 		if ($old_name != $real_name) {
 			// Weird UX setup here, but we'll roll with it that if the entered old name doesn't match what's in the database, we throw an error
-			show_error($old_name . " does not match " . $real_name);
+			show_error("<code>" . $old_name . "</code> does not match <code>" . $real_name . "</code>");
 		} else {
 			// Change to new name and catch failure
 			if (change_name($uid, $new_name)) {
-				show_success("Changed name from " . $real_name . " to " . $new_name);
+				show_success("Changed name from <code>" . $real_name . "</code> to <code>" . $new_name . "</code>");
 			} else {
-				show_error("Failed to change name to " . $new_name);
+				show_error("Failed to change name to <code>" . $new_name . "</code>");
 			}
 		}
 	}
 
+	/**
+	 * Try to change user's password
+	 * Have to pass $uid because of variable scoping issues
+	 */
 	function new_password($uid) {
 		// Save data from POST
 		$old_password = $_POST['old-password'];
@@ -70,6 +74,10 @@
 		}
 	}
 
+	/**
+	 * Try to change user's email
+	 * Have to pass $uid because of variable scoping issues
+	 */
 	function new_email($uid) {
 		// Save data from POST
 		$old_email = $_POST['old-email'];
@@ -79,18 +87,18 @@
 		$real_email = get_email($uid);
 
 		// Check if old email matches what we had stored
-		if ($old_email != $real_user) {
+		if ($old_email != $real_email) {
 			// Weird UX setup here, but we'll roll with it that if the entered old email doesn't match what's in the database, we throw an error
-			show_error($old_email . " does not match " . $real_email);
+			show_error("<code>" . $old_email . "</code> does not match <code>" . $real_email . "</code>");
 		} else {
 			// Change to new email and catch failure
 			if (change_email($uid, $new_email)) {
 				// Need to update SESSION as well
 				$_SESSION['username'] = $new_email;
 				session_write_close();
-				show_success("Changed name from " . $real_email . " to " . $new_email);
+				show_success("Changed name from <code>" . $real_email . "</code> to <code>" . $new_email . "</code>");
 			} else {
-				show_error("Failed to change name to " . $new_email);
+				show_error("Failed to change name to <code>" . $new_email . "</code>");
 			}
 		}
 	}
