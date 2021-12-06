@@ -71,7 +71,28 @@
 	}
 
 	function new_email($uid) {
+		// Save data from POST
+		$old_email = $_POST['old-email'];
+		$new_email = $_POST['new-email'];
 
+		// Query database for current email of user
+		$real_email = get_email($uid);
+
+		// Check if old email matches what we had stored
+		if ($old_email != $real_user) {
+			// Weird UX setup here, but we'll roll with it that if the entered old email doesn't match what's in the database, we throw an error
+			show_error($old_email . " does not match " . $real_email);
+		} else {
+			// Change to new email and catch failure
+			if (change_email($uid, $new_email)) {
+				// Need to update SESSION as well
+				$_SESSION['username'] = $new_email;
+				session_write_close();
+				show_success("Changed name from " . $real_email . " to " . $new_email);
+			} else {
+				show_error("Failed to change name to " . $new_email);
+			}
+		}
 	}
 
 	// Figure out which form was submitted
