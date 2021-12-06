@@ -1,6 +1,10 @@
 <?php
 
 	require $_SERVER["DOCUMENT_ROOT"] . '/functions/no_cookies.php';
+
+	if (!isset($_SESSION['uid'])) {
+		header('Location: login.php');
+	}
 	
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -33,32 +37,45 @@
 				edition,
 				publisher
 			) VALUES (
-				"' . $isbn . '",
-				"' . $title . '",
-				"' . $author . '",
-				"' . $edition . '",
-				"' . $publisher . '"
+				' . $isbn . ',
+				' . $title . ',
+				' . $author . ',
+				' . $edition . ',
+				' . $publisher . '
 			);';
-
-			$semesterInsert = '
-			INSERT INTO SEMESTER (
-				year,
-				season
-			) VALUES (
-				"' . $year . '",
-				"' . $season . '"
-			);';
-
-			$requestInsert = '
-			INSERT INTO BOOK_REQS (
-				skey,
-				uid
-			) VALUES (
-				"' . $ting . '",';
 
 			try {
 				// Perform INSERT INTO book
 				$mysqli->query($bookInsert);
+				
+				require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/semester_management.php';
+				$skey = pull_skey($season, $year);
+
+				$uid = $_SESSION['uid'];
+				$mysqli->query("
+				INSERT INTO BOOK_REQS (
+					skey,
+					uid
+				) VALUES (
+					" . $skey . ",
+					" . $uid . "
+				);");
+
+				require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/book_request_management.php';
+				$brid = pull_brid($skey, $uid);
+				
+				require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/book_management.php';
+				$bid = pull_bid($isbn);
+
+				$mysqli->query("
+				INSERT INTO BOOK_LIST (
+					brid,
+					bid
+				) VALUES (
+					" . $brid . ",
+					" . $bid . "
+				);");
+
 				show_success("Book Request for " . $title . "created successfully.");
 
 				// Redirect to MainMenu.php

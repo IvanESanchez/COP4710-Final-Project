@@ -6,10 +6,14 @@
 
 	/**
 	 * Takes Semester and Year
-	 * Returns a SemesterID
+	 * If row exists in the table
+	 *   returns the skey
+	 * If row does not exist
+	 *   inserts new row using Semester and Year
+	 *   returns the skey for that row
 	 */
 
-	function pull_sid($season, $year) {
+	function pull_skey($season, $year) {
 		require $_SERVER["DOCUMENT_ROOT"] . 'db.php';
 
 		// Construct query
@@ -35,9 +39,9 @@
 				$result = $mysqli->query($query);
 			}
 
-			while ($row = $result->fetch_array(MYSQLI_NUM)) {
-				$sid = $row[0];
-			}
+			$row = $result->fetch_assoc();
+			
+			$skey = $row['skey'];
 
 			$result->close();
 		} catch (mysqli_sql_exception $e) {
@@ -47,7 +51,7 @@
 			$mysqli->close();
 		}
 
-		return $sid;
+		return $skey;
 	}
 
 ?>
