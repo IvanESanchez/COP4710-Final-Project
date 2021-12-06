@@ -1,5 +1,9 @@
 <?php
 
+  // Check if date submitted
+  if (isset($_POST['date'])) {
+
+  }
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +28,7 @@
   <div class="wrapper">
 
 		<?php
-			include('templates/adminbar.php');
+			include $_SERVER["DOCUMENT_ROOT"] . '/templates/adminbar.php';
 		?>
 
     <main class = "invite-form">
