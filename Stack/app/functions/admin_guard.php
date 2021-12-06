@@ -14,7 +14,7 @@
     if (isset($_SESSION['admin'])) {
       // Return true if user is admin
       if ($_SESSION['admin']) {
-        return true
+        return true;
       } else {
         return false;
       }
