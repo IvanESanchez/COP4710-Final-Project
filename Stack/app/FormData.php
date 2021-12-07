@@ -131,7 +131,18 @@
 		?>
 
     <div class="Center-section">
-      	<div class="header h3 mt-3 mb-4">Book Form for <?php echo $season . " " . $year; ?></div>
+    
+		<!-- Hey Andy, could you place this button above the table? Thanks! -->
+		<div>
+			<?php
+				echo '
+				<a href="' . $add_url . '">
+				<button type="button" class="btn btn-primary mx-auto">Add Book</button>
+				</a>'
+			?>
+		</div>	
+	
+	<div class="header h3 mt-3 mb-4">Book Form for <?php echo $season . " " . $year; ?></div>
 			<table class="mt-3 table">
 				<thead class="table-dark">
 					<tr align="center">
@@ -179,16 +190,6 @@
 				</tbody>
 			</table>
 		</div>
-
-		<!-- Hey Andy, could you place this button below the table? It wants to stick to the side -->
-		<div>
-			<?php
-				echo '
-				<a href="' . $add_url . '">
-				<button type="button" class="btn btn-primary mx-auto">Add Book</button>
-				</a>'
-			?>
-		</div>	
 	</div>
 
 </body>

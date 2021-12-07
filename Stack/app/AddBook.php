@@ -1,3 +1,70 @@
+<?php
+
+	if ($_SERVER["REQUEST_METHOD"] == "GET") {
+		if (isset($_GET['brid'])) {
+			$brid = intval($_GET['brid']);
+		}
+	}
+
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+		if (!empty($_POST['title']) and
+			!empty($_POST['author']) and
+			!empty($_POST['publisher']) and
+			!empty($_POST['edition']) and
+			!empty($_POST['isbn']) and
+			!empty($_POST['brid']))
+		{
+
+			require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
+
+			$title = $mysqli->real_escape_string(trim($_POST['title']));
+			$author = $mysqli->real_escape_string(trim($_POST['author']));
+			$publisher = $mysqli->real_escape_string(trim($_POST['publisher']));
+			$edition = intval($_POST['edition']);
+			$isbn = $mysqli->real_escape_string(trim($_POST['isbn']));
+			$brid = intval($_POST['brid']);
+
+			$bookInBOOK = '
+			INSERT INTO BOOK (
+				title,
+				author,
+				publisher,
+				edition,
+				isbn
+			) VALUES (
+				"' . $title . '",
+				"' . $author . '",
+				"' . $publisher . '",
+				' . $edition . ',
+				"' . $isbn . '"
+			);';
+
+			try {
+				// Perform INSERT INTO BOOK
+				$mysqli->query($bookInBOOK);
+
+				require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/book_management.php';
+				$bid = pull_bid($isbn);
+
+				$mysqli->query('
+				INSERT INTO BOOK_LIST (
+					brid,
+					bid
+				) VALUES (
+					' . $brid . ',
+					' . $bid . '
+				);');
+			} catch (mysqli_sql_exception $e) {
+				require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+				show_error($mysqli->error);
+			} finally {
+				$mysqli->close();
+			}
+		}
+	}
+
+?>
+
 <!DOCTYPE html>
 <html lang = "en">
 <html>
@@ -32,22 +99,7 @@
     <div class="Center-section">
       	<div class="header h3 mt-3 mb-4">Book request form</div>
 		    <div class="main-text"> Insert Data:
-				<form action="BookForm.php" method="post">
-
-					<div class="mt-3 mb-1 form-dropdown">
-						<select data-live-search="true" name="season">
-							<option>Select a semester</option>
-							<option>Fall</option>
-							<option>Spring</option>
-							<option>Summer</option>
-						</select>
-					</div>
-
-					<div class = "mb-1 form-floating">
-						<input type="number" class="form-control" name="year" id="floatingInput"
-						placeholder="Semester year">
-						<label for="floatingInput">Semester year</label>
-					</div>
+				<form action="AddBook.php" method="POST">
 
 					<div class = "mb-1 form-floating">
 						<input type="text" class="form-control" name="title" id="floatingInput"
@@ -62,15 +114,15 @@
 					</div>
 
 					<div class = "mb-1 form-floating">
-						<input type="number" class="form-control" name="edition" id="floatingInput"
-						placeholder="Edition">
-						<label for="floatingInput">Edition</label>
-					</div>
-
-					<div class = "mb-1 form-floating">
 						<input type="text" class="form-control" name="publisher" id="floatingInput"
 						placeholder="Publisher">
 						<label for="floatingInput">Publisher</label>
+					</div>
+
+					<div class = "mb-1 form-floating">
+						<input type="number" class="form-control" name="edition" id="floatingInput"
+						placeholder="Edition">
+						<label for="floatingInput">Edition</label>
 					</div>
 
 					<div class = "mb-1 form-floating">
@@ -80,10 +132,15 @@
 					</div>
 
 					<div class="mt-3 btn">
-							<button class = "mt-2 mb-1 w-100 btn-lg btn-primary"
-							type = "submit">Submit
-						  </button>
+						<button class = "mt-2 mb-1 w-100 btn-lg btn-primary"
+						type = "submit">Submit
+						</button>
 					</div>
+
+					<div>
+						<input type="hidden" name="brid" value="<?php $brid ?>">
+					</div>
+
 				</form>
 			</div>
 		</div>
