@@ -26,8 +26,13 @@
 			text-align: center;
 			vertical-align: middle;
 		}
-		.form-control{
-			max-width: 450px;
+
+		.wrapper .Center-section .main-text .form-dropdown{
+			width: 500px;
+		}
+
+		form{
+
 		}
 	</style>
 
@@ -63,7 +68,7 @@
 
       <div class="main-text"> Insert Data:
 
-				<form action="BookForm.html" method="get">
+				<form action="#" method="get">
 
 					<div class="mt-3 mb-1 form-dropdown">
 						<select data-live-search="true">
@@ -74,36 +79,84 @@
 						</select>
 					</div>
 
+					<div class="mt-3 btn">
+							<button class = "mt-2 mb-1 w-100 btn-lg btn-primary"
+							type = "submit">Submit
+						  </button>
+					</div>
+				</form>
+
+				<form action ="#" method="get">
 					<div class = "mb-1 form-floating">
 						<input type="number" class="form-control" id="floatingInput"
 						placeholder="Semester year">
 						<label for="floatingInput">Semester year</label>
 					</div>
 
+					<div class="mt-3 btn">
+							<button class = "mt-2 mb-1 w-100 btn-lg btn-primary"
+							type = "submit">Submit
+						  </button>
+					</div>
+				</form>
+
+				<form action="#" method="get">
 					<div class = "mb-1 form-floating">
 						<input type="text" class="form-control" id="floatingInput"
 						placeholder="Book Title">
 						<label for="floatingInput">Book Title</label>
 					</div>
 
+					<div class="mt-3 btn">
+							<button class = "mt-2 mb-1 w-100 btn-lg btn-primary"
+							type = "submit">Submit
+						  </button>
+					</div>
+				</form>
+
+				<form action ="#" method="get">
 					<div class = "mb-1 form-floating">
 						<input type="text" class="form-control" id="floatingInput"
 						placeholder="Author names">
 						<label for="floatingInput">Author Name(s)</label>
 					</div>
 
+					<div class="mt-3 btn">
+							<button class = "mt-2 mb-1 w-100 btn-lg btn-primary"
+							type = "submit">Submit
+						  </button>
+					</div>
+				</form>
+
+				<form aciton ="#" method="get">
 					<div class = "mb-1 form-floating">
 						<input type="number" class="form-control" id="floatingInput"
 						placeholder="Edition">
 						<label for="floatingInput">Edition</label>
 					</div>
 
+					<div class="mt-3 btn">
+							<button class = "mt-2 mb-1 w-100 btn-lg btn-primary"
+							type = "submit">Submit
+						  </button>
+					</div>
+				</form>
+
+				<form action="#" method="get">
 					<div class = "mb-1 form-floating">
 						<input type="text" class="form-control" id="floatingInput"
 						placeholder="Publisher">
 						<label for="floatingInput">Publisher</label>
 					</div>
 
+					<div class="mt-3 btn">
+							<button class = "mt-2 mb-1 w-100 btn-lg btn-primary"
+							type = "submit">Submit
+						  </button>
+					</div>
+				</form>
+
+				<form action="#" method="get">
 					<div class = "mb-1 form-floating">
 						<input type="text" class="form-control" id="floatingInput"
 						placeholder="ISBN">
@@ -115,7 +168,6 @@
 							type = "submit">Submit
 						  </button>
 					</div>
-
 				</form>
 
       </div>

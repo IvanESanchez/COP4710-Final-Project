@@ -11,5 +11,16 @@ option {
 }
 
 .btn {
-  width: 550px;
+  width: 570px;
+}
+
+.form-dropdown{
+	width: 100%;
+}
+
+select{
+	width: 450px;
+	height: 50px;
+	text-align: center;
+	font-size: 35px;
 }
