@@ -98,7 +98,7 @@
     <div class="Center-section">
       <div class="header h2 mt-3 mb-4">Modify <?php echo $user_data['name'] ?></div>
       <div class="container">
-        <table class="mt-3 table">
+        <table class="mt-3 table align-middle">
           <thead class="table-dark">
             <tr align="center">
               <th style="width: 40%">Email</th>
