@@ -8,7 +8,8 @@
 		$query = "
 		SELECT S.year, S.season
 		FROM BOOK_REQS B, SEMESTER S
-		WHERE B.skey = S.skey;";
+		WHERE B.skey = S.skey
+		AND B.brid = " . $brid . ";";
 
 		try {
 			$result = $mysqli->query($query);
@@ -174,8 +175,6 @@
 						 */
 						require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/get_utils.php';
 						require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/query_param_utils.php';
-
-						echo $brid;
 
 						$books = get_booklist_from_request($brid);
 

@@ -8,6 +8,8 @@
 
 			$season = $mysqli->real_escape_string($_GET['season']);
 			$year = $mysqli->real_escape_string($_GET['year']);
+
+			$mysqli->close();
 		}
 	}
 
