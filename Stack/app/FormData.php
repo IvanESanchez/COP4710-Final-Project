@@ -120,8 +120,7 @@
 			margin-left: 45%;
 		}
 
-		.submit-book{
-			width: 350px;
+		.wrapper .Center-section .submit-book{
 			margin-left: 42%;
 		}
 
@@ -139,19 +138,13 @@
 		?>
 
     <div class="Center-section">
-<<<<<<< HEAD
-      <div class="header h3 mt-3 mb-4">Book Form Data</div>
 
-			<div class="submit-book">
-					<button class = "mt-2 mb-1 w-100 btn-lg btn-primary"
-					type = "submit">Add Book
-					</button>
-			</div>
-
-=======
-    
 		<!-- Hey Andy, could you place this button above the table? Thanks! -->
-		<div>
+
+
+		<div class="header h3 mt-3 mb-4">Book Form for <?php echo $season . " " . $year; ?></div>
+
+		<div class="submit-book;">
 			<?php
 				require $_SERVER["DOCUMENT_ROOT"] . '/functions/query_param_utils.php';
 				echo '
@@ -159,10 +152,8 @@
 				<button type="button" class="btn btn-primary mx-auto">Add Book</button>
 				</a>'
 			?>
-		</div>	
-	
-	<div class="header h3 mt-3 mb-4">Book Form for <?php echo $season . " " . $year; ?></div>
->>>>>>> 85159ec93306e12920832b43367ea1e0ded66b55
+		</div>
+
 			<table class="mt-3 table">
 				<thead class="table-dark">
 					<tr align="center">
@@ -182,24 +173,24 @@
 						 */
 						require $_SERVER["DOCUMENT_ROOT"] . '/functions/get_utils.php';
 						require $_SERVER["DOCUMENT_ROOT"] . '/functions/query_param_utils.php';
-						
+
 						$books = get_booklist_from_request($brid);
 
 						foreach($books as $book) {
-							
+
 							$delete_url = book_in_request_url("http://localhost:8080/RemoveBook.php", $book['bid'], $brid);
 
 							// Output table content
-							echo '<tr><td>' . 
+							echo '<tr><td>' .
 							$book['title'] .
-							'</td><td>' . 
-							$book['author'] . 
-							'</td><td>' . 
-							$book['publisher'] . 
-							'</td><td>' . 
-							$book['edition'] . 
-							'</td><td>' . 
-							$book['isbn'] . 
+							'</td><td>' .
+							$book['author'] .
+							'</td><td>' .
+							$book['publisher'] .
+							'</td><td>' .
+							$book['edition'] .
+							'</td><td>' .
+							$book['isbn'] .
 							'</td><td>
 							<a href="' . $delete_url . '">
 							<button style="height:40px;width:200px" type="button" class="btn btn-danger mx-auto">Delete</button>
