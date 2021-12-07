@@ -48,6 +48,15 @@
 
               // Get the book request ID for this semeser for this professor
               $brid = pull_brid($semester['skey'], $professor);
+
+              // Get book IDs for this brid
+              $book_list = get_book_list($brid);
+
+              // Output each book to the table
+              foreach($book_list as $book) {
+                // Get book's data
+                
+              }
             }
           }
         ?>
