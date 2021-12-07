@@ -107,7 +107,7 @@
 							<th>Delete</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody class="align-middle">
 						<?php
 							// Retrieve list of requests and add options for each request
 							require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
@@ -118,36 +118,41 @@
 							$reqs = get_user_reqs($uid);
 
 							// Output request data to table
-							foreach($reqs as $request) {
-								// Get URLs for buttons
-								$viewedit_url = brid_param_url("http://localhost:8080/ViewRequests.php", $request['brid']);
-								$delete_url = brid_param_url("http://localhost:8080/DeleteRequest.php", $request['brid']);
+							try {
+								foreach($reqs as $request) {
+									// Get URLs for buttons
+									$viewedit_url = brid_param_url("http://localhost:8080/FormData.php", $request['brid']);
+									$delete_url = brid_param_url("http://localhost:8080/DeleteRequest.php", $request['brid']);
 
-								$semester = $mysqli->query("
-									SELECT year, season 
-									FROM SEMESTER 
-									WHERE skey = " . $request['skey'] . ";
-								");
+										$semester = $mysqli->query("
+											SELECT year, season 
+											FROM SEMESTER 
+											WHERE skey = " . $request['skey'] . ";
+										");
 
-								$semester = $semester->fetch_assoc();
+										$semester = $semester->fetch_assoc();
 
-								echo '<tr><td class="text-center">' . 
-								$semester['year'] .
-								'</td><td class="text-center">' .
-								$semester['season'] .
-								'</td><td class="text-center"> 
-								<a href="' . $viewedit_url . '">
-								<button type="button" class="btn btn-primary mx-auto">View</button>
-								</a></td>
-								<td class = "text-center"><a href="' . $viewedit_url . '">
-								<button type="button" class="btn btn-warning mx-auto">Edit</button>
-								</a></td>
-								<td class="text-center"><a href="' . $delete_url . '">
-								<button type="button" class="btn btn-danger mx-auto">Delete</button>
-								</a></td>';
-							}
-
-							$mysqli->close();
+										echo '<tr><td class="text-center">' . 
+										$semester['year'] .
+										'</td><td class="text-center">' .
+										$semester['season'] .
+										'</td><td class="text-center"> 
+										<a href="' . $viewedit_url . '">
+										<button type="button" class="btn btn-primary mx-auto">View</button>
+										</a></td>
+										<td class = "text-center"><a href="' . $viewedit_url . '">
+										<button type="button" class="btn btn-warning mx-auto">Edit</button>
+										</a></td>
+										<td class="text-center"><a href="' . $delete_url . '">
+										<button type="button" class="btn btn-danger mx-auto">Delete</button>
+										</a></td>';
+									}
+								} catch (mysqli_sql_excception $e) {
+									require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+									show_error($mysqli->error);
+								} finally {
+									$mysqli->close();
+								}
 						?>
 					</tbody>
 				</table>

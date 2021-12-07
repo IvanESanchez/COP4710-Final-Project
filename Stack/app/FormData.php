@@ -1,3 +1,43 @@
+<?php
+
+	if (isset($_GET['brid'])) {
+		require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
+
+		$brid = intval($_GET['brid']);
+
+		$query = "
+		SELECT S.year, S.season
+		FROM BOOK_REQS B, SEMESTER S
+		WHERE B.skey = S.skey;";
+
+		try {
+			$result = $mysqli->query($query);
+
+			$row = $result->fetch_assoc();
+
+			$season = $row['season'];
+			$year = $row['year'];
+		} catch (mysqli_sql_exception $e) {
+			require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+			show_error($mysqli->error);
+		} finally {
+			$mysqli->close();
+		}
+	}
+
+	if (isset($_GET['operation']) and isset($_GET['bookName'])) {
+		require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+
+		// Check if operation succeeded/failed and output result
+		if ($_GET['result'] == 'success') {
+			show_success("Successful " . $_GET['operation'] . " of " . $_GET['bookName']);
+		} else {
+			show_error("Failed to " . $_GET['operation'] . " " . $_GET['bookName']);
+		}
+	}
+
+?>
+
 <!DOCTYPE html>
 <html lang = "en">
 <html>
@@ -87,138 +127,63 @@
 
   <div class="wrapper">
 		<?php
-    	include ('templates/navbar.php');
+			include $_SERVER["DOCUMENT_ROOT"] . '/templates/nav.php';
 		?>
 
     <div class="Center-section">
-      <div class="header h3 mt-3 mb-4">Book Form Data</div>
-
+      	<div class="header h3 mt-3 mb-4">Book Form for <?php echo $season . " " . $year; ?></div>
 			<table class="mt-3 table">
 				<thead class="table-dark">
 					<tr align="center">
-						<th>Semester</th>
-						<th>Semester Year</th>
 						<th>Book Title</th>
 						<th>Author Name(s)</th>
-						<th>Edition</th>
 						<th>Publisher</th>
+						<th>Edition</th>
 						<th>ISBN</th>
+						<th>Edit</th>
+						<th>Delete</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-					</tr>
+					<?php
+
+						/**
+						 * Need to retrieve list of books for user/semester and provide options
+						 */
+						require $_SERVER["DOCUMENT_ROOT"] . '/functions/get_utils.php';
+						require $_SERVER["DOCUMENT_ROOT"] . '/functions/query_param_utils.php';
+						
+						$books = get_booklist_from_request($brid);
+
+						foreach($books as $book) {
+							
+							$delete_url = book_in_request_url("http://localhost:8080/RemoveBook.php", $book['bid'], $brid);
+							$edit_url = book_in_request_url("http://localhost:8080/EditBook.php", $book['bid'], $brid);
+
+							// Output table content
+							echo '<tr><td>' . 
+							$book['title'] .
+							'</td><td>' . 
+							$book['author'] . 
+							'</td><td>' . 
+							$book['publisher'] . 
+							'</td><td>' . 
+							$book['edition'] . 
+							'</td><td>' . 
+							$book['isbn'] . 
+							'</td><td>
+							<a href="' . $edit_url . '">
+							<button style="height:40px;width:200px" type="button" class="btn btn-warning mx-auto">Edit</button>
+							</a></td><td>
+							<a href="' . $delete_url . '">
+							<button style="height:40px;width:200px" type="button" class="btn btn-danger mx-auto">Delete</button>
+							</a></td>';
+						}
+					?>
 				</tbody>
 			</table>
-
-      <div class="main-text">
-				<div class="words">Insert Data:</div>
-
-				<form action="#" method="get">
-
-					<div class="mt-3 mb-1 form-dropdown">
-						<select data-live-search="true">
-							<option>Select a semester</option>
-							<option>Fall</option>
-							<option>Spring</option>
-							<option>Summer</option>
-						</select>
-					</div>
-
-					<div class="btn">
-							<button class = "mt-2 mb-1 w-100 btn-lg btn-primary"
-							type = "submit">Submit
-						  </button>
-					</div>
-				</form>
-
-				<form action ="#" method="get">
-					<div class = "mb-1 form-floating">
-						<input type="number" class="form-control" id="floatingInput"
-						placeholder="Semester year">
-						<label for="floatingInput">Semester year</label>
-					</div>
-
-					<div class="btn">
-							<button class = "mt-2 mb-1 w-100 btn-lg btn-primary"
-							type = "submit">Submit
-						  </button>
-					</div>
-				</form>
-
-				<form action="#" method="get">
-					<div class = "form-floating">
-						<input type="text" class="form-control" id="floatingInput"
-						placeholder="Book Title">
-						<label for="floatingInput">Book Title</label>
-					</div>
-
-					<div class="mt-3 btn">
-							<button class = "mb-1 w-100 btn-lg btn-primary"
-							type = "submit">Submit
-						  </button>
-					</div>
-				</form>
-
-				<form action ="#" method="get">
-					<div class = "mb-1 form-floating">
-						<input type="text" class="form-control" id="floatingInput"
-						placeholder="Author names">
-						<label for="floatingInput">Author Name(s)</label>
-					</div>
-
-					<div class="mt-3 btn">
-							<button class = "mt-2 mb-1 w-100 btn-lg btn-primary"
-							type = "submit">Submit
-						  </button>
-					</div>
-				</form>
-
-				<form aciton ="#" method="get">
-					<div class = "mb-1 form-floating">
-						<input type="number" class="form-control" id="floatingInput"
-						placeholder="Edition">
-						<label for="floatingInput">Edition</label>
-					</div>
-
-					<div class="mt-3 btn">
-							<button class = "mt-2 mb-1 w-100 btn-lg btn-primary"
-							type = "submit">Submit
-						  </button>
-					</div>
-				</form>
-
-				<form action="#" method="get">
-					<div class = "mb-1 form-floating">
-						<input type="text" class="form-control" id="floatingInput"
-						placeholder="Publisher">
-						<label for="floatingInput">Publisher</label>
-					</div>
-
-					<div class="btn">
-							<button class = "mt-2 mb-1 w-100 btn-lg btn-primary"
-							type = "submit">Submit
-						  </button>
-					</div>
-				</form>
-
-				<form action="#" method="get">
-					<div class = "form-floating">
-						<input type="text" class="form-control" id="floatingInput"
-						placeholder="ISBN">
-						<label for="floatingInput">ISBN</label>
-					</div>
-
-					<div class="btn">
-							<button class = "mt-2 mb-1 w-100 btn-lg btn-primary"
-							type = "submit">Submit
-						  </button>
-					</div>
-				</form>
-
-      </div>
-
-   </div>
+		</div>
+	</div>
 
 </body>
 

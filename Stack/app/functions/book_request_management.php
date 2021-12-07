@@ -75,4 +75,29 @@
 		}
 	}
 
+	function remove_book_from_request($bid, $brid) {
+		require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
+
+		$query = "
+		DELETE FROM BOOK_LIST
+		WHERE brid = " . $brid . "
+		AND bid = " . $bid . ";";
+
+		try {
+			if (!$mysqli->query($query)) {
+				require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+				show_error($mysqli->error);
+				return false;
+			}
+
+			return true;
+
+		} catch (mysqli_sql_exception $e) {
+			require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+			show_error($mysqli-error);
+		} finally {
+			$mysqli->close();
+		}
+	}
+
 ?>

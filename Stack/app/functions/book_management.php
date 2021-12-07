@@ -38,4 +38,32 @@
 	
 		return $bid;
 	}
+
+	function get_book_title($bid) {
+		require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
+
+		// Construct query
+		$query = "
+		SELECT title
+		FROM BOOK
+		WHERE bid = " . $bid . ";";
+
+		try {
+			$result = $mysqli->query($query);
+
+			if ($result->num_rows > 0) {
+				$row = $result->fetch_assoc();
+				$title = $row['title'];
+			} else {
+				return null;
+			}
+		} catch (mysqli_sql_exception $e) {
+			require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+			show_error($mysqli->error);
+		} finally {
+			$mysqli->close();
+		}
+
+		return $title;
+	}
 ?>

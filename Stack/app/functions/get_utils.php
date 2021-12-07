@@ -321,5 +321,46 @@
 
     return $ret_arr;
   }
+
+  	function get_booklist_from_request($brid) {
+	  	require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
+
+	  	// Prepare query
+	  	$query = "SELECT bid FROM BOOK_LIST WHERE brid = " . $brid . ";";
+  
+		$ret_arr = [];
+
+		try {
+			// Retrieve results
+			$result = $mysqli->query($query);
+
+			// Handle if no results
+			if ($result->num_rows > 0) {
+				// Fetch returned data into return array
+				while ($row = $result->fetch_assoc()) {
+					$book_query = "SELECT * FROM BOOK WHERE bid = " . $row['bid'] . ";";
+					
+					$book_res = $mysqli->query($book_query);
+					$book_res = $book_res->fetch_assoc();
+
+					$ret_arr[] = array(
+						"bid"=>$book_res['bid'],
+						"title"=>$book_res['title'], 
+						"author"=>$book_res['author'],
+						"publisher"=>$book_res['publisher'],
+						"edition"=>$book_res['edition'],
+						"isbn"=>$book_res['isbn']
+					);
+				}
+			}
+		} catch (mysqli_sql_exception $e) {
+			require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+			show_error($mysqli->error);
+		} finally {
+			$mysqli->close();
+		}
+
+		return $ret_arr;
+	}
 ?>
 
