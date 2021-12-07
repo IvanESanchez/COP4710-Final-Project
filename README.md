@@ -4,7 +4,7 @@
 # Book Procurement Center
 
 ## Getting Started
-Thank you for downloading the UCF Book Procurement site. This website was crafted using a drupal 8 stack, which is composed of:
+Thank you for downloading the UCF Book Procurement site. This website was crafted using a LEMP (Linux, eNginx, MariaDB, PHP) stack, which is composed of:
 * Nginx
 * PHP-FPM
 * MariaDB

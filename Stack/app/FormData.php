@@ -1,3 +1,46 @@
+<?php
+
+	if (isset($_GET['brid'])) {
+		require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
+
+		$brid = intval($_GET['brid']);
+
+		echo $brid;
+
+		$query = "
+		SELECT S.year, S.season
+		FROM BOOK_REQS B, SEMESTER S
+		WHERE B.skey = S.skey;";
+
+		try {
+			$result = $mysqli->query($query);
+
+			$row = $result->fetch_assoc();
+
+			$season = $row['season'];
+			$year = $row['year'];
+		} catch (mysqli_sql_exception $e) {
+			require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+			show_error($mysqli->error);
+		} finally {
+			$mysqli->close();
+		}
+	}
+
+	if (isset($_GET['operation']) and isset($_GET['bid'])) {
+		require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+
+		// Check if operation was successful and output result
+		require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/book_management.php';
+		if ($_GET['result'] == 'success') {
+			show_success("Successful " . $_GET['operation'] . " of Book " . get_book_title($_GET['bid']) . '.');
+		} else {
+			show_error("Failed to " . $_GET['operation'] . " Book " . get_book_title($_GET['bid']));
+		}
+	}
+
+?>
+
 <!DOCTYPE html>
 <html lang = "en">
 <html>
@@ -92,10 +135,11 @@
 
   <div class="wrapper">
 		<?php
-    	include ('templates/navbar.php');
+			include $_SERVER["DOCUMENT_ROOT"] . '/templates/nav.php';
 		?>
 
     <div class="Center-section">
+<<<<<<< HEAD
       <div class="header h3 mt-3 mb-4">Book Form Data</div>
 
 			<div class="submit-book">
@@ -104,132 +148,68 @@
 					</button>
 			</div>
 
+=======
+    
+		<!-- Hey Andy, could you place this button above the table? Thanks! -->
+		<div>
+			<?php
+				require $_SERVER["DOCUMENT_ROOT"] . '/functions/query_param_utils.php';
+				echo '
+				<a href="' . brid_param_url("http://localhost:8080/AddBook.php", $brid) . '">
+				<button type="button" class="btn btn-primary mx-auto">Add Book</button>
+				</a>'
+			?>
+		</div>	
+	
+	<div class="header h3 mt-3 mb-4">Book Form for <?php echo $season . " " . $year; ?></div>
+>>>>>>> 85159ec93306e12920832b43367ea1e0ded66b55
 			<table class="mt-3 table">
 				<thead class="table-dark">
 					<tr align="center">
-						<th>Semester</th>
-						<th>Semester Year</th>
 						<th>Book Title</th>
 						<th>Author Name(s)</th>
-						<th>Edition</th>
 						<th>Publisher</th>
+						<th>Edition</th>
 						<th>ISBN</th>
+						<th>Delete</th>
 					</tr>
 				</thead>
-				<tbody>
-					<tr>
-					</tr>
+				<tbody class="align-middle">
+					<?php
+
+						/**
+						 * Need to retrieve list of books for user/semester and provide options
+						 */
+						require $_SERVER["DOCUMENT_ROOT"] . '/functions/get_utils.php';
+						require $_SERVER["DOCUMENT_ROOT"] . '/functions/query_param_utils.php';
+						
+						$books = get_booklist_from_request($brid);
+
+						foreach($books as $book) {
+							
+							$delete_url = book_in_request_url("http://localhost:8080/RemoveBook.php", $book['bid'], $brid);
+
+							// Output table content
+							echo '<tr><td>' . 
+							$book['title'] .
+							'</td><td>' . 
+							$book['author'] . 
+							'</td><td>' . 
+							$book['publisher'] . 
+							'</td><td>' . 
+							$book['edition'] . 
+							'</td><td>' . 
+							$book['isbn'] . 
+							'</td><td>
+							<a href="' . $delete_url . '">
+							<button style="height:40px;width:200px" type="button" class="btn btn-danger mx-auto">Delete</button>
+							</a></td>';
+						}
+					?>
 				</tbody>
 			</table>
-
-      <div class="main-text">
-				<div class="words">Insert Data:</div>
-
-				<form action="#" method="get">
-
-					<div class="mt-3 mb-1 form-dropdown">
-						<select data-live-search="true">
-							<option>Select a semester</option>
-							<option>Fall</option>
-							<option>Spring</option>
-							<option>Summer</option>
-						</select>
-					</div>
-
-					<div class="btn">
-							<button class = "mt-2 mb-1 w-100 btn-lg btn-primary"
-							type = "submit">Submit
-						  </button>
-					</div>
-				</form>
-
-				<form action ="#" method="get">
-					<div class = "mb-1 form-floating">
-						<input type="number" class="form-control" id="floatingInput"
-						placeholder="Semester year">
-						<label for="floatingInput">Semester year</label>
-					</div>
-
-					<div class="btn">
-							<button class = "mt-2 mb-1 w-100 btn-lg btn-primary"
-							type = "submit">Submit
-						  </button>
-					</div>
-				</form>
-
-				<form action="#" method="get">
-					<div class = "form-floating">
-						<input type="text" class="form-control" id="floatingInput"
-						placeholder="Book Title">
-						<label for="floatingInput">Book Title</label>
-					</div>
-
-					<div class="mt-3 btn">
-							<button class = "mb-1 w-100 btn-lg btn-primary"
-							type = "submit">Submit
-						  </button>
-					</div>
-				</form>
-
-				<form action ="#" method="get">
-					<div class = "mb-1 form-floating">
-						<input type="text" class="form-control" id="floatingInput"
-						placeholder="Author names">
-						<label for="floatingInput">Author Name(s)</label>
-					</div>
-
-					<div class="mt-3 btn">
-							<button class = "mt-2 mb-1 w-100 btn-lg btn-primary"
-							type = "submit">Submit
-						  </button>
-					</div>
-				</form>
-
-				<form aciton ="#" method="get">
-					<div class = "mb-1 form-floating">
-						<input type="number" class="form-control" id="floatingInput"
-						placeholder="Edition">
-						<label for="floatingInput">Edition</label>
-					</div>
-
-					<div class="mt-3 btn">
-							<button class = "mt-2 mb-1 w-100 btn-lg btn-primary"
-							type = "submit">Submit
-						  </button>
-					</div>
-				</form>
-
-				<form action="#" method="get">
-					<div class = "mb-1 form-floating">
-						<input type="text" class="form-control" id="floatingInput"
-						placeholder="Publisher">
-						<label for="floatingInput">Publisher</label>
-					</div>
-
-					<div class="btn">
-							<button class = "mt-2 mb-1 w-100 btn-lg btn-primary"
-							type = "submit">Submit
-						  </button>
-					</div>
-				</form>
-
-				<form action="#" method="get">
-					<div class = "form-floating">
-						<input type="text" class="form-control" id="floatingInput"
-						placeholder="ISBN">
-						<label for="floatingInput">ISBN</label>
-					</div>
-
-					<div class="btn">
-							<button class = "mt-2 mb-1 w-100 btn-lg btn-primary"
-							type = "submit">Submit
-						  </button>
-					</div>
-				</form>
-
-      </div>
-
-   </div>
+		</div>
+	</div>
 
 </body>
 

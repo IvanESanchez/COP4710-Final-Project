@@ -321,5 +321,261 @@
 
     return $ret_arr;
   }
+
+  	function get_booklist_from_request($brid) {
+	  	require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
+
+	  	// Prepare query
+	  	$query = "SELECT bid FROM BOOK_LIST WHERE brid = " . $brid . ";";
+  
+		$ret_arr = [];
+
+		try {
+			// Retrieve results
+			$result = $mysqli->query($query);
+
+			// Handle if no results
+			if ($result->num_rows > 0) {
+				// Fetch returned data into return array
+				while ($row = $result->fetch_assoc()) {
+					$book_query = "SELECT * FROM BOOK WHERE bid = " . $row['bid'] . ";";
+					
+					$book_res = $mysqli->query($book_query);
+					$book_res = $book_res->fetch_assoc();
+
+					$ret_arr[] = array(
+						"bid"=>$book_res['bid'],
+						"title"=>$book_res['title'], 
+						"author"=>$book_res['author'],
+						"publisher"=>$book_res['publisher'],
+						"edition"=>$book_res['edition'],
+						"isbn"=>$book_res['isbn']
+					);
+				}
+			}
+		} catch (mysqli_sql_exception $e) {
+			require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+			show_error($mysqli->error);
+		} finally {
+			$mysqli->close();
+		}
+
+		return $ret_arr;
+	}
+	
+  /**
+   * Returns an array of $uid values found in BOOk_REQS
+   */
+  function get_all_professors_with_requests() {
+    require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
+
+    // Prepare query
+    $query = "SELECT DISTINCT uid FROM BOOK_REQS;";
+
+    // Prepare return array
+    $ret_arr = [];
+
+    try {
+      // Retrieve results
+      $result = $mysqli->query($query);
+
+      // Handle if no results returned
+      if ($result->num_rows > 0) {
+        // Fetch returned data into return array
+        while ($row = $result->fetch_assoc()) {
+          $ret_arr[] = $row['uid'];
+        }
+      }
+
+      // Close iterator
+      $result->close();
+    } catch (mysqli_sql_exception $e) {
+      // Output error message
+      require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+      show_error($mysqli->error);
+    } finally {
+      // Close connection
+      $mysqli->close();
+    }
+
+    return $ret_arr;
+  }
+
+  /**
+   * Takes a $uid, returns skey values associated with that $uid in BOOK_REQS
+   */
+  function get_reqs_semesters_for_uid($uid) {
+    require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
+
+    // Sanitize uid
+    $uid = intval($uid);
+
+    // Prepare query
+    $query = "SELECT DISTINCT skey FROM BOOK_REQS WHERE uid=" . $uid . ";";
+
+    // Prepare return array
+    $ret_arr = [];
+
+    try {
+      // Retrieve results
+      $result = $mysqli->query($query);
+
+      // Handle if no results returned
+      if ($result->num_rows > 0) {
+        // Fetch returned data into return array
+        while ($row = $result->fetch_assoc()) {
+          $ret_arr[] = $row['skey'];
+        }
+      }
+
+      // Close iterator
+      $result->close();
+    } catch (mysqli_sql_exception $e) {
+      // Output error message
+      require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+      show_error($mysqli->error);
+    } finally {
+      // Close connection
+      $mysqli->close();
+    }
+
+    return $ret_arr;
+  }
+
+  /**
+   * Takes an array of semester keys
+   * Returns an associative array of the skey, season, and year values those keys map to, sorted ascending
+   */
+  function get_semesters_sorted_asc($skeys) {
+    require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
+
+    // Initialize IN string
+    $in = '';
+
+    // Generate IN string
+    foreach($skeys as $skey) {
+      // Sanitize skey
+      $skey = intval($skey);
+
+      // Check base case of $in being empty
+      if($in == '') {
+        $in = $skey;
+      } else {
+        // If $in is not empty, prepend a comma
+        $in .= ', ' . $skey;
+      }
+    }
+
+    // Prepare query
+    $query = "SELECT skey, season, year FROM SEMESTER WHERE skey IN (" . $in . ") ORDER BY year ASC, season ASC;";
+
+    // Prepare return array
+    $ret_arr = [];
+
+    try {
+      // Retrieve results
+      $result = $mysqli->query($query);
+
+      // Handle if no results returned
+      if ($result->num_rows > 0) {
+        // Fetch returned data into return array
+        while ($row = $result->fetch_assoc()) {
+          $ret_arr[] = array("skey"=>$row['skey'], "season"=>$row['season'], "year"=>$row['year']);
+        }
+      }
+
+      // Close iterator
+      $result->close();
+    } catch (mysqli_sql_exception $e) {
+      // Output error message
+      require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+      show_error($mysqli->error);
+    } finally {
+      // Close connection
+      $mysqli->close();
+    }
+
+    return $ret_arr;
+  }
+
+  /**
+   * Takes a book request ID ($brid) and returns an array of book IDs ($bid) which match
+   */
+  function get_book_list($brid) {
+    require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
+
+    // Sanitize uid
+    $uid = intval($brid);
+
+    // Prepare query
+    $query = "SELECT DISTINCT bid FROM BOOK_LIST WHERE brid=" . $brid . ";";
+
+    // Prepare return array
+    $ret_arr = [];
+
+    try {
+      // Retrieve results
+      $result = $mysqli->query($query);
+
+      // Handle if no results returned
+      if ($result->num_rows > 0) {
+        // Fetch returned data into return array
+        while ($row = $result->fetch_assoc()) {
+          $ret_arr[] = $row['bid'];
+        }
+      }
+
+      // Close iterator
+      $result->close();
+    } catch (mysqli_sql_exception $e) {
+      // Output error message
+      require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+      show_error($mysqli->error);
+    } finally {
+      // Close connection
+      $mysqli->close();
+    }
+
+    return $ret_arr;
+  }
+
+  /**
+   * Takes a $bid and returns an associative array of BOOK columns (except $bid)
+   */
+  function get_book_data($bid) {
+    require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
+
+    // Sanitize $bid
+    $bid = intval($bid);
+
+    // Prepare query
+    $query = "SELECT isbn, title, author, edition, publisher FROM BOOK WHERE bid=" . $bid . ";";
+
+    // Prepare return array
+    $ret_arr = [];
+
+    try {
+      // Retrieve results
+      $result = $mysqli->query($query);
+
+      // Handle if no results returned
+      if ($result->num_rows > 0) {
+        // Fetch returned data into return array
+        $ret_arr = $result->fetch_assoc();
+      }
+
+      // Close iterator
+      $result->close();
+    } catch (mysqli_sql_exception $e) {
+      // Output error message
+      require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+      show_error($mysqli->error);
+    } finally {
+      // Close connection
+      $mysqli->close();
+    }
+
+    return $ret_arr;
+  }
 ?>
 

@@ -19,4 +19,12 @@
 	function brid_param_url($target, $brid) {
 		return $target . "?brid=" . urlencode($brid);
 	}
+
+	function bid_param_url($target, $bid) {
+		return $target . "?bid=" . urlencode($bid);
+	}
+
+	function book_in_request_url($target, $bid, $brid) {
+		return $target . "?bid=" . urlencode($bid) . "&brid=" . urlencode($brid);
+	}
 ?>

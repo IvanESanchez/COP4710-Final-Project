@@ -22,8 +22,7 @@
 
   <div class="wrapper">
 		<?php
-			// Dynamic side bar
-			require $_SERVER["DOCUMENT_ROOT"] . '/templates/nav.php';
+			require $_SERVER["DOCUMENT_ROOT"] . '/templates/adminbar.php';
 		?>
 
     <div class="Center-section">
