@@ -1,3 +1,20 @@
+<?php
+
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+		if (!empty($_POST['season']) and 
+			!empty($_POST['year']))
+		{
+			
+			$url = "http://localhost:8080/ViewSemesterRequests.php";
+			$url = $url . '?season=' . $_POST['season'];
+			$url = $url . '&year=' . $_POST['year'];
+
+			header('Location: ' . $url);
+		}
+	}
+
+?>
+
 <!DOCTYPE html>
 <html lang = "en">
 <html>
@@ -65,13 +82,13 @@
 
     <div class="Center-section">
 
-      <form action ="ViewForm.php" method="post">
+      <form action ="AdminView.php" method="POST">
 				<div class="h3 mt-3 mb-4">View Book Forms</div>
 
 				<div> Insert data to search for a form: </div>
 
 				<div class="mt-3 mb-1 form-dropdown">
-					<select data-live-search="true">
+					<select data-live-search="true" name="season">
 						<option>Select a semester</option>
 						<option>Fall</option>
 						<option>Spring</option>
@@ -80,7 +97,7 @@
 				</div>
 
 				<div class = "mb-1 form-floating">
-					<input type="number" class="form-control" id="floatingInput"
+					<input type="number" class="form-control" name="year" id="floatingInput"
 					placeholder="Semester year">
 					<label for="floatingInput">Semester year</label>
 				</div>
