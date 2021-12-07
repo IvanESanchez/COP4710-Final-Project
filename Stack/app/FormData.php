@@ -14,6 +14,18 @@
 	<link rel = "stylesheet" href = "css/navbar.css">
 	<link rel = "stylesheet" href = "css/wrapper.css">
 	<link rel = "stylesheet" href = "css/book-form.css">
+
+	<style>
+
+		td{
+			text-align: center;
+			vertical-align: middle;
+		}
+		.form-control{
+			max-width: 450px;
+		}
+	</style>
+
 </head>
 <body>
 
@@ -25,6 +37,20 @@
 
     <div class="Center-section">
       <div class="header h3 mt-3 mb-4">Book Form Data</div>
+
+			<table class="mt-3 table">
+				<thead class="table-dark">
+					<tr align="center">
+						<th style="width: 40%">Email</th>
+						<th>Name</th>
+						<th>Admin Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+					</tr>
+				</tbody>
+			</table>
 
       <div class="main-text"> Insert Data:
 
