@@ -61,13 +61,13 @@
 					<button class="mt-3 btn btn-secondary btn-lg">
 						View Requests
 					</button>
-				</a>
+				</a><br/>
 
 				<a href="FinalReport.php" target="_blank">
 					<button class="mt-3 btn btn-secondary btn-lg">
 						Create Final Book Requests
 					</button>
-				</a>
+				</a><br/>
 
       </div>
 
