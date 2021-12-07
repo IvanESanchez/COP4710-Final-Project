@@ -77,6 +77,11 @@
 			margin-left: 45%;
 		}
 
+		.submit-book{
+			width: 350px;
+			margin-left: 42%;
+		}
+
 
 
 	</style>
@@ -92,6 +97,12 @@
 
     <div class="Center-section">
       <div class="header h3 mt-3 mb-4">Book Form Data</div>
+
+			<div class="submit-book">
+					<button class = "mt-2 mb-1 w-100 btn-lg btn-primary"
+					type = "submit">Add Book
+					</button>
+			</div>
 
 			<table class="mt-3 table">
 				<thead class="table-dark">
