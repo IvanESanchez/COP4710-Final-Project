@@ -54,8 +54,9 @@
 
 	<!-- The following code is used for the side bar menu options -->
   <div class="wrapper">
-    <?php
-    	include ('templates/adminbar.php');
+		<?php
+			// Dynamic side bar
+			require $_SERVER["DOCUMENT_ROOT"] . '/templates/nav.php';
 		?>
 
 
