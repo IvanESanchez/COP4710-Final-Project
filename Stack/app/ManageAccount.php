@@ -153,7 +153,7 @@
 
 			<!-- Center text allows users to change Username/Password -->
 
-			<form action ="AdminManage.php" method="post">
+			<form action ="ManageAccount.php" method="post">
 				<div class="mb-2 h3"> Update Name (optional)</div>
 				<div class = "mb-2 form-floating">
 					<input name="old-name" type="text" class="form-control" id="old-name"
