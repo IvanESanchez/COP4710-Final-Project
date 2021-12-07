@@ -321,5 +321,43 @@
 
     return $ret_arr;
   }
+
+  /**
+   * Returns an array of $uid values found in BOOk_REQS
+   */
+  function get_all_professors_with_requests() {
+    require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
+
+    // Prepare query
+    $query = "SELECT DISTINCT uid FROM BOOK_REQS;";
+
+    // Prepare return array
+    $ret_arr = [];
+
+    try {
+      // Retrieve results
+      $result = $mysqli->query($query);
+
+      // Handle if no results returned
+      if ($result->num_rows > 0) {
+        // Fetch returned data into return array
+        while ($row = $result->fetch_assoc()) {
+          $ret_arr[] = $row['uid'];
+        }
+      }
+
+      // Close iterator
+      $result->close();
+    } catch (mysqli_sql_exception $e) {
+      // Output error message
+      require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+      show_error($mysqli->error);
+    } finally {
+      // Close connection
+      $mysqli->close();
+    }
+
+    return $ret_arr;
+  }
 ?>
 
