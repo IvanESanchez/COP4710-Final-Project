@@ -66,4 +66,38 @@
 
 		return $title;
 	}
+
+	function create_book($title, $author, $publisher, $edition, $isbn) {
+		require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
+
+		$query = '
+		INSERT INTO BOOK (
+			title,
+			author,
+			publisher,
+			edition,
+			isbn
+		) VALUES (
+			"' . $title . '",
+			"' . $author . '",
+			"' . $publisher . '",
+			' . $edition . ',
+			"' . $isbn . '"
+		);';
+
+		try {
+			if (!$mysqli->query($query) or !$mysqli->affected_rows > 0) {
+				show_error($mysqli->error);
+				return false;
+			}
+
+			return true;
+
+		} catch (mysqli_sql_exception $e) {
+			require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+			show_error($mysqli->error);
+		} finally {
+			$mysqli->close();
+		}
+	}
 ?>

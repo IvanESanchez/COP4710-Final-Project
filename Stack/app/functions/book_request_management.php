@@ -111,5 +111,35 @@
 			" . $bid . ",
 			" . $brid . "
 		);";
+
+		try {
+			if (!$mysqli->query($query) or !$mysqli->affected_rows > 0) {
+				show_error($mysqli->error);
+				return false;
+			}
+
+			return true;
+
+		} catch (mysqli_sql_exception $e) {
+			require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+			show_error($mysqli->error);
+		} finally {
+			$mysqli->close();
+		}
+	}
+
+	function create_book_for_request($title, $author, $publisher, $edition, $isbn, $brid) {
+		require $_SERVER["DOCUMENT_ROOT"] . '/functions/book_management.php';
+		require $_SERVER["DOCUMENT_ROOT"] . '/functions/book_request_management.php';
+
+		if (!create_book($title, $author, $publisher, $edition, $isbn)) {
+			return false;
+		}
+
+		if (!add_book_to_request(pull_bid($isbn), $brid)) {
+			return false;
+		}
+
+		return true;
 	}
 ?>

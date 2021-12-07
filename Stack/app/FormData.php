@@ -5,6 +5,8 @@
 
 		$brid = intval($_GET['brid']);
 
+		echo $brid;
+
 		$query = "
 		SELECT S.year, S.season
 		FROM BOOK_REQS B, SEMESTER S
@@ -25,14 +27,15 @@
 		}
 	}
 
-	if (isset($_GET['operation']) and isset($_GET['bookName'])) {
+	if (isset($_GET['operation']) and isset($_GET['bid'])) {
 		require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
 
-		// Check if operation succeeded/failed and output result
+		// Check if operation was successful and output result
+		require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/book_management.php';
 		if ($_GET['result'] == 'success') {
-			show_success("Successful " . $_GET['operation'] . " of " . $_GET['bookName']);
+			show_success("Successful " . $_GET['operation'] . " of Book " . get_book_title($_GET['bid']) . '.');
 		} else {
-			show_error("Failed to " . $_GET['operation'] . " " . $_GET['bookName']);
+			show_error("Failed to " . $_GET['operation'] . " Book " . get_book_title($_GET['bid']));
 		}
 	}
 
@@ -135,8 +138,9 @@
 		<!-- Hey Andy, could you place this button above the table? Thanks! -->
 		<div>
 			<?php
+				require $_SERVER["DOCUMENT_ROOT"] . '/functions/query_param_utils.php';
 				echo '
-				<a href="' . $add_url . '">
+				<a href="' . brid_param_url("http://localhost:8080/AddBook.php", $brid) . '">
 				<button type="button" class="btn btn-primary mx-auto">Add Book</button>
 				</a>'
 			?>
@@ -154,7 +158,7 @@
 						<th>Delete</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody class="align-middle">
 					<?php
 
 						/**
@@ -168,7 +172,6 @@
 						foreach($books as $book) {
 							
 							$delete_url = book_in_request_url("http://localhost:8080/RemoveBook.php", $book['bid'], $brid);
-							$add_url = brid_param_url("http://localhost:8080/AddBook.php", $brid);
 
 							// Output table content
 							echo '<tr><td>' . 
