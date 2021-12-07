@@ -1,5 +1,14 @@
 <?php
-	
+	if(isset($_GET['operation']) and isset($_GET['id'])) {
+		require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+
+		// Check if operation succeeded or not and output result
+		if ($_GET['result'] == 'success') {
+			show_success("Successful " . $_GET['operation'] . " of reminder ID " . $_GET['id']);
+		} else {
+			show_error("Failed to " . $_GET['operation'] . " reminder ID " . $_GET['id']);
+		}
+	}
 ?>
 
 <!DOCTYPE html>

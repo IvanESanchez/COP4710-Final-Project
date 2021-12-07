@@ -56,7 +56,7 @@
   // Create REMINDERS table
   $mysqli->query("CREATE TABLE IF NOT EXISTS REMINDERS (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    date DATE NOT NULL,
+    date DATE NOT NULL
   );");
 
   // Obtain super admin password from secret and escape it to ensure it doesn't compromise the database

@@ -189,4 +189,37 @@
       return $uid;
     }
   }
+
+  /**
+   * Takes a request id and deletes it if it exists
+   * Returns true if it succeeds, false if it fails
+   */
+  function delete_request($id) {
+    require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
+    require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+
+    // Sanitize input
+    $id = intval($id);
+
+    // Construct query
+    $query = "DELETE FROM REQUESTS WHERE id=" . $id . ";";
+
+    try {
+      // Attempt the query, catch if it fails
+      if ($mysqli->query($query) and $mysqli->affected_rows > 0) {
+        return true;
+      } else {
+        // Output error message
+        show_error($mysqli->error);
+        return false;
+      }
+    } catch (mysqli_sql_exception $e) {
+      // Output error message
+      show_error($mysqli->error);
+      return false;
+    } finally {
+      // Close connection
+      $mysqli->close();
+    }
+  }
 ?>
