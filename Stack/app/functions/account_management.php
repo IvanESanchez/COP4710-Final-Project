@@ -202,7 +202,7 @@
     $id = intval($id);
 
     // Construct query
-    $query = "DELETE FROM REMINDER WHERE id=" . $id . ";";
+    $query = "DELETE FROM REMINDERS WHERE id=" . $id . ";";
 
     try {
       // Attempt the query, catch if it fails

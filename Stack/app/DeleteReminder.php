@@ -10,7 +10,7 @@
       $id = $_GET["id"];
 
       // Start target url
-      $url = "ManageReminders.php?operation=delete&uid=" . $uid;
+      $url = "ManageReminders.php?operation=delete&id=" . $id;
 
       // Delete given uid and track whether operation succeeded or not
       require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/account_management.php';

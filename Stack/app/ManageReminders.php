@@ -86,7 +86,7 @@
 						// Output reminders to table
 						foreach($reminders as $reminder) {
 							// Get URLs for buttons
-							$delete_url = uid_param_url("http://localhost:8080/DeleteReminder.php", $reminder["id"]);
+							$delete_url = id_param_url("http://localhost:8080/DeleteReminder.php", $reminder["id"]);
 
 							// Output table content
 							echo '<tr><td>' . $reminder['id'] .
