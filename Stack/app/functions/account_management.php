@@ -233,7 +233,7 @@
     require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
 
     // Sanitize input
-    $date = date("d-m-Y", strtotime($date));
+    $date = date("Y-m-d", strtotime($date));
 
     // Prepare return value
     $id = null;

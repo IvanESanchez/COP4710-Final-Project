@@ -72,7 +72,7 @@
 						<th>Delete</th>
 					</tr>
 				</thead>
-				<tbody class="align-middle">
+				<tbody class="align-middle text-center">
 					<?php
 						/**
 						 * Need to retrieve existing reminders

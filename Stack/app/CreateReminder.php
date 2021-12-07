@@ -13,6 +13,8 @@
 			show_error("Failed to create new reminder");
 		} else {
 			show_success("Successfully created reminder #<code>" . $id . "</code>");
+			// Redirect to reminder management
+      header('Location: ManageReminders.php');
 		}
 	}
 ?>
@@ -78,7 +80,7 @@
 					</div>
 
 					<div class="mt-2 btn">
-						<input type="button" class = "mb-1 btn-lg btn-primary" value ="Submit Reminder">
+						<input type="submit" class = "mb-1 btn-lg btn-primary" value ="Submit Reminder">
 					</div>
 				</form>
       </div>
