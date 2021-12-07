@@ -62,7 +62,7 @@
 				}
 
               	// Make a header row for the professor
-              	echo '<tr><th colspan="5">Professor ' . $name . '</th></tr>';
+              	echo '<tr><td colspan="5">Professor ' . $name . '</td></tr>';
 
 	            // Get book IDs for this brid
                 $book_list = get_book_list($brid);
