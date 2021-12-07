@@ -6,9 +6,14 @@
 		if (!empty($_POST['newName'])
 		and !empty($_POST['newEmail'])
 		and !empty($_POST['newPass'])) {
+			// Save data
+			$name = $_POST['newName'];
+			$email = $_POST['newEmail'];
+			$password = $_POST['newPass'];
+
 			// Perform the query
 			require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/account_management.php';
-			$uid = create_new_user($_POST['newEmail'], $_POST['newPass'], $_POST['newName'], false);
+			$uid = create_new_user($email, $password, $name, false);
 
 			// Show result
 			if ($uid == null) {
@@ -17,7 +22,7 @@
 				show_success("Successfully created account #<code>" . $uid . "</code> for <code>" . $_POST['newEmail'] . "</code>");
 
 				// Redirect to login
-				header('Location: login.php');
+				//header('Location: login.php');
 			}
 		} else {
 			// Handle failure
@@ -44,7 +49,7 @@
 
 	<main class = "form-newuser">
 
-		<form action = "<?php echo $_SERVER['PHP_SELF'];?>" method ="post">
+		<form action = "NewUser.php" method ="post">
 
 			<h1 class = "mt-2 mb-4">Create an account</h1>
 
@@ -53,20 +58,17 @@
 			</div>
 
 			<div class = "mb-2 form-floating">
-				<input type="text" class="form-control" name="newName" id="newname"
-				placeholder="Name">
+				<input type="text" class="form-control" name="newName" id="newname"	placeholder="Name" required>
 		  	<label for="newname">Name</label>
 			</div>
 
 			<div class="mb-2 form-floating">
-			  <input type="email" class="form-control" name="newEmail" id="newemail"
-				placeholder="name@example.com">
+			  <input type="email" class="form-control" name="newEmail" id="newemail" placeholder="name@example.com" required>
 			  <label for="newemail">Email Address</label>
 			</div>
 
 			<div class = "mb-2 form-floating">
-				<input type = "password" class="form-control" name="newPass" id="newpass"
-				placeholder="Password">
+				<input type = "password" class="form-control" name="newPass" id="newpass" placeholder="Password" required>
 				<label for="newpass">Password</label>
 			</div>
 

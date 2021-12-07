@@ -86,13 +86,13 @@
 			<div class="form-floating mb-3">
 		  	<input name="username" type="text" class="form-control" id="username"
 				placeholder="Username">
-		  	<label for="floatingInput">Email</label>
+		  	<label for="username">Email</label>
 			</div>
 
 			<div class="form-floating mb-3">
 		  	<input name="password" type="password" class="form-control" id="password"
 				 placeholder="Password">
-		  	<label for="floatingPassword">Password</label>
+		  	<label for="password">Password</label>
 			</div>
 
 			<div>

@@ -162,6 +162,8 @@
       $admin = 0;
     }
 
+    show_success($password);
+
     // Prepare return value
     $uid = null;
 
@@ -174,7 +176,7 @@
     ) VALUES (
       '" . $name . "',
       '" . $email . "',
-      '" . $pass . "',
+      '" . $password . "',
       " . $admin . "
     );";
 
