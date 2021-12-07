@@ -41,4 +41,38 @@
 		return $brid;
 	}
 
+	function delete_request($brid) {
+		require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
+
+		// Construct queries
+		$del_from_list = "
+		DELETE FROM BOOK_LIST
+		WHERE brid = " . $brid . ";";
+
+		$del_from_reqs = "
+		DELETE FROM BOOK_REQS
+		WHERE brid = " . $brid . ";";
+
+		try {
+			// attempt queries, catch if fails
+			if (!$mysqli->query($del_from_list) or !$mysqli->affected_rows > 0) {
+				show_error($mysqli->error);
+				return false;
+			}
+
+			if (!$mysqli->query($del_from_reqs) or !$mysqli->affected_rows > 0) {
+				show_error($mysqli->error);
+				return false;
+			}
+
+			return true;
+
+		} catch (mysqli_sql_exception $e) {
+			show_error($mysqli->error);
+			return false;
+		} finally {
+			$mysqli->close();
+		}
+	}
+
 ?>

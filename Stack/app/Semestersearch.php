@@ -10,6 +10,21 @@
 
 ?>
 
+<?php
+
+	if (isset($_GET['operation']) and isset($_GET['brid'])) {
+		require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+
+		// Check if operation was successful and output result
+		if ($_GET['result'] == 'success') {
+			show_success("Successful " . $_GET['operation'] . " of Book Request ID " . $_GET['brid'] . ".");
+		} else {
+			show_error("Failed to " . $_GET['operation'] . " Book Request ID " . $_GET['brid'] . ".");
+		}
+	}
+
+?>
+
 <!DOCTYPE html>
 <html lang = "en">
 <html>
