@@ -140,7 +140,6 @@
 						<th>Publisher</th>
 						<th>Edition</th>
 						<th>ISBN</th>
-						<th>Edit</th>
 						<th>Delete</th>
 					</tr>
 				</thead>
@@ -158,7 +157,7 @@
 						foreach($books as $book) {
 							
 							$delete_url = book_in_request_url("http://localhost:8080/RemoveBook.php", $book['bid'], $brid);
-							$edit_url = book_in_request_url("http://localhost:8080/EditBook.php", $book['bid'], $brid);
+							$add_url = brid_param_url("http://localhost:8080/AddBook.php", $brid);
 
 							// Output table content
 							echo '<tr><td>' . 
@@ -172,9 +171,6 @@
 							'</td><td>' . 
 							$book['isbn'] . 
 							'</td><td>
-							<a href="' . $edit_url . '">
-							<button style="height:40px;width:200px" type="button" class="btn btn-warning mx-auto">Edit</button>
-							</a></td><td>
 							<a href="' . $delete_url . '">
 							<button style="height:40px;width:200px" type="button" class="btn btn-danger mx-auto">Delete</button>
 							</a></td>';
@@ -183,6 +179,16 @@
 				</tbody>
 			</table>
 		</div>
+
+		<!-- Hey Andy, could you place this button below the table? It wants to stick to the side -->
+		<div>
+			<?php
+				echo '
+				<a href="' . $add_url . '">
+				<button type="button" class="btn btn-primary mx-auto">Add Book</button>
+				</a>'
+			?>
+		</div>	
 	</div>
 
 </body>

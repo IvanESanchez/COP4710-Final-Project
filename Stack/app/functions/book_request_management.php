@@ -100,4 +100,16 @@
 		}
 	}
 
+	function add_book_to_request($bid, $brid) {
+		require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
+
+		$query = "
+		INSERT INTO BOOK_LIST (
+			bid,
+			brid
+		) VALUES (
+			" . $bid . ",
+			" . $brid . "
+		);";
+	}
 ?>
