@@ -20,8 +20,7 @@
 
   <div class="wrapper">
 		<?php
-			// Dynamic side bar
-			require $_SERVER["DOCUMENT_ROOT"] . '/templates/nav.php';
+			require $_SERVER["DOCUMENT_ROOT"] . '/templates/adminbar.php';
 		?>
 
     <div class="Center-section">
@@ -40,6 +39,12 @@
 					</button>
 				</a><br/>
 
+				<a href="ManageReminders.php">
+					<button class="mt-3 btn btn-secondary btn-lg">
+						Manage Reminders
+					</button>
+				</a><br/>
+
 				<a href="ManageUsers.php">
 					<button class="mt-3 btn btn-secondary btn-lg">
 						Manage Users
@@ -52,15 +57,9 @@
 					</button>
 				</a><br/>
 
-				<a href="AdminFinal.php">
+				<a href="AdminFinal.php" target="_blank">
 					<button class="mt-3 btn btn-secondary btn-lg">
-						View List of Requests
-					</button>
-				</a>
-
-				<br/><a href="ManageReminders.php">
-					<button class="mt-3 btn btn-secondary btn-lg">
-						Manage Reminders
+						Create Final Book Requests
 					</button>
 				</a>
 
