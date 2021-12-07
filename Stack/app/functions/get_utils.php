@@ -400,5 +400,143 @@
 
     return $ret_arr;
   }
+
+  /**
+   * Takes a $uid, returns skey values associated with that $uid in BOOK_REQS
+   */
+  function get_reqs_semesters_for_uid($uid) {
+    require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
+
+    // Sanitize uid
+    $uid = intval($uid);
+
+    // Prepare query
+    $query = "SELECT DISTINCT skey FROM BOOK_REQS WHERE uid=" . $uid . ";";
+
+    // Prepare return array
+    $ret_arr = [];
+
+    try {
+      // Retrieve results
+      $result = $mysqli->query($query);
+
+      // Handle if no results returned
+      if ($result->num_rows > 0) {
+        // Fetch returned data into return array
+        while ($row = $result->fetch_assoc()) {
+          $ret_arr[] = $row['skey'];
+        }
+      }
+
+      // Close iterator
+      $result->close();
+    } catch (mysqli_sql_exception $e) {
+      // Output error message
+      require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+      show_error($mysqli->error);
+    } finally {
+      // Close connection
+      $mysqli->close();
+    }
+
+    return $ret_arr;
+  }
+
+  /**
+   * Takes an array of semester keys
+   * Returns an associative array of the skey, season, and year values those keys map to, sorted ascending
+   */
+  function get_semesters_sorted_asc($skeys) {
+    require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
+
+    // Initialize IN string
+    $in = '';
+
+    // Generate IN string
+    foreach($skeys as $skey) {
+      // Sanitize skey
+      $skey = intval($skey);
+
+      // Check base case of $in being empty
+      if($in == '') {
+        $in = $skey;
+      } else {
+        // If $in is not empty, prepend a comma
+        $in .= ', ' . $skey;
+      }
+    }
+
+    // Prepare query
+    $query = "SELECT skey, season, year FROM SEMESTER WHERE skey IN (" . $in . ") ORDER BY year ASC, season ASC;";
+
+    // Prepare return array
+    $ret_arr = [];
+
+    try {
+      // Retrieve results
+      $result = $mysqli->query($query);
+
+      // Handle if no results returned
+      if ($result->num_rows > 0) {
+        // Fetch returned data into return array
+        while ($row = $result->fetch_assoc()) {
+          $ret_arr[] = array("skey"=>$row['skey'], "season"=>$row['season'], "year"=>$row['year']);
+        }
+      }
+
+      // Close iterator
+      $result->close();
+    } catch (mysqli_sql_exception $e) {
+      // Output error message
+      require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+      show_error($mysqli->error);
+    } finally {
+      // Close connection
+      $mysqli->close();
+    }
+
+    return $ret_arr;
+  }
+
+  /**
+   * Takes a book request ID ($brid) and returns an array of book IDs ($bid) which match
+   */
+  function get_book_list($brid) {
+    require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
+
+    // Sanitize uid
+    $uid = intval($brid);
+
+    // Prepare query
+    $query = "SELECT DISTINCT bid FROM BOOK_LIST WHERE brid=" . $brid . ";";
+
+    // Prepare return array
+    $ret_arr = [];
+
+    try {
+      // Retrieve results
+      $result = $mysqli->query($query);
+
+      // Handle if no results returned
+      if ($result->num_rows > 0) {
+        // Fetch returned data into return array
+        while ($row = $result->fetch_assoc()) {
+          $ret_arr[] = $row['bid'];
+        }
+      }
+
+      // Close iterator
+      $result->close();
+    } catch (mysqli_sql_exception $e) {
+      // Output error message
+      require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+      show_error($mysqli->error);
+    } finally {
+      // Close connection
+      $mysqli->close();
+    }
+
+    return $ret_arr;
+  }
 ?>
 
