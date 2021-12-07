@@ -54,7 +54,7 @@
 
 				<a href="AdminFinal.php">
 					<button class="mt-3 btn btn-secondary btn-lg">
-						View List of Requests
+						Finalize Book Requests
 					</button>
 				</a>
 
