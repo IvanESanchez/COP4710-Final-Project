@@ -74,7 +74,7 @@
 			<div class ="h3 Panel">List of all Users</div>
 
 			<div class="container">
-				<table class="mt-3 table table-striped align-middle">
+				<table class="mt-3 table table-striped">
 					<thead class="table-dark">
 						<tr align="center">
 							<th style="width: 30%">Email</th>
@@ -84,7 +84,7 @@
 							<th>Delete</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody class="align-middle">
 						<?php
 							/**
 							 * Need to retrieve list of users and provide options for managing each user

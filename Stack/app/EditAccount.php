@@ -98,7 +98,7 @@
     <div class="Center-section">
       <div class="header h2 mt-3 mb-4">Modify <?php echo $user_data['name'] ?></div>
       <div class="container">
-        <table class="mt-3 table align-middle">
+        <table class="mt-3 table">
           <thead class="table-dark">
             <tr align="center">
               <th style="width: 40%">Email</th>
@@ -106,7 +106,7 @@
               <th>Admin Status</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="align-middle">
             <tr>
               <?php
                 // Make admin value a string

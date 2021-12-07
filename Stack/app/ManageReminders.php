@@ -1,6 +1,9 @@
+<?php
+	
+?>
+
 <!DOCTYPE html>
 <html lang = "en">
-<html>
 
 <head>
   <meta charset = "UTF-8">
@@ -45,26 +48,45 @@
       <div class="header h3 mt-3 mb-4">Manage Reminders</div>
 
       <div class="main-text">
-				<form action="CreateReminder.php" method="get">
 					<div class="mt-2 btn">
-							<button class = "mb-1 btn-lg btn-primary"
+							<a href="CreateReminder.php"><button class = "mb-1 btn-lg btn-primary"
 							type = "submit"> Create New Reminder
-						  </button>
+						  </button></a>
 					</div>
-				</form>
       </div>
 
-			<table class="mt-4 table">
+			<table class="mt-4 table table-striped">
 				<thead class="table-dark">
 					<tr align="center">
-						<th>Id</th>
+						<th>ID</th>
 						<th>Date</th>
 						<th>Delete</th>
 					</tr>
 				</thead>
-				<tbody>
-					<tr>
-					</tr>
+				<tbody class="align-middle">
+					<?php
+						/**
+						 * Need to retrieve existing reminders
+						 */
+						require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/get_utils.php';
+						require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/query_param_utils.php';
+
+						// Get all reminders
+						$reminders = get_all_reminders();
+
+						// Output reminders to table
+						foreach($reminders as $reminder) {
+							// Get URLs for buttons
+							$delete_url = uid_param_url("http://localhost:8080/DeleteReminder.php", $reminder["id"]);
+
+							// Output table content
+							echo '<tr><td>' . $reminder['id'] .
+							'</td><td>' . $reminder['date'] . 
+							'</td><td class="text-center"><a href="' . $delete_url . '">
+							<button type="button" class="btn btn-danger mx-auto">Delete</button>
+							</a></td>';
+						}
+					?>
 				</tbody>
 			</table>
 

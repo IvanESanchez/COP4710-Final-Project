@@ -246,40 +246,80 @@
     return $ret_arr;
   }
 
+  /**
+   * Takes a $uid and returns an array of associative arrays with semester keys and brids
+   */
   function get_user_reqs($uid) {
+    require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
 
-	require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
+    // Prepare query
+    $query = "SELECT skey, brid FROM BOOK_REQS WHERE uid = " . $uid . ";";
+    
+    // Prepare return array
+    $ret_arr = [];
+    
+    try {
+      // Retrieve results
+      $result = $mysqli->query($query);
+    
+      // Handle if no results returned
+      if ($result->num_rows > 0) {
+        // Fetch returned data into return array
+        while ($row = $result->fetch_assoc()) {
+          $ret_arr[] = array("skey"=>$row['skey'], "brid"=>$row['brid']);
+        }
+      }
+  
+      // Close iterator
+      $result->close();
+    } catch (mysqli_sql_exception $e) {
+      // Output error message
+      require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+      show_error($mysqli->error);
+    } finally {
+      // Close connection
+      $mysqli->close();
+    }
+  
+	  return $ret_arr;
+  }
 
-	// Prepare query
-	 $query = "SELECT skey, brid FROM BOOK_REQS WHERE uid = " . $uid . ";";
-  
-	 // Prepare return array
-	 $ret_arr = [];
-  
-	 try {
-		// Retrieve results
-		$result = $mysqli->query($query);
-  
-		// Handle if no results returned
-		if ($result->num_rows > 0) {
-			 // Fetch returned data into return array
-			while ($row = $result->fetch_assoc()) {
-				$ret_arr[] = array("skey"=>$row['skey'], "brid"=>$row['brid']);
-			}
-		}
-  
-		// Close iterator
-		$result->close();
-	} catch (mysqli_sql_exception $e) {
-		// Output error message
-		require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
-		show_error($mysqli->error);
-	} finally {
-		// Close connection
-		$mysqli->close();
-	}
-  
-	return $ret_arr;
+  /**
+   * Gets id and date as an array of associative arrays for all entries in REMINDERS
+   */
+  function get_all_reminders() {
+    require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
+
+    // Prepare query
+    $query = "SELECT id, date FROM REMINDERS;";
+
+    // Prepare return array
+    $ret_arr = [];
+
+    try {
+      // Retrieve results
+      $result = $mysqli->query($query);
+
+      // Handle if no results returned
+      if ($result->num_rows > 0) {
+        // Fetch returned data into return array
+        while ($row = $result->fetch_assoc()) {
+          $ret_arr[] = array("id"=>$row['id'], "date"=>$row['date']);
+        }
+      }
+
+      // Close iterator
+      $result->close();
+    } catch (mysqli_sql_exception $e) {
+      // Output error message
+      require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+      show_error($mysqli->error);
+    } finally {
+      // Close connection
+      $mysqli->close();
+    }
+
+    return $ret_arr;
   }
 ?>
 
