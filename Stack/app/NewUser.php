@@ -22,7 +22,7 @@
 				show_success("Successfully created account #<code>" . $uid . "</code> for <code>" . $_POST['newEmail'] . "</code>");
 
 				// Redirect to login
-				//header('Location: login.php');
+				header('Location: login.php');
 			}
 		} else {
 			// Handle failure
