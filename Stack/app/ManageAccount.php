@@ -169,7 +169,7 @@
 				<input type="submit" class = "mt-3 mb-3 w-50 btn-lg btn-primary" value="Submit New Name">
 			</form>
 
-			<form action="AdminManage.php" method="post">
+			<form action="ManageAccount.php" method="post">
 				<div class="mt-3 h3"> Update Password (optional)</div>
 				<div class = "mb-2 form-floating">
 					<input name="old-password" type = "password" class="form-control" id="old-password"
@@ -192,7 +192,7 @@
 				<input type="submit" class = "mt-3 mb-3 w-50 btn-lg btn-primary" value="Submit New Password">
 			</form>
 
-			<form action="AdminManage.php" method="post">
+			<form action="ManageAccount.php" method="post">
 				<div class="mt-2 mb-2 h3"> Update Email (optional)</div>
 				<div class = "mb-2 form-floating">
 					<input name="old-email" type="text" class="form-control" id="old-email"
