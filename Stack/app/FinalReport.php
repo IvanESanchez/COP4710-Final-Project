@@ -16,7 +16,8 @@
     <table class="table table-dark table-hover">
       <tbody>
         <?php
-          require $_SERVER["DOCUMENT_ROOT"] . '/functions/get_utils.php';
+          require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/get_utils.php';
+          require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/book_request_management.php';
 
           // Get professors
           $professors = get_all_professors_with_requests();
@@ -32,9 +33,22 @@
             }
 
             // Make a header row for the professor
-            echo '<th colspan="5">' . $name . '</th>';
+            echo '<tr><th colspan="5">' . $name . '</th></tr>';
 
             // Get semesters this professor has book lists for
+            $semester_ids = get_reqs_semesters_for_uid($uid);
+
+            // Get semester components (year and season) sorted, ascending
+            $semesters = get_semesters_sorted_asc($semester_ids);
+
+            // Loop through semesters
+            foreach($semesters as $semester) {
+              // Output semester to table
+              echo '<tr><td colspan="5">' . $semester['season'] . " " .  $semester['year'] . '</td></tr>';
+
+              // Get the book request ID for this semeser for this professor
+              $brid = pull_brid($semester['skey'], $professor);
+            }
           }
         ?>
       </tbody>

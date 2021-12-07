@@ -14,7 +14,7 @@
 
 		// Construct query
 		$query = "
-		SELECT BR.brid
+		SELECT DISTINCT BR.brid
 		FROM BOOK_REQS BR
 		WHERE BR.skey = " . $skey . "
 		AND BR.uid = " . $uid . ";";
