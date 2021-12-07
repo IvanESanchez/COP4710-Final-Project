@@ -120,10 +120,9 @@
 			margin-left: 45%;
 		}
 
-		.wrapper .Center-section .submit-book{
-			margin-left: 42%;
+		.wrapper .Center-section .btn-primary{
+			margin-left: 40%;
 		}
-
 
 
 	</style>
@@ -149,7 +148,7 @@
 				require $_SERVER["DOCUMENT_ROOT"] . '/functions/query_param_utils.php';
 				echo '
 				<a href="' . brid_param_url("http://localhost:8080/AddBook.php", $brid) . '">
-				<button type="button" class="btn btn-primary mx-auto">Add Book</button>
+				<button type="button" class="btn btn-primary">Add Book</button>
 				</a>'
 			?>
 		</div>
