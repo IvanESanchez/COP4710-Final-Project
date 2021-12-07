@@ -74,7 +74,7 @@
 			<div class ="h3 Panel">List of all Users</div>
 
 			<div class="container">
-				<table class="mt-3 table table-striped">
+				<table class="mt-3 table table-striped align-middle">
 					<thead class="table-dark">
 						<tr align="center">
 							<th style="width: 30%">Email</th>
