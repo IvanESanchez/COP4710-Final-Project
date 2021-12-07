@@ -55,9 +55,7 @@
 
 	<!-- The following code is used for the side bar menu options -->
   <div class="wrapper">
-    <?php
-    	include ('templates/adminbar.php');
-		?>
+    <?php include ('templates/adminbar.php'); ?>
 
 
     <div class="Center-section">

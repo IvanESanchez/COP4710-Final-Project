@@ -1,10 +1,12 @@
 <?php
 
-	require $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
-	require $_SERVER["DOCUMENT_ROOT"] . '/functions/no_cookies.php';
-	require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
+	require 'functions/no_cookies.php';
 
-	
+	if (!isset($_SESSION['uid'])) {
+		header('Location: login.php');
+	} else {
+		$uid = intval($_SESSION['uid']);
+	}
 
 ?>
 
@@ -65,9 +67,14 @@
 
 	<!-- The following code is used for the side bar menu options -->
   <div class="wrapper">
-    <?php
-    	include ('templates/navbar.php');
-		?>
+ 	<?php
+		require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/admin_guard.php';
+		if (am_i_admin()) {
+			include $_SERVER["DOCUMENT_ROOT"] . '/templates/adminbar.php';
+		} else {
+			include $_SERVER["DOCUMENT_ROOT"] . '/templates/navbar.php';
+		}
+	?>
 
 
     <div class="Center-section">
@@ -76,7 +83,7 @@
 
 			<div class="container">
 				<table class="mt-3 table table-striped">
-					<thread>
+					<thead class="table-dark">
 						<tr align="center">
 							<th>Year</th>
 							<th>Semester</th>
@@ -84,20 +91,53 @@
 							<th>Edit</th>
 							<th>Delete</th>
 						</tr>
-					</thread>
-					<tableBody>
-						<tr>
-						</tr>
-					</tableBody>
+					</thead>
+					<tbody>
+						<?php
+							// Retrieve list of requests and add options for each request
+							require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
+							require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/get_utils.php';
+							require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/query_param_utils.php';
+	
+							// Get all requests
+							$reqs = get_user_reqs($uid);
+
+							// Output request data to table
+							foreach($reqs as $request) {
+								// Get URLs for buttons
+								$viewedit_url = brid_param_url("http://localhost:8080/ViewRequests.php", $request['brid']);
+								$delete_url = brid_param_url("http://localhost:8080/DeleteRequest.php", $request['brid']);
+
+								$semester = $mysqli->query("
+									SELECT year, season 
+									FROM SEMESTER 
+									WHERE skey = " . $request['skey'] . ";
+								");
+
+								$semester = $semester->fetch_assoc();
+
+								echo '<tr><td class="text-center">' . 
+								$semester['year'] .
+								'</td><td class="text-center">' .
+								$semester['season'] .
+								'</td><td class="text-center"> 
+								<a href="' . $viewedit_url . '">
+								<button type="button" class="btn btn-warning mx-auto">View</button>
+								</a></td>
+								<td class = "text-center"><a href="' . $viewedit_url . '">
+								<button type="button" class="btn btn-warning mx-auto">Edit</button>
+								</a></td>
+								<td class="text-center"><a href="' . $delete_url . '">
+								<button type="button" class="btn btn-danger mx-auto">Delete</button>
+								</a></td>';
+							}
+
+							$mysqli->close();
+						?>
+					</tbody>
 				</table>
 			</div>
-
-    </div>
-
- </div>
-
-
+    	</div>
+	</div>
 </body>
-
-
 </html>

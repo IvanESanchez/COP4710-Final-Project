@@ -12,4 +12,11 @@
 	function uid_param_url($target, $uid) {
 		return $target . "?uid=" . urlencode($uid);
 	}
+
+	/**
+	 * Takes a target URL and a brid. Returns a string which combines both and properly encodes the brid
+	 */
+	function brid_param_url($target, $brid) {
+		return $target . "?brid=" . urlencode($brid);
+	}
 ?>

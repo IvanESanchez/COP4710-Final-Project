@@ -70,7 +70,7 @@
 
 				$mysqli->query("INSERT INTO BOOK_LIST (brid, bid) VALUES (" . $brid . "," . $bid . ");");
 
-				show_success("Book Request for " . $title . "created successfully.");
+				show_success("Book Request for " . $title . " created successfully.");
 
 				// Redirect to MainMenu.php
 			} catch (mysqli_sql_exception $e) {

@@ -19,9 +19,14 @@
 
 	<!-- The following code is used for the side bar menu options -->
   <div class="wrapper">
-    <?php
-    	include ('templates/navbar.php');
-		?>
+	<?php
+		require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/admin_guard.php';
+		if (am_i_admin()) {
+			include $_SERVER["DOCUMENT_ROOT"] . '/templates/adminbar.php';
+		} else {
+			include $_SERVER["DOCUMENT_ROOT"] . '/templates/navbar.php';
+		}
+	?>
 
     <div class="Center-section">
       <div class="header h3 mt-3 mb-4">Welcome to the UCF BookStore</div>
