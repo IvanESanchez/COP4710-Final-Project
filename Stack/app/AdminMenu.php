@@ -57,6 +57,12 @@
 					</button>
 				</a><br/>
 
+				<a href="AdminView.php">
+					<button class="mt-3 btn btn-secondary btn-lg">
+						View Requests
+					</button>
+				</a>
+
 				<a href="FinalReport.php" target="_blank">
 					<button class="mt-3 btn btn-secondary btn-lg">
 						Create Final Book Requests
