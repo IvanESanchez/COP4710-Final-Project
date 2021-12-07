@@ -191,10 +191,10 @@
   }
 
   /**
-   * Takes a request id and deletes it if it exists
+   * Takes a reminder id and deletes it if it exists
    * Returns true if it succeeds, false if it fails
    */
-  function delete_request($id) {
+  function delete_reminder($id) {
     require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
     require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
 
@@ -202,7 +202,7 @@
     $id = intval($id);
 
     // Construct query
-    $query = "DELETE FROM REQUESTS WHERE id=" . $id . ";";
+    $query = "DELETE FROM REMINDER WHERE id=" . $id . ";";
 
     try {
       // Attempt the query, catch if it fails
@@ -220,6 +220,40 @@
     } finally {
       // Close connection
       $mysqli->close();
+    }
+  }
+
+/**
+   * Create a new reminder. Takes:
+   * $date - Date the reminder will be sent on
+   * Returns the new reminder's id (null if operation failed)
+   */
+  function create_new_reminder($date) {
+    require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
+    require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+
+    // Sanitize input
+    $date = date("d-m-Y", strtotime($date));
+
+    // Prepare return value
+    $id = null;
+
+    // Prepare the query
+    $query = "INSERT INTO REMINDERS (
+      date
+    ) VALUES (
+      '" . $date . "'
+    );";
+
+    try {
+      // Perform INSERT
+      $mysqli->query($query);
+      $id = $mysqli->insert_id;
+    } catch (mysqli_sql_exception $e) {
+      show_error("Unable to create reminder.<br>" . $mysqli->error);
+    } finally {
+      $mysqli->close();
+      return $id;
     }
   }
 ?>

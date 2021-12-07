@@ -1,6 +1,24 @@
+<?php
+	if (isset($_POST['reminder-date'])) {
+		// Set variables
+		$reminder_date = $_POST['reminder-date'];
+
+		// Create the reminder
+		require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/account_management.php';
+		$id = create_new_reminder($reminder_date);
+
+		// Show result
+		require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+		if ($id == null) {
+			show_error("Failed to create new reminder");
+		} else {
+			show_success("Successfully created reminder #<code>" . $id . "</code>");
+		}
+	}
+?>
+
 <!DOCTYPE html>
 <html lang = "en">
-<html>
 
 <head>
   <meta charset = "UTF-8">
@@ -35,8 +53,6 @@
 		.wrapper .Center-section .main-text{
 			margin-left: 30%;
 		}
-
-
 	</style>
 
 
@@ -52,33 +68,21 @@
       <div class="header h3 mt-3 mb-4">Add Reminder</div>
 
       <div class="main-text">
-				<form action="CreateReminder.php" method="get">
+				<form action="CreateReminder.php" method="post">
 
-					<div class="main-text">Enter Deadline Date</div>
+					<div class="main-text">Enter Reminder Date</div>
 
-						<div class="form-floating">
-						 <input name="date" type="date" class="form-control" id="date"
-						 placeholder="Date" required>
-						 <label for="date">Date</label>
-					 </div>
-
+					<div class="form-floating">
+						<input name="reminder-date" type="date" class="form-control" id="reminder-date" placeholder="Date" required>
+						<label for="reminder-date">Reminder Date</label>
+					</div>
 
 					<div class="mt-2 btn">
-							<button class = "mb-1 btn-lg btn-primary"
-							type = "submit"> Submit Reminder
-						  </button>
+						<input type="button" class = "mb-1 btn-lg btn-primary" value ="Submit Reminder">
 					</div>
 				</form>
       </div>
-
-
 		</div>
-
    </div>
-
 </body>
-
-
-
-
 </html>
