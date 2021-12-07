@@ -116,6 +116,9 @@ erDiagram
     BOOK_LIST }o -- o{ BOOK : catalogs
 ```
 
+![ERD](https://github.com/IvanESanchez/COP4710-Final-Project/blob/main/Art/ERD.png?raw=true)
+
+
 ## The Minds Behind the Design
 
 ### Rob Schwyzer - System and Database Administrator 
