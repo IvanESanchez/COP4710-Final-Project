@@ -5,8 +5,6 @@
 
 		$brid = intval($_GET['brid']);
 
-		echo $brid;
-
 		$query = "
 		SELECT S.year, S.season
 		FROM BOOK_REQS B, SEMESTER S
@@ -131,12 +129,12 @@
 <body>
 
 
-  <div class="wrapper">
+  	<div class="wrapper">
 		<?php
 			include $_SERVER["DOCUMENT_ROOT"] . '/templates/nav.php';
 		?>
 
-    <div class="Center-section">
+    	<div class="Center-section">
 
 		<!-- Hey Andy, could you place this button above the table? Thanks! -->
 
@@ -145,7 +143,7 @@
 
 		<div class="submit-book;">
 			<?php
-				require $_SERVER["DOCUMENT_ROOT"] . '/functions/query_param_utils.php';
+				require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/query_param_utils.php';
 				echo '
 				<a href="' . brid_param_url("http://localhost:8080/AddBook.php", $brid) . '">
 				<button type="button" class="btn btn-primary">Add Book</button>
@@ -167,11 +165,17 @@
 				<tbody class="align-middle">
 					<?php
 
+						if(isset($_GET['brid'])) {
+							$brid = $_GET['brid'];
+						}
+
 						/**
 						 * Need to retrieve list of books for user/semester and provide options
 						 */
-						require $_SERVER["DOCUMENT_ROOT"] . '/functions/get_utils.php';
-						require $_SERVER["DOCUMENT_ROOT"] . '/functions/query_param_utils.php';
+						require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/get_utils.php';
+						require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/query_param_utils.php';
+
+						echo $brid;
 
 						$books = get_booklist_from_request($brid);
 
@@ -193,7 +197,7 @@
 							'</td><td>
 							<a href="' . $delete_url . '">
 							<button style="height:40px;width:200px" type="button" class="btn btn-danger mx-auto">Delete</button>
-							</a></td>';
+							</a></td></tr>';
 						}
 					?>
 				</tbody>

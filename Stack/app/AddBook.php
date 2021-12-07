@@ -1,11 +1,3 @@
-<?php
-
-	if (isset($_GET['brid'])) {
-		$brid = intval($_GET['brid']);
-	}
-
-?>
-
 <!DOCTYPE html>
 <html lang = "en">
 <html>
@@ -74,7 +66,7 @@
 
 					<div>
 						<input type="hidden" class="form-control" name="brid" id="floatingInput" 
-						placeholder="Brid" value="<?php echo $brid; ?>">
+						placeholder="Brid" value="<?php if (isset($_GET['brid'])) { $brid = $_GET['brid']; } echo $brid; ?>">
 					</div>
 
 					<div class="mt-3 btn">

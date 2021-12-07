@@ -129,8 +129,7 @@
 	}
 
 	function create_book_for_request($title, $author, $publisher, $edition, $isbn, $brid) {
-		require $_SERVER["DOCUMENT_ROOT"] . '/functions/book_management.php';
-		require $_SERVER["DOCUMENT_ROOT"] . '/functions/book_request_management.php';
+		require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/book_management.php';
 
 		if (!create_book($title, $author, $publisher, $edition, $isbn)) {
 			return false;

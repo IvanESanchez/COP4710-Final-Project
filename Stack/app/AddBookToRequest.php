@@ -23,7 +23,7 @@
 			"?brid=" . $brid . 
 			"&operation=" . "addition";
 
-			require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/book_request_management.php';	
+			require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/book_request_management.php';
 			if (create_book_for_request($title, $author, $publisher, $edition, $isbn, $brid)) {
 				$url = $url . "&result=success";
 			} else {
