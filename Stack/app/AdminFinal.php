@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang = "en">
-<html>
 
 <head>
   <meta charset = "UTF-8">
@@ -49,10 +48,8 @@
 	<!-- The following code is used for the side bar menu options -->
   <div class="wrapper">
 		<?php
-			// Dynamic side bar
-			require $_SERVER["DOCUMENT_ROOT"] . '/templates/nav.php';
+			require $_SERVER["DOCUMENT_ROOT"] . '/templates/adminbar.php';
 		?>
-
 
     <div class="Center-section">
 
@@ -62,22 +59,20 @@
 				<div> Insert data to search for a form: </div>
 
 				<div class="mt-3 mb-1 form-dropdown">
-					<select data-live-search="true">
-						<option>Select a semester</option>
-						<option>Fall</option>
+					<select name="season" id="season" data-live-search="true">
+						<option selected>Select a semester</option>
 						<option>Spring</option>
 						<option>Summer</option>
+						<option>Fall</option>
 					</select>
 				</div>
 
 				<div class = "mb-1 form-floating">
-					<input type="number" class="form-control" id="floatingInput"
-					placeholder="Semester year">
-					<label for="floatingInput">Semester year</label>
+					<input name="year" type="number" class="form-control" id="year" placeholder="Semester year">
+					<label for="year">Semester year</label>
 				</div>
 
-					<button class = "mt-1 mb-1 btn-lg btn-primary"
-					type = "submit">Submit</button>
+				<input type="submit" class = "mt-1 mb-1 btn-lg btn-primary" value="Generate">
 			</form>
 
     </div>
