@@ -68,6 +68,7 @@
 			<table class="mt-3 table table-striped">
 				<thread>
 					<tr align="center">
+						<th>Professor Name</th>
 						<th>Book Title</th>
 						<th>Author Name(s)</th>
 						<th>Edition</th>
