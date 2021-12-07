@@ -137,7 +137,7 @@
 								$semester['season'] .
 								'</td><td class="text-center"> 
 								<a href="' . $viewedit_url . '">
-								<button type="button" class="btn btn-warning mx-auto">View</button>
+								<button type="button" class="btn btn-primary mx-auto">View</button>
 								</a></td>
 								<td class = "text-center"><a href="' . $viewedit_url . '">
 								<button type="button" class="btn btn-warning mx-auto">Edit</button>
