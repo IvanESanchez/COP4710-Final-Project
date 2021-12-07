@@ -67,9 +67,9 @@
 
   <div class="wrapper">
 
-		<?php
-			include $_SERVER["DOCUMENT_ROOT"] . '/templates/adminbar.php';
-		?>
+    <?php
+      include $_SERVER["DOCUMENT_ROOT"] . '/templates/adminbar.php';
+    ?>
 
     <main class = "invite-form">
 

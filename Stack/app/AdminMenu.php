@@ -20,7 +20,8 @@
 
   <div class="wrapper">
 		<?php
-			include $_SERVER["DOCUMENT_ROOT"] . '/templates/adminbar.php';
+			// Dynamic side bar
+			require $_SERVER["DOCUMENT_ROOT"] . '/templates/nav.php';
 		?>
 
     <div class="Center-section">

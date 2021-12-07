@@ -80,7 +80,8 @@
 							<th style="width: 30%">Email</th>
 							<th>Name</th>
 							<th style="width: 25%">Admin Status</th>
-							<th>Options</th>
+							<th>Edit</th>
+							<th>Delete</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -120,7 +121,7 @@
 								'</td><td class="text-center">' .
 								'<a href="' . $edit_url . '">
 								<button type="button" class="btn btn-warning mx-auto">Edit</button>
-								</a><a href="' . $delete_url . '">
+								</a></td><td class="text-center"><a href="' . $delete_url . '">
 								<button type="button" class="btn btn-danger mx-auto">Delete</button>
 								</a></td>';
 							}

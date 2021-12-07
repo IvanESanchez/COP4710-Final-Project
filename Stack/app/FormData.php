@@ -16,6 +16,15 @@
 	<!-- <link rel = "stylesheet" href = "css/book-form.css"> -->
 
 	<style>
+		.wrapper {
+		  display: flex;
+		  position: relative;
+		}
+
+		.wrapper .Center-section {
+		  width: 100%;
+		  margin-left: 200px;
+		}
 		.wrapper .Center-section .main-text {
 			margin-left: 38%;
 			padding-top: 20px;
@@ -25,6 +34,7 @@
 		.wrapper .Center-section .main-text {
 			padding-top: 45px;
 			max-width: 550px;
+			padding-bottom: 100px;
 		}
 
 		.wrapper .Center-section .table{
