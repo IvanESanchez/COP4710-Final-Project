@@ -16,7 +16,26 @@
     <table class="table table-dark table-hover">
       <tbody>
         <?php
+          require $_SERVER["DOCUMENT_ROOT"] . '/functions/get_utils.php';
 
+          // Get professors
+          $professors = get_all_professors_with_requests();
+
+          // Loop through professors
+          foreach($professors as $professor) {
+            // Get professor's name
+            $name = get_name($professor);
+
+            // Set name to some default if one wasn't retrieved
+            if ($name == null) {
+              $name = 'MissingNo';
+            }
+
+            // Make a header row for the professor
+            echo '<th colspan="5">' . $name . '</th>';
+
+            // Get semesters this professor has book lists for
+          }
         ?>
       </tbody>
     </table>    
