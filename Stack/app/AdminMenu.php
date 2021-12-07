@@ -57,7 +57,7 @@
 					</button>
 				</a><br/>
 
-				<a href="AdminFinal.php" target="_blank">
+				<a href="FinalReport.php" target="_blank">
 					<button class="mt-3 btn btn-secondary btn-lg">
 						Create Final Book Requests
 					</button>

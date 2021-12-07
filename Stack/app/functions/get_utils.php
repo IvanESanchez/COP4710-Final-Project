@@ -538,5 +538,44 @@
 
     return $ret_arr;
   }
+
+  /**
+   * Takes a $bid and returns an associative array of BOOK columns (except $bid)
+   */
+  function get_book_data($bid) {
+    require $_SERVER["DOCUMENT_ROOT"] . '/functions/db.php';
+
+    // Sanitize $bid
+    $bid = intval($bid);
+
+    // Prepare query
+    $query = "SELECT isbn, title, author, edition, publisher FROM BOOK WHERE bid=" . $bid . ";";
+
+    // Prepare return array
+    $ret_arr = [];
+
+    try {
+      // Retrieve results
+      $result = $mysqli->query($query);
+
+      // Handle if no results returned
+      if ($result->num_rows > 0) {
+        // Fetch returned data into return array
+        $ret_arr = $result->fetch_assoc();
+      }
+
+      // Close iterator
+      $result->close();
+    } catch (mysqli_sql_exception $e) {
+      // Output error message
+      require_once $_SERVER["DOCUMENT_ROOT"] . '/functions/show_feedback.php';
+      show_error($mysqli->error);
+    } finally {
+      // Close connection
+      $mysqli->close();
+    }
+
+    return $ret_arr;
+  }
 ?>
 

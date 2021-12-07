@@ -55,7 +55,13 @@
               // Output each book to the table
               foreach($book_list as $book) {
                 // Get book's data
-                
+                $book_data = get_book_data($book);
+
+                // Create table row
+                echo '<tr><td>' . $book_data['title'] . '</td><td>' .
+                $book_data['author'] . '</td><td>' . $book_data['edition'] .
+                '</td><td>' . $book_data['publisher'] . '</td><td>' .
+                $book_data['isbn'] . '</td></tr>'
               }
             }
           }
