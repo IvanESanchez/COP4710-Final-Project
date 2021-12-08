@@ -162,7 +162,14 @@ erDiagram
 
 ![Ivan's Signature](https://github.com/IvanESanchez/COP4710-Final-Project/blob/main/Art/signature.png?raw=true)
 
-
+### Meeting Attendace
+We had a total of **5 Meetings**, where everyone arrived and attended in a punctual manner.
+The dates on the meetings were the following:
+* 11/11/2021
+* 11/18/2021
+* 11/29/2021
+* 12/2/2021
+* 12/6/2021
 
 
 ## Questions and Answers for common problems
