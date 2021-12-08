@@ -34,7 +34,7 @@ Due to this, you will need to complete the following steps in order to get your 
 7. The database is already populated with an admin account so you can get started immediately.
 
 ### Super Admin
-#### e-mail: super_admin@team13.cop4710.ucf.edu
+#### e-mail: `super_admin@team13.cop4710.ucf.edu`
 #### password: `TMJW3q4R5Fx8X8S9FC2h2jajDw1t2T86gkc4AHq48VYqh3cm`
 
 8. You are now all set up and ready to go! **Enjoy!!**
@@ -104,9 +104,9 @@ From here, you can decide whether to create a new account, create book requests,
   );
 
   CREATE TABLE REMINDERS (
-  id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  date DATE NOT NULL
-);
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    date DATE NOT NULL
+  );
 ```
 
 The provided Entity Relationship Diagram helps visualize how these tables interact with one another.
@@ -118,8 +118,6 @@ erDiagram
     BOOK_REQUEST }|--|{ BOOK : contains
     BOOK_REQUEST }|--|| SEMESTER : organized_by
     BOOK_LIST }o -- o{ BOOK : catalogs
-
-
 ```
 
 ![ERD](https://github.com/IvanESanchez/COP4710-Final-Project/blob/main/Art/ERD2%20(1).png?raw=true)
@@ -130,7 +128,7 @@ erDiagram
 ## The Minds Behind the Design
 
 ### Rob Schwyzer - System and Database Administrator
-* Proposed and Implemented our stack of choice, and set up the MariaDB Database for our project.
+* Proposed and implemented our stack of choice, and set up the MariaDB Database for our project.
 * Was the general visionary of how to bring all the necessary tasks together cohesively
 * Created pages and PHP code for email functionality, including broadcast email with deadline,  automatic scheduled broadcast, and invitation email enclosed with a link to create account.
 * Created pages and PHP code for account creation and request and provision for a temporary password.
