@@ -34,8 +34,10 @@ Due to this, you will need to complete the following steps in order to get your 
 7. The database is already populated with an admin account so you can get started immediately.
 
 ### Super Admin
-#### e-mail: `super_admin@team13.cop4710.ucf.edu`
-#### password: `TMJW3q4R5Fx8X8S9FC2h2jajDw1t2T86gkc4AHq48VYqh3cm`
+
+| e-mail | `super_admin@team13.cop4710.ucf.edu`
+| --- | --- |
+| password | `TMJW3q4R5Fx8X8S9FC2h2jajDw1t2T86gkc4AHq48VYqh3cm` |
 
 8. You are now all set up and ready to go! **Enjoy!!**
 
