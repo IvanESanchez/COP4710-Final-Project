@@ -35,7 +35,7 @@ Due to this, you will need to complete the following steps in order to get your 
 
 ### Super Admin
 #### e-mail: super_admin@team13.cop4710.ucf.edu
-#### password: TMJW3q4R5Fx8X8S9FC2h2jajDw1t2T86gkc4AHq48VYqh3cm
+#### password: `TMJW3q4R5Fx8X8S9FC2h2jajDw1t2T86gkc4AHq48VYqh3cm`
 
 8. You are now all set up and ready to go! **Enjoy!!**
 
@@ -55,8 +55,7 @@ Everything that is included in Admin Panel are admin only features, and faculty 
 
 From here, you can decide whether to create a new account, create book requests, or send out emails to faculty. All this information is stored on MariaDB, using a schema that is defined as follows:
 
-````markdown
-
+```sql
   CREATE TABLE USER (
     uid INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(64) NOT NULL,
@@ -108,8 +107,7 @@ From here, you can decide whether to create a new account, create book requests,
   id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   date DATE NOT NULL
 );
-
-````
+```
 
 The provided Entity Relationship Diagram helps visualize how these tables interact with one another.
 
