@@ -4,7 +4,7 @@
 # Book Procurement Center
 
 ## Getting Started
-Thank you for downloading the UCF Book Procurement site. This website was crafted using a LEMP (Linux, eNginx, MariaDB, PHP) stack, which is composed of:
+Thank you for downloading the UCF Book Procurement site. This website was crafted using a drupal 8 stack, which is composed of:
 * Nginx
 * PHP-FPM
 * MariaDB
@@ -103,6 +103,11 @@ From here, you can decide whether to create a new account, create book requests,
     FOREIGN KEY (bid)
       REFERENCES BOOK(bid)
   );
+  
+  CREATE TABLE REMINDERS (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  date DATE NOT NULL
+);
 
 ````
 
@@ -111,18 +116,54 @@ The provided Entity Relationship Diagram helps visualize how these tables intera
 ```mermaid
 erDiagram
     USER }|--o{ BOOK_REQUEST : places
+    USER }|--o{ REMINDERS : receive
     BOOK_REQUEST }|--|{ BOOK : contains
     BOOK_REQUEST }|--|| SEMESTER : organized_by
     BOOK_LIST }o -- o{ BOOK : catalogs
+    
+    
 ```
 
-![ERD](https://github.com/IvanESanchez/COP4710-Final-Project/blob/main/Art/ERD.png?raw=true)
+![ERD](https://github.com/IvanESanchez/COP4710-Final-Project/blob/main/Art/ERD2%20(1).png?raw=true)
+
+
 
 
 ## The Minds Behind the Design
 
 ### Rob Schwyzer - System and Database Administrator 
-* 
+* Proposed and Implemented our stack of choice, and set up the MariaDB Database for our project.
+* Was the general visionary of how to bring all the necessary tasks together cohesively
+* Created pages and PHP code for email functionality, including broadcast email with deadline,  automatic scheduled broadcast, and invitation email enclosed with a link to create account.
+* Created pages and PHP code for account creation and request and provision for a temporary password.
+
+![Rob's Signature](https://github.com/IvanESanchez/COP4710-Final-Project/blob/main/Art/Rsig.png?raw=true)
+
+
+### Gavin Gilbert - Back-End Designer
+* Formulated and implemented general practices that team would follow when making PHP, and was the main vision behind the back-end development of the website.
+* Created pages and PHP code for the creation and maintenance of the faculty database.
+* Created pages and PHP code for the admin users regarding being able to view all requests in the database and generating the final list of book requests.
+
+![Gavin's Signature](https://github.com/IvanESanchez/COP4710-Final-Project/blob/main/Art/Gsig.png?raw=true)
+
+
+### Andy Garcia - Front-End Designer
+* Designed and envisioned the art direction of the overall website, so that all our pages would look cohesive, and was the overall vision behind the HTML structure of the project.
+* Created pages and PHP code for user login, account creation as an admin, and changing passwords.
+* Created pages and PHP code for the sidebar and homepage of the website, what user would see first when they logged in.
+
+![Andy's Signature](https://github.com/IvanESanchez/COP4710-Final-Project/blob/main/Art/Asignature.png?raw=true)
+
+
+
+### Ivan Sanchez - Database Designer
+* As Project Manager, was in charge of keeping attendance, meeting notes, and general documentation for the project, including this Design Document.
+* Designed the general schema that would be used for the database, defining the relevant elements required to be stored and preserved.
+* Created pages and PHP code for the viewing, creation, editing, and deletion of Books and Book Requests as a faculty user. 
+
+![Ivan's Signature](https://github.com/IvanESanchez/COP4710-Final-Project/blob/main/Art/signature.png?raw=true)
+
 
 
 
